@@ -1,0 +1,22 @@
+$primary-color: #632331;
+$secondary-color: #C99F6C;
+$third-color: #F1F1F1;
+
+$font-title: Anton-Regular;
+$font-paragraph : Neucha-Regular;
+$font-second-tile : Merienda-Regular;
+
+@font-face {
+  font-family: Anton-Regular;
+  src: url("../fonts/Anton-Regular.ttf");
+}
+
+@font-face {
+  font-family: Neucha-Regular;
+  src: url("../fonts/Neucha-Regular.ttf");
+}
+
+@font-face {
+  font-family: Merienda-Regular;
+  src: url("../fonts/Merienda-Regular.ttf");
+}

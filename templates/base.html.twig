@@ -7,6 +7,7 @@
     <title>{% block title %}Dame Jeanne{% endblock %}</title>
     <link rel="icon" href="">
     {% block stylesheets %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/css/uikit.min.css" />
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
@@ -15,6 +16,8 @@
     {% block layout %}{% endblock %}
 </main>
 {% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/js/uikit-icons.min.js"></script>
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
 </body>
