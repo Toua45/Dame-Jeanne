@@ -22,7 +22,7 @@ class ArticleType extends AbstractType
             ->add('content', TextareaType::class, [
                 'label' => 'Description'
             ])
-            ->add('author', TextareaType::class, [
+            ->add('author', TextType::class, [
                 'label' => 'Auteur'
             ])
             ->add('date', DateTimeType::class, [
