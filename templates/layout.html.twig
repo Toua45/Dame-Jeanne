@@ -1,14 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block layout %}
-    {% block header %}
 
-    {% endblock %}
+    {% block header %}{% endblock %}
     <main>
-        {% block body %}
-        {% endblock %}
+        {% block body %}{% endblock %}
     </main>
-    {% block footer %}
+    {% block footer %}{% include '_footer.html.twig' %}{% endblock %}
 
-    {% endblock %}
 {% endblock %}
