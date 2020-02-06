@@ -10,9 +10,11 @@
                 <div class="col-md-4 col-lg-5 my-5">
                     <div class="uk-text-center">
                         <div class="uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
-                            <img src="{% if article.picture is empty %}
-                                                    {{ asset('build/event_1.jpg') }}
-                                                {% endif %}"
+                            <img src="{% if article.imageName is empty %}
+                                    {{ asset('build/event_1.jpg') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(article, 'imageFile') }}
+                                {% endif %}"
                                  alt="{{ article.title }}" class="article-picture w-100">
                             <div class="uk-position-center">
                                 <div class="uk-transition-slide-top-small"><h3
