@@ -8,9 +8,11 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 col-10 card-img-block">
                     <div class="card-img-block-top">
-                        <img src="{% if article.picture is empty %}
-                                                    {{ asset('build/event_1.jpg') }}
-                                                {% endif %}"
+                        <img src="{% if article.imageName is empty %}
+                                    {{ asset('build/event_1.jpg') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(article, 'imageFile') }}
+                                {% endif %}"
                              alt="{{ article.title }}" class="article-picture w-100">
                     </div>
                 </div>
