@@ -3,6 +3,7 @@
   font-family: $font-title;
   border-top: 1px solid $primary-color;
   border-bottom: 1px solid $primary-color;
+  margin-bottom: 2em;
 }
 
 .navbar-brand {
@@ -25,7 +26,6 @@ a:hover {
 .logo {
   width: 12rem;
   height: 12rem;
-  //align-items: center;
 }
 
 .nav-effect {
