@@ -3,7 +3,7 @@
 {% block title %}Nos actualités{% endblock %}
 
 {% block body %}
-    <h1 class="text-center news-title">Toutes nos actus</h1>
+    <h1 class="text-center news-title pt-5">Toutes nos actus</h1>
     <div class="container">
         <div class="row justify-content-between">
             {% for article in articles %}
@@ -11,7 +11,7 @@
                     <div class="uk-text-center">
                         <div class="uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
                             <img src="{% if article.picture is empty %}
-                                                    {{ asset('build/got.jpg') }}
+                                                    {{ asset('build/event_1.jpg') }}
                                                 {% endif %}"
                                  alt="{{ article.title }}" class="article-picture w-100">
                             <div class="uk-position-center">
