@@ -3,6 +3,9 @@
 {% block layout %}
 
     {% block header %}{% endblock %}
+    {% block navbar %}
+        {% include '_navbar.html.twig' %}
+    {% endblock %}
     <main>
         {% block body %}{% endblock %}
     </main>
