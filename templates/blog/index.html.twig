@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Nos actualités{% endblock %}
+
+{% block body %}
+    <h1 class="text-center news-title pt-5">Toutes nos actus</h1>
+    <div class="container">
+        <div class="row justify-content-between">
+            {% for article in articles %}
+                <div class="col-md-4 col-lg-5 my-5">
+                    <div class="uk-text-center">
+                        <div class="uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
+                            <img src="{% if article.picture is empty %}
+                                                    {{ asset('build/event_1.jpg') }}
+                                                {% endif %}"
+                                 alt="{{ article.title }}" class="article-picture w-100">
+                            <div class="uk-position-center">
+                                <div class="uk-transition-slide-top-small"><h3
+                                            class="uk-margin-remove artilce-title mb-3 mx-3">{{ article.title }}</h3></div>
+                                <div class="uk-transition-slide-bottom-small">
+                                    <p class="uk-margin-remove text-justify mb-3 mx-3">{{ article.content|slice(1, 80) }}</p>
+                                    <p class="uk-margin-remove text-left ml-3">{{ article.date|date('d/m/Y H:i:s') }}</p>
+                                    <p class="uk-margin-remove text-left ml-3">{{ article.author }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-outline-danger reserve-btn w-15 m-4"
+                           href="{{ path('blog_show', {'id':article.id}) }}">Détail de
+                            l'article</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

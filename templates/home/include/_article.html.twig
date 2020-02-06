@@ -1,4 +1,4 @@
-<h1 class="text-center pt-5 pb-5">Nos actus : </h1>
+<h1 class="text-center news-title pt-5 pb-5" id="news">Nos actus : </h1>
 <section class="section-article">
     <div class="container">
         <div class="row justify-content-around">
@@ -9,21 +9,21 @@
                         <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
                             <div class="uk-card-media-left uk-cover-container">
                                 <img src="{% if article.picture is empty %}
-                                                    {{ asset('build/got.jpg') }}
+                                                    {{ asset('build/event_1.jpg') }}
                                                 {% endif %}"
-                                     alt="{{ article.title }}" class="article-picture w-100" uk-cover>
+                                     alt="{{ article.title }}" class="article-picture w-100" style="object-fit: cover" uk-cover>
                                 <canvas width="600" height="400"></canvas>
                             </div>
                             <div>
                                 <div class="uk-card-body">
-                                    <h3 class="uk-card-title">{{ article.title }}</h3>
-                                    <p>{{ article.content|slice(1, 100) }}</p>
-                                    <p>{{ article.date|date('d/m/Y H:i:s') }}</p>
-                                    <p>{{ article.author }}</p>
+                                    <h3 class="uk-card-title artilce-title">{{ article.title }}</h3>
+                                    <p class="article-content">{{ article.content|slice(1, 100) }}</p>
+                                    <p class="article-content">{{ article.date|date('d/m/Y H:i:s') }}</p>
+                                    <p class="article-content">{{ article.author }}</p>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <a class="btn btn-outline-danger reserve-btn w-15 m-4"
-                                       href="#">Détail de
+                                       href="{{ path('blog_show', {'id':article.id}) }}">Détail de
                                         l'article</a>
                                 </div>
                             </div>
@@ -35,21 +35,21 @@
                         <div class="uk-text-center">
                             <div class="uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
                                 <img src="{% if article.picture is empty %}
-                                                    {{ asset('build/got.jpg') }}
+                                                    {{ asset('build/event_1.jpg') }}
                                                 {% endif %}"
                                      alt="{{ article.title }}" class="article-picture w-100">
                                 <div class="uk-position-center">
-                                    <div class="uk-transition-slide-top-small"><h4
-                                                class="uk-margin-remove mb-3">{{ article.title }}</h4></div>
+                                    <div class="uk-transition-slide-top-small"><h3
+                                                class="uk-margin-remove mb-3 mx-3 artilce-title">{{ article.title }}</h3></div>
                                     <div class="uk-transition-slide-bottom-small">
-                                        <p class="uk-margin-remove text-justify mb-3 mx-3">{{ article.content|slice(1, 80) }}</p>
-                                        <p class="uk-margin-remove text-left ml-3">{{ article.date|date('d/m/Y H:i:s') }}</p>
-                                        <p class="uk-margin-remove text-left ml-3">{{ article.author }}</p>
+                                        <p class="uk-margin-remove text-justify article-content mb-3 mx-3">{{ article.content|slice(1, 80) }}</p>
+                                        <p class="uk-margin-remove text-left article-content ml-3">{{ article.date|date('d/m/Y H:i:s') }}</p>
+                                        <p class="uk-margin-remove text-left article-content ml-3">{{ article.author }}</p>
                                     </div>
                                 </div>
                             </div>
                             <a class="btn btn-outline-danger reserve-btn w-15 m-4"
-                               href="#">Détail de
+                               href="{{ path('blog_show', {'id':article.id}) }}">Détail de
                                 l'article</a>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
         </div>
         <div class="d-flex justify-content-center">
             <a class="btn btn-outline-danger reserve-btn w-15 m-4"
-               href="#">Toutes nos actus</a>
+               href="{{ path('blog') }}">Toutes nos actus</a>
         </div>
     </div>
 </section>
