@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+{% set page = 'Home' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    {% include 'home/include/_carousel.html.twig' %}
+    {% include 'home/include/_article.html.twig' %}
+{% endblock %}

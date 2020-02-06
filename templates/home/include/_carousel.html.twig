@@ -1,0 +1,27 @@
+<div uk-slideshow="max-height: 800; animation: push">
+
+    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+
+        <ul class="photos uk-slideshow-items">
+            <li>
+                <img src="{{ asset('build/carousel1.webp') }}" alt="photo" uk-cover>
+            </li>
+            <li>
+                <img src="{{ asset('build/carousel2.webp') }}" alt="photo" uk-cover>
+            </li>
+            <li>
+                <img src="{{ asset('build/carousel3.webp') }}" alt="photo" uk-cover>
+            </li>
+            <li>
+                <img src="{{ asset('build/carousel4.webp') }}" alt="photo" uk-cover>
+            </li>
+        </ul>
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+    </div>
+
+    <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
+</div>
