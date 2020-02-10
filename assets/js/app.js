@@ -12,3 +12,7 @@ import '../css/app.scss';
 // import $ from 'jquery';
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+
+
+require('@fortawesome/fontawesome-free/css/all.min.css');
+require('@fortawesome/fontawesome-free/js/all.js');
