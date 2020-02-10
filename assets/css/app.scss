@@ -2,3 +2,22 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import 'vars';
 @import "footer";
+@import "style_article";
+@import "navbar_style";
+
+h1 {
+  font-family: $font-title;
+}
+
+h2 {
+  font-family: $font-second-tile;
+}
+
+h3 {
+  font-family: $font-second-tile;
+}
+
+p {
+  font-family: $font-paragraph;
+}
+
