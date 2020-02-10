@@ -20,7 +20,7 @@
                                 <div class="uk-transition-slide-top-small"><h3
                                             class="uk-margin-remove artilce-title mb-3 mx-3">{{ article.title }}</h3></div>
                                 <div class="uk-transition-slide-bottom-small">
-                                    <p class="uk-margin-remove text-justify mb-3 mx-3">{{ article.content|slice(1, 80) }}</p>
+                                    <p class="uk-margin-remove text-justify mb-3 mx-3">{{ article.content|striptags|slice(1, 80)|raw }}</p>
                                     <p class="uk-margin-remove text-left ml-3">{{ article.date|date('d/m/Y H:i:s') }}</p>
                                     <p class="uk-margin-remove text-left ml-3">{{ article.author }}</p>
                                 </div>
