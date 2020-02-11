@@ -4,9 +4,9 @@ namespace App\Form;
 
 use App\Entity\Article;
 use DateTime;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,8 +20,9 @@ class ArticleType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre'
             ])
-            ->add('content', TextareaType::class, [
-                'label' => 'Description'
+            ->add('content', CKEditorType::class, [
+                'label' => 'Description',
+                'trim' => true,
             ])
             ->add('author', TextType::class, [
                 'label' => 'Auteur'

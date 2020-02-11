@@ -21,7 +21,7 @@
                             <div>
                                 <div class="uk-card-body">
                                     <h3 class="uk-card-title artilce-title">{{ article.title }}</h3>
-                                    <p class="article-content">{{ article.content|slice(1, 100) }}</p>
+                                    <p class="article-content">{{ article.content|striptags|slice(1, 100)|raw }}</p>
                                     <p class="article-content">{{ article.date|date('d/m/Y H:i:s') }}</p>
                                     <p class="article-content">{{ article.author }}</p>
                                 </div>
