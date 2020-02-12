@@ -48,7 +48,7 @@ class Article
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="artists_pictures", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="articles_pictures", fileNameProperty="imageName")
      * @Assert\File(
      *     maxSize = "200k",
      *     maxSizeMessage="La taille des images est limité à {{ limit }} {{ suffix }}",
