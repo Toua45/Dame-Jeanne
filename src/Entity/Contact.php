@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContactRepository")
@@ -17,27 +18,44 @@ class Contact
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @var string|null
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ")
+     * @Assert\Length(
+     *     max = 100,
+     *     maxMessage = "Votre prénom {{ value }} ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $firstname;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @var string|null
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ")
+     * @Assert\Length(
+     *     max = 100,
+     *     maxMessage = "Votre nom {{ value }} ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string|null
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ")
+     * @Assert\Length(
+     *     max = 255,
+     *     maxMessage = "Votre email {{ value }} ne peut pas faire plus de {{ limit }} caractères"
+     * )
+     * @Assert\Email(message="Veuillez indiquer une adresse de courriel valide")
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string|null
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
      */
     private $subject;
 
     /**
-     * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
      */
     private $message;
 
