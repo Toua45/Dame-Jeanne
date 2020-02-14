@@ -7,6 +7,7 @@
         {% include '_navbar.html.twig' %}
     {% endblock %}
     <main>
+        {% include '_flash_message.html.twig' %}
         {% block body %}{% endblock %}
     </main>
     {% block footer %}{% include '_footer.html.twig' %}{% endblock %}
