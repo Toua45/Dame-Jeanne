@@ -30,7 +30,7 @@ class HomeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $dataContact = $form->getData();
 
-            $mail = (new Email())
+            $email = (new Email())
                 ->from($this->getParameter('mailer_from'))
                 ->to($this->getParameter('mailer_to'))
                 ->subject('Vous avez reçu un nouveau message')
@@ -38,7 +38,7 @@ class HomeController extends AbstractController
                     'dataContact' => $dataContact
                 ]));
 
-            $mailer->send($mail);
+            $mailer->send($email);
             $this->addFlash('success', 'Votre message a été envoyé avec succès');
             return $this->redirectToRoute('home');
         }
