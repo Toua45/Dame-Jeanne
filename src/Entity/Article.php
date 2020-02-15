@@ -75,7 +75,7 @@ class Article
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="article")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="article", cascade={"remove"})
      */
     private $category;
 
