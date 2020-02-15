@@ -1,5 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import 'vars';
+@import "footer";
 @import "style_article";
 @import "navbar_style";
 @import "form";
@@ -19,3 +21,4 @@ h3 {
 p {
   font-family: $font-paragraph;
 }
+
