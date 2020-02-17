@@ -1,0 +1,15 @@
+{% extends 'layoutEmail.html.twig' %}
+{% set page = 'send_mail' %}
+
+{% block body %}
+
+    <div>
+
+        <h2>{{ dataContact.firstname }} {{ dataContact.lastname }} vous a envoyé un nouveau message.</h2>
+        <h3>Email : {{ dataContact.email }}</h3>
+        <h3>Sujet : {{ dataContact.subject }}</h3>
+        <p>Message : {{ dataContact.message }}</p>
+
+    </div>
+
+{% endblock %}
