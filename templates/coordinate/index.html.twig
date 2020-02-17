@@ -1,0 +1,47 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Menu des coordonées{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Menu des coordonées</h1>
+        <div class="admin-section pt-5 pb-5 px-5">
+            <a href="{{ path('admin_coordinate_new') }}" class="btn btn-outline-danger mb-5">Créer une adresse</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Adresse</th>
+                    <th>Code Postal</th>
+                    <th>Ville</th>
+                    <th>Téléphone</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for coordinate in coordinates %}
+                    <tr>
+                        <td>{{ coordinate.name }}</td>
+                        <td>{{ coordinate.adress }}</td>
+                        <td>{{ coordinate.zipCode }}</td>
+                        <td>{{ coordinate.city }}</td>
+                        <td>{{ coordinate.telephone }}</td>
+                        <td>{{ coordinate.email }}</td>
+                        <td>
+                            <a href="{{ path('admin_coordinate_show', {'id': coordinate.id}) }}"
+                               class="btn btn-outline-dark m-2">Aperçu</a>
+                            <a href="{{ path('admin_coordinate_edit', {'id': coordinate.id}) }}"
+                               class="btn btn-outline-dark m-2">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
