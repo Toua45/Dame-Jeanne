@@ -16,6 +16,8 @@
                     <th>Ville</th>
                     <th>Téléphone</th>
                     <th>Email</th>
+                    <th>Heures d'ouverture</th>
+                    <th>Heures de fermeture</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -28,6 +30,8 @@
                         <td>{{ coordinate.city }}</td>
                         <td>{{ coordinate.telephone }}</td>
                         <td>{{ coordinate.email }}</td>
+                        <td>{{ coordinate.timetableOpen|date('H:i:s') }}</td>
+                        <td>{{ coordinate.timetableClose|date('H:i:s')}}</td>
                         <td>
                             <a href="{{ path('admin_coordinate_show', {'id': coordinate.id}) }}"
                                class="btn btn-outline-dark m-2">Aperçu</a>
