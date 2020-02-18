@@ -37,9 +37,9 @@
                 </li>
                 <li class="nav-item d-flex align-self-center">
                     {% if app.user %}
-                        <a href="" class="nav-link"><span class="nav-effect">Déconnexion</span></a>
+                        <a href="{{ path('app_logout') }}" class="nav-link"><span class="nav-effect">Déconnexion</span></a>
                     {% else %}
-                        <a href="" class="nav-link"><span class="nav-effect">Connexion</span></a>
+                        <a href="{{ path('app_login') }}" class="nav-link"><span class="nav-effect">Connexion</span></a>
                     {% endif %}
                 </li>
             </ul>
