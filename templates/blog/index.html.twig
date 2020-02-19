@@ -1,29 +1,39 @@
 {% extends 'layout.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block title %}Nos actualités{% endblock %}
 
 {% block body %}
     <h1 class="text-center news-title pt-5">Toutes nos actus</h1>
+
+    <div class="container search-section pt-5 pb-5">
+        <div class="row">
+            <div class="col-12">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-outline-danger">Rechercher</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row justify-content-between">
             {% for article in articles %}
                 <div class="col-md-4 col-lg-5 my-5">
                     <div class="uk-text-center">
-                        <div class="uk-inline-clip uk-transition-toggle uk-light" tabindex="0">
+                        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
                             <img src="{% if article.imageName is empty %}
                                     {{ asset('build/event_1.jpg') }}
                             {% else %}
                                     {{ vich_uploader_asset(article, 'imageFile') }}
                                 {% endif %}"
                                  alt="{{ article.title }}" class="article-picture w-100">
-                            <div class="uk-position-center">
-                                <div class="uk-transition-slide-top-small"><h3
-                                            class="uk-margin-remove artilce-title mb-3 mx-3">{{ article.title }}</h3></div>
-                                <div class="uk-transition-slide-bottom-small">
-                                    <p class="uk-margin-remove text-justify mb-3 mx-3">{{ article.content|striptags|slice(1, 80)|raw }}</p>
-                                    <p class="uk-margin-remove text-left ml-3">{{ article.date|date('d/m/Y H:i:s') }}</p>
-                                    <p class="uk-margin-remove text-left ml-3">{{ article.author }}</p>
-                                </div>
+                            <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+                                <p
+                                        class="uk-h3 uk-margin-remove">{{ article.title }}</p>
                             </div>
                         </div>
                         <a class="btn btn-outline-danger reserve-btn w-15 m-4"

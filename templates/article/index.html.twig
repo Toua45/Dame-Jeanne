@@ -12,6 +12,7 @@
                 <tr>
                     <th>Titre</th>
                     <th>Contenu</th>
+                    <th>Catégorie d'article</th>
                     <th>Auteur</th>
                     <th>Date</th>
                     <th>actions</th>
@@ -22,6 +23,7 @@
                     <tr>
                         <td>{{ article.title }}</td>
                         <td>{{ article.content|striptags|raw }}</td>
+                        <td>{{ article.category.name }}</td>
                         <td>{{ article.author }}</td>
                         <td>{{ article.date ? article.date|date('d/m/Y H:i:s') : '' }}</td>
                         <td>

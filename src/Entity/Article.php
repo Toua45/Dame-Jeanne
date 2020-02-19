@@ -74,6 +74,11 @@ class Article
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="article", cascade={"remove"})
+     */
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -180,5 +185,17 @@ class Article
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
     }
 }
