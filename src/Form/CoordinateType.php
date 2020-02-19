@@ -6,6 +6,7 @@ use App\Entity\Coordinate;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -26,11 +27,17 @@ class CoordinateType extends AbstractType
             ->add('city', TextType::class, [
                 'label' => 'Ville'
             ])
-            ->add('telephone', IntegerType::class, [
+            ->add('telephone', TextType::class, [
                 'label' => 'Téléphone'
             ])
             ->add('email', TextType::class, [
                 'label' => 'Email'
+            ])
+            ->add('timetableOpen', TimeType::class, [
+                'label' => 'Horraires d\'ouverture'
+            ])
+            ->add('timetableClose', TimeType::class, [
+                'label' => 'Horraires de fermeture'
             ])
         ;
     }

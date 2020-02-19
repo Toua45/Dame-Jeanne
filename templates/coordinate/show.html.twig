@@ -33,6 +33,14 @@
                     <th>Email</th>
                     <td>{{ coordinate.email }}</td>
                 </tr>
+                <tr>
+                    <th>Horraires d'ouverture</th>
+                    <td>{{ coordinate.timetableOpen|date('H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Horraires de fermeture</th>
+                    <td>{{ coordinate.timetableClose|date('H:i:s') }}</td>
+                </tr>
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">

@@ -37,7 +37,7 @@ class Coordinate
     private $city;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=15)
      */
     private $telephone;
 
@@ -45,6 +45,16 @@ class Coordinate
      * @ORM\Column(type="string", length=255)
      */
     private $email;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $timetableOpen;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $timetableClose;
 
     public function getId(): ?int
     {
@@ -99,12 +109,12 @@ class Coordinate
         return $this;
     }
 
-    public function getTelephone(): ?int
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(int $telephone): self
+    public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
 
@@ -119,6 +129,30 @@ class Coordinate
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getTimetableOpen(): ?\DateTimeInterface
+    {
+        return $this->timetableOpen;
+    }
+
+    public function setTimetableOpen(\DateTimeInterface $timetableOpen): self
+    {
+        $this->timetableOpen = $timetableOpen;
+
+        return $this;
+    }
+
+    public function getTimetableClose(): ?\DateTimeInterface
+    {
+        return $this->timetableClose;
+    }
+
+    public function setTimetableClose(\DateTimeInterface $timetableClose): self
+    {
+        $this->timetableClose = $timetableClose;
 
         return $this;
     }
