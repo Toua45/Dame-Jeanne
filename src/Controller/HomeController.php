@@ -44,7 +44,7 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        $articles = $articleRepository->findBy([], ['date' => 'DESC']);
+        $articles = $articleRepository->findBy([], ['date' => 'DESC'], 3);
         $coordinates = $coordinateRepository->findAll();
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
