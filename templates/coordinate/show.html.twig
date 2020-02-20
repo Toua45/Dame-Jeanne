@@ -26,6 +26,14 @@
                     <td>{{ coordinate.city }}</td>
                 </tr>
                 <tr>
+                    <th>Latitude</th>
+                    <td>{{ coordinate.latitude }}</td>
+                </tr>
+                <tr>
+                    <th>Longitude</th>
+                    <td>{{ coordinate.longitude }}</td>
+                </tr>
+                <tr>
                     <th>Telephone</th>
                     <td>{{ coordinate.telephone }}</td>
                 </tr>
@@ -35,11 +43,19 @@
                 </tr>
                 <tr>
                     <th>Horraires d'ouverture</th>
-                    <td>{{ coordinate.timetableOpen|date('H:i:s') }}</td>
+                    <td>{{ coordinate.timetableOpen|date('H:i') }}</td>
                 </tr>
                 <tr>
                     <th>Horraires de fermeture</th>
-                    <td>{{ coordinate.timetableClose|date('H:i:s') }}</td>
+                    <td>{{ coordinate.timetableClose|date('H:i') }}</td>
+                </tr>
+                <tr>
+                    <th>Horraires d'ouverture week-end</th>
+                    <td>{{ coordinate.timetableOpenWeekend|date('H:i') }}</td>
+                </tr>
+                <tr>
+                    <th>Horraires de fermeture week-end</th>
+                    <td>{{ coordinate.timetableCloseWeekend|date('H:i') }}</td>
                 </tr>
                 </tbody>
             </table>
