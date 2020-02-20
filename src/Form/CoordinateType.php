@@ -27,6 +27,12 @@ class CoordinateType extends AbstractType
             ->add('city', TextType::class, [
                 'label' => 'Ville'
             ])
+            ->add('latitude', TextType::class, [
+                'label' => 'Latitude'
+            ])
+            ->add('longitude', TextType::class, [
+                'label' => 'Longitude'
+            ])
             ->add('telephone', TextType::class, [
                 'label' => 'Téléphone'
             ])
@@ -38,6 +44,12 @@ class CoordinateType extends AbstractType
             ])
             ->add('timetableClose', TimeType::class, [
                 'label' => 'Horraires de fermeture'
+            ])
+            ->add('timetableOpenWeekend', TimeType::class, [
+                'label' => 'Horraires d\'ouverture week-end'
+            ])
+            ->add('timetableCloseWeekend', TimeType::class, [
+                'label' => 'Horraires de fermeture week-end'
             ])
         ;
     }

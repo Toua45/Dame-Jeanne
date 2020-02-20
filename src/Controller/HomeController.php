@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\ArticleRepository;
+use App\Repository\CoordinateRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +22,7 @@ class HomeController extends AbstractController
      * @return Response
      * @throws TransportExceptionInterface
      */
-    public function index(ArticleRepository $articleRepository, Request $request, MailerInterface $mailer)
+    public function index(ArticleRepository $articleRepository, Request $request, MailerInterface $mailer, CoordinateRepository $coordinateRepository)
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -44,9 +45,11 @@ class HomeController extends AbstractController
         }
 
         $articles = $articleRepository->findBy([], ['date' => 'DESC']);
+        $coordinates = $coordinateRepository->findAll();
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
             'form' => $form->createView(),
+            'coordinates' => $coordinates,
         ]);
     }
 }

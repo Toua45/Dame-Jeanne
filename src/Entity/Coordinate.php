@@ -56,6 +56,26 @@ class Coordinate
      */
     private $timetableClose;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $latitude;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $longitude;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $timetableOpenWeekend;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $timetableCloseWeekend;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -153,6 +173,54 @@ class Coordinate
     public function setTimetableClose(\DateTimeInterface $timetableClose): self
     {
         $this->timetableClose = $timetableClose;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?string
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(string $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?string
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(string $longitude): self
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getTimetableOpenWeekend(): ?\DateTimeInterface
+    {
+        return $this->timetableOpenWeekend;
+    }
+
+    public function setTimetableOpenWeekend(\DateTimeInterface $timetableOpenWeekend): self
+    {
+        $this->timetableOpenWeekend = $timetableOpenWeekend;
+
+        return $this;
+    }
+
+    public function getTimetableCloseWeekend(): ?\DateTimeInterface
+    {
+        return $this->timetableCloseWeekend;
+    }
+
+    public function setTimetableCloseWeekend(\DateTimeInterface $timetableCloseWeekend): self
+    {
+        $this->timetableCloseWeekend = $timetableCloseWeekend;
 
         return $this;
     }
