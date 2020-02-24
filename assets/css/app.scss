@@ -22,6 +22,13 @@ p {
   font-family: $font-paragraph;
 }
 
+hr {
+  margin:auto;
+  border:1px solid black;
+  width:60%;
+}
+
 input.textarea, .form-control::placeholder {
   opacity: 0.5;
 }
+

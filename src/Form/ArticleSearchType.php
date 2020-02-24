@@ -29,6 +29,7 @@ class ArticleSearchType extends AbstractType
                         ->orderBy('c.name', 'ASC');
                 },
                 'required' => false,
+                'placeholder' => 'Afficher tous les articles',
             ]);
     }
 
