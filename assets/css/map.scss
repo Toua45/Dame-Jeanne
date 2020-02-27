@@ -1,0 +1,14 @@
+#map{
+  height:500px;
+  width: 500px;
+}
+
+.coordinate {
+  height:500px;
+}
+
+@media screen and (max-width: 510px) {
+  #map{
+    display: none;
+  }
+}

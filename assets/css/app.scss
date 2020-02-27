@@ -4,6 +4,7 @@
 @import "footer";
 @import "style_article";
 @import "navbar_style";
+@import "map";
 
 h1 {
   font-family: $font-title;
@@ -19,5 +20,15 @@ h3 {
 
 p {
   font-family: $font-paragraph;
+}
+
+hr {
+  margin:auto;
+  border:1px solid black;
+  width:60%;
+}
+
+input.textarea, .form-control::placeholder {
+  opacity: 0.5;
 }
 

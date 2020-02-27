@@ -1,0 +1,81 @@
+{% block stylesheets %}
+    {#liens pour la map#}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+    {#liens pour la map#}
+{% endblock %}
+
+<hr class="mt-3">
+
+<div class="d-flex justify-content-center mt-5 mb-5">
+    <h1>Où nous trouver</h1>
+</div>
+<div class="container mb-5">
+    <div class="row justify-content-around">
+        <div class="my-5" id="map"></div>
+        {% for coordinate in coordinates %}
+            <div class="col-md-5 col-10 my-5">
+                <div class="card coordinate">
+                    <div class="card-body">
+                        <h3 class="card-title d-flex justify-content-center py-5">{{ coordinate.name }}</h3>
+                        <p class="card-text d-flex justify-content-center">{{ coordinate.adress }}</p>
+                        <p class="card-text d-flex justify-content-center">{{ coordinate.zipCode }} {{ coordinate.city }}</p>
+                        <p class="card-text d-flex justify-content-center">{{ coordinate.telephone }}</p>
+                        <p class="card-text d-flex justify-content-center">{{ coordinate.email }}</p>
+                        <p class="card-text d-flex justify-content-center">Horraires</p>
+                        <p class="card-text d-flex justify-content-center">Lundi : fermé</p>
+                        <p class="card-text d-flex justify-content-center">Madi au vendredi
+                            : {{ coordinate.timetableOpen|date('H:i') }}
+                            - {{ coordinate.timetableClose|date('H:i') }}</p>
+                        <p class="card-text d-flex justify-content-center">Samedi et Dimanche
+                            : {{ coordinate.timetableOpenWeekend|date('H:i') }}
+                            - {{ coordinate.timetableCloseWeekend|date('H:i') }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% block javascripts %}
+    {#liens pour la map#}
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script type="text/javascript">
+        // On initialise la latitude et la longitude de Tours (centre de la carte)
+        var lat = 47.3833;
+        var lon = 0.6833;
+        var macarte = null;
+        // Nous initialisons une liste de marqueurs
+        var adresse = {
+            "Tours": { "lat": 47.3833, "lon": 0.6833 },
+        };
+        // Fonction d'initialisation de la carte
+        function initMap() {
+        // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
+        macarte = L.map('map').setView([lat, lon], 11);
+        markerClusters = L.markerClusterGroup();
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+            attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+            minZoom: 1,
+            maxZoom: 20
+        }).addTo(macarte);
+            {% for coordinate in coordinates %}
+            var marker = L.marker([{{coordinate.latitude}}, {{coordinate.longitude}}]).addTo(macarte);
+            marker.bindPopup("{{coordinate.name}} <br> {{ coordinate.adress }} <br> {{ coordinate.zipCode }} {{ coordinate.city }}");
+            {% endfor %}
+            markerClusters.addLayer(marker);
+        macarte.addLayer(markerClusters);
+        }
+        window.onload = function () {
+            // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+            initMap();
+        };
+    </script>
+    {#liens pour la map#}
+{% endblock %}

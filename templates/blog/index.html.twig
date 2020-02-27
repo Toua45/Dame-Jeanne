@@ -32,12 +32,16 @@
                                 {% endif %}"
                                  alt="{{ article.title }}" class="article-picture w-100">
                             <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+                                <p class="card-text"><small
+                                            class="text-muted">Date
+                                        : {{ article.date|date('d/m/Y') }}</small> - <span
+                                            class="badge badge-danger">{{ article.category.name }}</span></p>
                                 <p
                                         class="uk-h3 uk-margin-remove">{{ article.title }}</p>
                             </div>
                         </div>
                         <a class="btn btn-outline-danger reserve-btn w-15 m-4"
-                           href="{{ path('blog_show', {'id':article.id}) }}">Détail de
+                           href="{{ path('blog_show', {'slug':article.slug}) }}">Détail de
                             l'article</a>
                     </div>
                 </div>

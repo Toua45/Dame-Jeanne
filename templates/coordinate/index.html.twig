@@ -3,7 +3,7 @@
 {% block title %}Menu des coordonées{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container-fluid">
         <h1 class="text-center mt-5 mb-5">Menu des coordonées</h1>
         <div class="admin-section pt-5 pb-5 px-5">
             <a href="{{ path('admin_coordinate_new') }}" class="btn btn-outline-danger mb-5">Créer une adresse</a>
@@ -14,10 +14,14 @@
                     <th>Adresse</th>
                     <th>Code Postal</th>
                     <th>Ville</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
                     <th>Téléphone</th>
                     <th>Email</th>
                     <th>Heures d'ouverture</th>
                     <th>Heures de fermeture</th>
+                    <th>Heures d'ouverture week-end</th>
+                    <th>Heures fermeture week-end</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -28,10 +32,14 @@
                         <td>{{ coordinate.adress }}</td>
                         <td>{{ coordinate.zipCode }}</td>
                         <td>{{ coordinate.city }}</td>
+                        <td>{{ coordinate.latitude }}</td>
+                        <td>{{ coordinate.longitude }}</td>
                         <td>{{ coordinate.telephone }}</td>
                         <td>{{ coordinate.email }}</td>
-                        <td>{{ coordinate.timetableOpen|date('H:i:s') }}</td>
-                        <td>{{ coordinate.timetableClose|date('H:i:s')}}</td>
+                        <td>{{ coordinate.timetableOpen|date('H:i') }}</td>
+                        <td>{{ coordinate.timetableClose|date('H:i')}}</td>
+                        <td>{{ coordinate.timetableOpenWeekend|date('H:i')}}</td>
+                        <td>{{ coordinate.timetableCloseWeekend|date('H:i')}}</td>
                         <td>
                             <a href="{{ path('admin_coordinate_show', {'id': coordinate.id}) }}"
                                class="btn btn-outline-dark m-2">Aperçu</a>
