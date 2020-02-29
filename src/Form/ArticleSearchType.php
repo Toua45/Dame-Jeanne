@@ -17,19 +17,19 @@ class ArticleSearchType extends AbstractType
         $builder
             ->setMethod('GET')
             ->add('search', SearchType::class, [
-                'label' => 'Rechercher',
+                'label' => 'Rechercher un article',
                 'required' => false,
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'label' => 'Univers',
+                'label' => 'Catégorie d\'article',
                 'choice_label' => 'name',
                 'query_builder' => function (CategoryRepository $categoryRepository) {
                     return $categoryRepository->createQueryBuilder('c')
                         ->orderBy('c.name', 'ASC');
                 },
                 'required' => false,
-                'placeholder' => 'Afficher tous les articles',
+                'placeholder' => 'Selectionner une catégorie d\'article',
             ]);
     }
 
