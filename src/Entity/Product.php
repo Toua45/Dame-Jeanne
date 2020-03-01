@@ -41,6 +41,11 @@ class Product
      */
     private $picture;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Section", inversedBy="products")
+     */
+    private $section;
+
 
     public function getId(): ?int
     {
@@ -104,6 +109,18 @@ class Product
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getSection(): ?Section
+    {
+        return $this->section;
+    }
+
+    public function setSection(?Section $section): self
+    {
+        $this->section = $section;
 
         return $this;
     }
