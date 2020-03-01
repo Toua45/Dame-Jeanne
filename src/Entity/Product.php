@@ -32,11 +32,6 @@ class Product
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $section;
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
     private $type;
@@ -46,10 +41,6 @@ class Product
      */
     private $picture;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Section", inversedBy="products")
-     */
-    private $category;
 
     public function getId(): ?int
     {
@@ -92,17 +83,6 @@ class Product
         return $this;
     }
 
-    public function getSection(): ?string
-    {
-        return $this->section;
-    }
-
-    public function setSection(string $section): self
-    {
-        $this->section = $section;
-
-        return $this;
-    }
 
     public function getType(): ?string
     {
@@ -128,15 +108,4 @@ class Product
         return $this;
     }
 
-    public function getCategory(): ?Section
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Section $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
 }
