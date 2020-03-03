@@ -1,11 +1,19 @@
 {% extends 'layout_admin.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
-{% block title %}New Section{% endblock %}
+{% block title %}Nouvelle section de produit{% endblock %}
 
 {% block body %}
-    <h1>Create new Section</h1>
+    <div class="mt-5 container-xl container-lg container-fluid">
+        <h1 class="text-center mt-3 mb-4">Créer une section de produit</h1>
+        <div class="admin-section pt-5 pb-5 px-5 border p-4">
 
-    {{ include('admin_section/_form.html.twig') }}
+            {{ include('admin_section/_form.html.twig') }}
+        </div>
 
-    <a href="{{ path('section_index') }}">back to list</a>
+        <div class="flex d-flex justify-content-around">
+
+            <a href="{{ path('section_index') }}" class="btn btn-dark m-5">Retour aux sections de produits</a>
+        </div>
+    </div>
 {% endblock %}
