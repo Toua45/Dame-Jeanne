@@ -3,21 +3,26 @@
 
 <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
     <div class="uk-offcanvas-bar">
-
         <ul class="uk-nav uk-nav-default">
-            <h4 class="uk-active uk-text-center">Administration - Dame Jeanne</h4>
+            <h4 class="uk-active uk-text-center mb-3">Administration - Menu</h4>
             <li class="uk-parent">
-                <h5><a href="{{ path('home') }}">Accueil</a></h5>
+                <h5 class="uk-text-center mb-3"><a href="{{ path('home') }}">Accueil</a></h5>
             </li>
-            <li class="uk-nav-header">Sections</li>
-            <li class="uk-nav-divider"></li>
-            <li><a href="{{ path('admin_article_index') }}"><span uk-icon="" class="uk-margin-small-right" uk-icon="icon: table"></span uk-icon=""> Articles</a></li>
-            <li><a href="{{ path('admin_category_index') }}"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Thèmes</a></li>
-            <li><a href="{{ path('product_index') }}"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Produits</a></li>
-            <li><a href="{{ path('section_index') }}"><span class="uk-margin-small-right"></span> Catégorie produit</a></li>
-            <li><a href="{{ path('admin_coordinate_index') }}"><span class="uk-margin-small-right"></span> Coordonnées</a></li>
-        </ul>
 
+            <li class="uk-nav-header uk-text-center">Coordonnées Dame Jeanne</li>
+            <li class="uk-nav-divider"></li>
+            <li><a href="{{ path('admin_coordinate_index') }}"><span class="uk-margin-small-right"></span>Coordonnées</a></li>
+
+            <li class="uk-nav-header uk-text-center">Articles</li>
+            <li class="uk-nav-divider"></li>
+            <li><a href="{{ path('admin_article_index') }}"><span class="uk-margin-small-right"></span>Articles</a></li>
+            <li><a href="{{ path('admin_category_index') }}"><span class="uk-margin-small-right"></span>Catégorie article</a></li>
+
+            <li class="uk-nav-header uk-text-center">Produits</li>
+            <li class="uk-nav-divider"></li>
+            <li><a href="{{ path('product_index') }}"><span class="uk-margin-small-right"></span>Produits</a></li>
+            <li><a href="{{ path('section_index') }}"><span class="uk-margin-small-right"></span>Catégorie produit</a></li>
+        </ul>
     </div>
 </div>
 
