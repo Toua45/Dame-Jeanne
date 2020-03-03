@@ -1,26 +1,28 @@
 {% extends 'layout_admin.html.twig' %}
 
-{% block title %}Section{% endblock %}
+{% block title %}Section {{ section.name }}{% endblock %}
 
 {% block body %}
-    <h1>Section</h1>
+    <div class="container">
+        <h1 class="text-center m-5">{{ section.name }}</h1>
+        <div class="admin-section pt-5 pb-5 px-5">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ section.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ section.name }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('section_index') }}">back to list</a>
-
-    <a href="{{ path('section_edit', {'id': section.id}) }}">edit</a>
-
-    {{ include('admin_section/_delete_form.html.twig') }}
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Nom de la section de produit</th>
+                    <td class="col-lg-3">{{ section.name }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+                <a href="{{ path('section_edit', {'id': section.id}) }}"
+                   class="btn btn-outline-danger mt-5">Modifier</a>
+            </div>
+        </div>
+        <div class="d-flex justify-content-around">
+            <a href="{{ path('section_index') }}" class="btn btn-dark mt-5">Liste des sections de produits</a>
+            {{ include('admin_section/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

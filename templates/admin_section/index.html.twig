@@ -1,35 +1,39 @@
 {% extends 'layout_admin.html.twig' %}
 
-{% block title %}Section index{% endblock %}
+{% block title %}Menu des sections de produits{% endblock %}
 
 {% block body %}
-    <h1>Section index</h1>
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Menu des sections de produits</h1>
+        <div class="admin-section pt-5 pb-5 px-5">
+            <a href="{{ path('section_new') }}" class="btn btn-outline-danger mb-5">Créer une section</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for section in sections %}
-            <tr>
-                <td>{{ section.id }}</td>
-                <td>{{ section.name }}</td>
-                <td>
-                    <a href="{{ path('section_show', {'id': section.id}) }}">show</a>
-                    <a href="{{ path('section_edit', {'id': section.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th class="col-lg-3">actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for section in sections %}
+                    <tr>
+                        <td>{{ section.name }}</td>
+                        <td>
+                            <a href="{{ path('section_show', {'id': section.id}) }}"
+                               class="btn btn-outline-dark m-2">Aperçu</a>
+                            <a href="{{ path('section_edit', {'id': section.id}) }}"
+                               class="btn btn-outline-dark m-2">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">Aucune section trouvée</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
-    <a href="{{ path('section_new') }}">Create new</a>
+        </div>
+    </div>
 {% endblock %}
