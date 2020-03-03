@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Controller\BlogController;
 use App\Entity\Article;
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -30,8 +31,22 @@ class ArticleRepository extends ServiceEntityRepository
                 ->setParameter('category', $category);
         }
         $qb->orderBy('a.date', 'DESC')
-            ->setMaxResults(5);
+            ;
 
         return $qb->getQuery()->getResult();
+    }
+
+    public function findAllSortAndPage($page = null): array
+    {
+        $query = $this->createQueryBuilder('a')
+            ->where('CURRENT_DATE() >= a.date')
+            ->orderBy('a.date', 'DESC');
+
+        if ($page !== null) {
+                $firstResult = ($page - 1) * BlogController::NB_MAX_ARTICLES;
+                $query->setFirstResult($firstResult)->setMaxResults((BlogController::NB_MAX_ARTICLES));
+        }
+
+        return $query->getQuery()->getResult();
     }
 }
