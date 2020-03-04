@@ -23,3 +23,6 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 /.idea/
+
+/public/uploads/images_products/
+/public/uploads/images_articles/
