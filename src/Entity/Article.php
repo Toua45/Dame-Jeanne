@@ -28,7 +28,7 @@ class Article
      * @Assert\NotBlank(message="Le titre de l'article est obligatoire")
      * @Assert\Length(
      *      max = 255,
-     *      maxMessage ="Le titre de l'article est trop long, il ne doit pas dépasser {{ limit }} caractères")
+     *      maxMessage = "Le titre de l'article est trop long, il ne doit pas dépasser {{ limit }} caractères")
      */
     private $title;
 
