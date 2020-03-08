@@ -7,9 +7,11 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @UniqueEntity(fields={"title"}, message="Un article avec avec le même titre existe déjà")
  * @Vich\Uploadable
  */
 class Article
@@ -23,21 +25,28 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le titre de l'article est obligatoire")
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Le titre de l'article est trop long, il ne doit pas dépasser {{ limit }} caractères")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Le contenu de l'article est obligatoire")
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="L'auteur de l'article est obligatoire")
      */
     private $author;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="La date de l'article est obligatoire")
      */
     private $date;
 
