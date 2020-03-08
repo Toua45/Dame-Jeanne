@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block layout %}
- {% block header %}{% include '_navbar_admin.html.twig' %}{% endblock %}
- <main>
-  {% block body %}
-  {% endblock %}
- </main>
- {% block footer %}
+    {% block header %}{% include '_navbar_admin.html.twig' %}{% endblock %}
+    <main>
+        {% include '_flash_message.html.twig' %}
+        {% block body %}{% endblock %}
+    </main>
+    {% block footer %}
 
- {% endblock %}
+    {% endblock %}
 {% endblock %}

@@ -39,6 +39,11 @@ class AdminSectionController extends AbstractController
             $entityManager->persist($section);
             $entityManager->flush();
 
+            $this->addFlash(
+                'success',
+                'Votre catégorie de produit a été créée avec succès.'
+            );
+
             return $this->redirectToRoute('section_index');
         }
 
@@ -69,6 +74,11 @@ class AdminSectionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'Le nom de votre catégorie a été modifié.'
+            );
+
             return $this->redirectToRoute('section_index');
         }
 
@@ -87,6 +97,11 @@ class AdminSectionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($section);
             $entityManager->flush();
+
+            $this->addFlash(
+                'danger',
+                'La catégorie a été supprimée.'
+            );
         }
 
         return $this->redirectToRoute('section_index');

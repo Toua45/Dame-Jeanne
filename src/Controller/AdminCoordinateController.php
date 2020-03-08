@@ -39,6 +39,11 @@ class AdminCoordinateController extends AbstractController
             $entityManager->persist($coordinate);
             $entityManager->flush();
 
+            $this->addFlash(
+                'success',
+                'Votre adresse a été créée avec succès.'
+            );
+
             return $this->redirectToRoute('admin_coordinate_index');
         }
 
@@ -69,6 +74,11 @@ class AdminCoordinateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'Votre adresse a été modifiée.'
+            );
+
             return $this->redirectToRoute('admin_coordinate_index');
         }
 
@@ -87,6 +97,11 @@ class AdminCoordinateController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($coordinate);
             $entityManager->flush();
+
+            $this->addFlash(
+                'danger',
+                'Votre adresse a été supprimée.'
+            );
         }
 
         return $this->redirectToRoute('admin_coordinate_index');
