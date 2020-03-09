@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,7 @@ class AdminProductController extends AbstractController
 {
     /**
      * @Route("/", name="product_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="Vous devez vous connecter pour accéder à cette page.")
      */
     public function index(ProductRepository $productRepository): Response
     {

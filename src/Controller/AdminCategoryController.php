@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,7 @@ class AdminCategoryController extends AbstractController
 {
     /**
      * @Route("/", name="admin_category_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="Vous devez vous connecter pour accéder à cette page.")
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
