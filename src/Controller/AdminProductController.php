@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminProductController extends AbstractController
 {
     /**
-     * @Route("/", name="product_index", methods={"GET"})
+     * @Route("/", name="admin_product_index", methods={"GET"})
      * @IsGranted("ROLE_ADMIN", message="Vous devez vous connecter pour accéder à cette page.")
      */
     public function index(ProductRepository $productRepository): Response
@@ -41,7 +41,7 @@ class AdminProductController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-            return $this->redirectToRoute('product_index');
+            return $this->redirectToRoute('admin_product_index');
         }
 
         return $this->render('admin_product/new.html.twig', [
@@ -71,7 +71,7 @@ class AdminProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('product_index');
+            return $this->redirectToRoute('admin_product_index');
         }
 
         return $this->render('admin_product/edit.html.twig', [
@@ -91,6 +91,6 @@ class AdminProductController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('product_index');
+        return $this->redirectToRoute('admin_product_index');
     }
 }

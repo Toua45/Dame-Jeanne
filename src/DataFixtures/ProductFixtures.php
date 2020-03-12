@@ -16,14 +16,14 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
 
         for ($i = 0; $i <= 30; $i++) {
             $product = new Product();
-            $product->setName($faker->sentence);
+            $product->setName($faker->word);
             $product->setYear($faker->year);
             $product->setDescription($faker->paragraph);
             $product->setType($faker->sentence);
             $product->setPicture('');
             $product->setImageName('');
             $product->setUpdatedAt(new \DateTime());
-            $product->setSection($this->getReference('section_'. rand(0,1)));
+            $product->setSection($this->getReference('section_'. rand(0,3)));
             $manager->persist($product);
         }
 
