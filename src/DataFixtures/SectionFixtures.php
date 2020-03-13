@@ -13,7 +13,7 @@ class SectionFixtures extends Fixture
     {
         $faker = Faker\Factory::create();
 
-        for ($i = 0; $i <= 1; $i++) {
+        for ($i = 0; $i <= 4; $i++) {
             $section = new Section();
             $section->setName($faker->word);
             $this->addReference('section_' .$i, $section);
