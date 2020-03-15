@@ -41,6 +41,39 @@
                                             class="uk-h3 uk-margin-remove">{{ product.name }}</p>
                                 </div>
                             </div>
+
+                            <a class="btn btn-outline-danger reserve-btn w-15 m-4" href="#modal-overflow"
+                               uk-toggle>Découvrir le produit</a>
+
+                            <div id="modal-overflow" uk-modal>
+                                <div class="uk-modal-dialog">
+
+                                    <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                                    <div class="uk-modal-header">
+                                        <h1 class="uk-modal-title">{{ product.name }} - {{ product.year }}</h1>
+                                    </div>
+
+                                    <div class="uk-modal-body" uk-overflow-auto>
+                                        <div>
+                                            <img src="{% if product.imageName is empty %}
+                                    {{ asset('build/event_1.jpg') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(product, 'imageFile') }}
+                                {% endif %}"
+                                                 alt="{{ product.name }}" class="product-picture w-100">
+                                        </div>
+                                        <p>
+                                            {{ product.type }}
+                                        </p>
+                                        <p>
+                                            {{ product.description }}
+                                        </p>
+                                        <p class="card-text"><span class="badge badge-danger">{{ product.section.name }}</span></p>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,8 +81,6 @@
         </div>
 
     </div>
-
-
 
     <div class="text-center">
         <p class="m-3">Page : {{ page }}</p>

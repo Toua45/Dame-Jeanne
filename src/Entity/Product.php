@@ -7,9 +7,11 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
+ * @UniqueEntity(fields={"name"}, message="Un produit avec le même nom existe déjà")
  * @Vich\Uploadable
  */
 class Product
@@ -52,7 +54,7 @@ class Product
      * @Vich\UploadableField(mapping="products_pictures", fileNameProperty="imageName")
      * @Assert\File(
      *     maxSize = "200k",
-     *     maxSizeMessage="La taille des images est limité à {{ limit }} {{ suffix }}",
+     *     maxSizeMessage="La taille des images est limitée à {{ limit }} {{ suffix }}",
      *     mimeTypes = {"image/jpeg", "image/png", "image/webp", "image/gif"},
      *     mimeTypesMessage = "Ce n'est pas un format d'image valide"
      * )
@@ -79,6 +81,12 @@ class Product
      * @ORM\ManyToOne(targetEntity="App\Entity\Section", inversedBy="products")
      */
     private $section;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=255, unique=true)
+     */
+    private $slug;
 
 
     public function getId(): ?int
@@ -144,6 +152,18 @@ class Product
     {
         $this->picture = $picture;
 
+        return $this;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
         return $this;
     }
 
