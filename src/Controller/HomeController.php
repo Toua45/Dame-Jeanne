@@ -60,6 +60,7 @@ class HomeController extends AbstractController
             'form' => $form->createView(),
             'coordinates' => $coordinates,
             'last_username' => $lastUsername,
+            'error' => $error
         ]);
     }
 
