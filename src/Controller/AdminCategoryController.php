@@ -22,7 +22,7 @@ class AdminCategoryController extends AbstractController
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('category/index.html.twig', [
+        return $this->render('admin_category_article/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
     }
@@ -49,7 +49,7 @@ class AdminCategoryController extends AbstractController
             return $this->redirectToRoute('admin_category_index');
         }
 
-        return $this->render('category/new.html.twig', [
+        return $this->render('admin_category_article/new.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
         ]);
@@ -60,7 +60,7 @@ class AdminCategoryController extends AbstractController
      */
     public function show(Category $category): Response
     {
-        return $this->render('category/show.html.twig', [
+        return $this->render('admin_category_article/show.html.twig', [
             'category' => $category,
         ]);
     }
@@ -84,7 +84,7 @@ class AdminCategoryController extends AbstractController
             return $this->redirectToRoute('admin_category_index');
         }
 
-        return $this->render('category/edit.html.twig', [
+        return $this->render('admin_category_article/edit.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
         ]);

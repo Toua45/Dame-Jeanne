@@ -1,10 +1,10 @@
 {% extends 'layout_admin.html.twig' %}
 
-{% block title %}Menu des coordonées{% endblock %}
+{% block title %}Menu des coordonnées{% endblock %}
 
 {% block body %}
     <div class="container-fluid">
-        <h1 class="text-center mt-5 mb-5">Menu des coordonées</h1>
+        <h1 class="text-center mt-5 mb-5">Menu des coordonnées</h1>
         <div class="admin-section pt-5 pb-5 px-5">
             <a href="{{ path('admin_coordinate_new') }}" class="btn btn-outline-danger mb-5">Créer une adresse</a>
             <table class="table">
@@ -12,7 +12,7 @@
                 <tr>
                     <th>Nom</th>
                     <th>Adresse</th>
-                    <th>Code Postal</th>
+                    <th>Code postal</th>
                     <th>Ville</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
@@ -49,7 +49,7 @@
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="8">no records found</td>
+                        <td colspan="8">Aucune adresse trouvée</td>
                     </tr>
                 {% endfor %}
                 </tbody>
