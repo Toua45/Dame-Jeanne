@@ -19,6 +19,10 @@
   text-decoration: none;
 }
 
+button, .nav-link {
+  border-style: none;
+}
+
 a:hover {
   color: $primary-color;
 }
