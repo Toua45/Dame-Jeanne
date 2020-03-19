@@ -22,7 +22,7 @@ class AdminCoordinateController extends AbstractController
      */
     public function index(CoordinateRepository $coordinateRepository): Response
     {
-        return $this->render('coordinate/index.html.twig', [
+        return $this->render('admin_coordinate/index.html.twig', [
             'coordinates' => $coordinateRepository->findAll(),
         ]);
     }
@@ -49,7 +49,7 @@ class AdminCoordinateController extends AbstractController
             return $this->redirectToRoute('admin_coordinate_index');
         }
 
-        return $this->render('coordinate/new.html.twig', [
+        return $this->render('admin_coordinate/new.html.twig', [
             'coordinate' => $coordinate,
             'form' => $form->createView(),
         ]);
@@ -60,7 +60,7 @@ class AdminCoordinateController extends AbstractController
      */
     public function show(Coordinate $coordinate): Response
     {
-        return $this->render('coordinate/show.html.twig', [
+        return $this->render('admin_coordinate/show.html.twig', [
             'coordinate' => $coordinate,
         ]);
     }
@@ -84,7 +84,7 @@ class AdminCoordinateController extends AbstractController
             return $this->redirectToRoute('admin_coordinate_index');
         }
 
-        return $this->render('coordinate/edit.html.twig', [
+        return $this->render('admin_coordinate/edit.html.twig', [
             'coordinate' => $coordinate,
             'form' => $form->createView(),
         ]);

@@ -1,17 +1,18 @@
 {% extends 'layout_admin.html.twig' %}
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
-{% block title %}Nouvelle Categorie d'article{% endblock %}
+
+{% block title %}Nouvelles coordonnées{% endblock %}
 
 {% block body %}
     <div class="mt-5 container-xl container-lg container-fluid">
-        <h1 class="text-center mt-3 mb-4">Créer une catégorie d'article</h1>
+        <h1 class="text-center mt-3 mb-4">Créer une adresse</h1>
         <div class="admin-section pt-5 pb-5 px-5 border p-4">
 
-            {{ include('category/_form.html.twig') }}
+            {{ include('admin_coordinate/_form.html.twig') }}
+
         </div>
         <div class="flex d-flex justify-content-around">
-            <a href="{{ path('admin_category_index') }}" class="btn btn-dark m-5">Retour à la liste des catégories
-                d'articles</a>
+            <a href="{{ path('admin_coordinate_index') }}" class="btn btn-dark m-5">Retour à la liste des adresses</a>
         </div>
     </div>
 {% endblock %}

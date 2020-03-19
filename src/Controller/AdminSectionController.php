@@ -22,7 +22,7 @@ class AdminSectionController extends AbstractController
      */
     public function index(SectionRepository $sectionRepository): Response
     {
-        return $this->render('admin_section/index.html.twig', [
+        return $this->render('admin_section_product/index.html.twig', [
             'sections' => $sectionRepository->findAll(),
         ]);
     }
@@ -49,7 +49,7 @@ class AdminSectionController extends AbstractController
             return $this->redirectToRoute('section_index');
         }
 
-        return $this->render('admin_section/new.html.twig', [
+        return $this->render('admin_section_product/new.html.twig', [
             'section' => $section,
             'form' => $form->createView(),
         ]);
@@ -60,7 +60,7 @@ class AdminSectionController extends AbstractController
      */
     public function show(Section $section): Response
     {
-        return $this->render('admin_section/show.html.twig', [
+        return $this->render('admin_section_product/show.html.twig', [
             'section' => $section,
         ]);
     }
@@ -84,7 +84,7 @@ class AdminSectionController extends AbstractController
             return $this->redirectToRoute('section_index');
         }
 
-        return $this->render('admin_section/edit.html.twig', [
+        return $this->render('admin_section_product/edit.html.twig', [
             'section' => $section,
             'form' => $form->createView(),
         ]);
