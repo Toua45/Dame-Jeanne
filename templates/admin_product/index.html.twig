@@ -7,37 +7,48 @@
         <h1 class="text-center mt-5 mb-5">Menu des produits</h1>
         <div class="admin-section pt-5 pb-5 px-5">
             <a href="{{ path('product_new') }}" class="btn btn-outline-danger mb-5">Créer un produit</a>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Année</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Image</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for product in products %}
+            <div class="admin-list-product">
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.year }}</td>
-                        <td>{{ product.description }}</td>
-                        <td>{{ product.type }}</td>
-                        <td>{{ product.picture }}</td>
-                        <td>
-                            <a href="{{ path('product_show', {'id': product.id}) }}" class="btn btn-outline-dark m-2">Aperçu</a>
-                            <a href="{{ path('product_edit', {'id': product.id}) }}" class="btn btn-outline-dark m-2">Modifier</a>
-                        </td>
+                        <th>Nom</th>
+                        <th>Année</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Photo</th>
+                        <th>Actions</th>
                     </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="8">Aucun produit</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.year }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.type }}</td>
+                            <td>
+                                <img src="{% if product.imageName is empty %}
+                                    {{ asset('build/event_1.jpg') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(product, 'imageFile') }}
+                                {% endif %}"
+                                     alt="{{ product.name }}" class="product-picture w-100">
+                            </td>
+                            <td>
+                                <a href="{{ path('product_show', {'id': product.id}) }}"
+                                   class="btn btn-outline-dark m-2">Aperçu</a>
+                                <a href="{{ path('product_edit', {'id': product.id}) }}"
+                                   class="btn btn-outline-dark m-2">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">Aucun produit</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 {% endblock %}

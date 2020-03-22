@@ -22,7 +22,7 @@ class CoordinateType extends AbstractType
                 'label' => 'Adresse'
             ])
             ->add('zipCode', IntegerType::class, [
-                'label' => 'Code Postale'
+                'label' => 'Code postal'
             ])
             ->add('city', TextType::class, [
                 'label' => 'Ville'
@@ -40,18 +40,17 @@ class CoordinateType extends AbstractType
                 'label' => 'Email'
             ])
             ->add('timetableOpen', TimeType::class, [
-                'label' => 'Horraires d\'ouverture'
+                'label' => 'Horaires d\'ouverture'
             ])
             ->add('timetableClose', TimeType::class, [
-                'label' => 'Horraires de fermeture'
+                'label' => 'Horaires de fermeture'
             ])
             ->add('timetableOpenWeekend', TimeType::class, [
-                'label' => 'Horraires d\'ouverture week-end'
+                'label' => 'Horaires d\'ouverture week-end'
             ])
             ->add('timetableCloseWeekend', TimeType::class, [
-                'label' => 'Horraires de fermeture week-end'
-            ])
-        ;
+                'label' => 'Horaires de fermeture week-end'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
