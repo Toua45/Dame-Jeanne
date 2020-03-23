@@ -1,26 +1,24 @@
-<button class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-push"><span uk-icon="icon: chevron-double-left"></span></button>
-
+<button id="button" class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-push"><span>Menu</span></button>
 
 <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
     <div class="uk-offcanvas-bar">
         <ul class="uk-nav uk-nav-default">
-            <h4 class="uk-active uk-text-center mb-3">Administration - Menu</h4>
+            <h4 class="uk-active uk-text-center mb-3">Administration</h4>
             <li class="uk-parent">
-                <h5 class="uk-text-center mb-3"><a href="{{ path('home') }}">Accueil</a></h5>
-                <a href="{{ path('app_logout') }}" class="nav-link"><span class="nav-effect">Déconnexion</span></a>
-
+                <a href="{{ path('home') }}"><span class="uk-margin-small-right">Retour vers le site</span></a>
+                <a href="{{ path('app_logout') }}"><span class="uk-margin-small-right">Se déconnecter</span></a>
             </li>
 
-            <li class="uk-nav-header uk-text-center">Coordonnées Dame Jeanne</li>
+            <li class="uk-nav-header uk-text-left">Coordonnées Dame Jeanne</li>
             <li class="uk-nav-divider"></li>
             <li><a href="{{ path('admin_coordinate_index') }}"><span class="uk-margin-small-right"></span>Coordonnées</a></li>
 
-            <li class="uk-nav-header uk-text-center">Articles</li>
+            <li class="uk-nav-header uk-text-left">Articles</li>
             <li class="uk-nav-divider"></li>
             <li><a href="{{ path('admin_article_index') }}"><span class="uk-margin-small-right"></span>Articles</a></li>
             <li><a href="{{ path('admin_category_index') }}"><span class="uk-margin-small-right"></span>Catégorie article</a></li>
 
-            <li class="uk-nav-header uk-text-center">Produits</li>
+            <li class="uk-nav-header uk-text-left">Produits</li>
             <li class="uk-nav-divider"></li>
             <li><a href="{{ path('admin_product_index') }}"><span class="uk-margin-small-right"></span>Produits</a></li>
             <li><a href="{{ path('section_index') }}"><span class="uk-margin-small-right"></span>Catégorie produit</a></li>
