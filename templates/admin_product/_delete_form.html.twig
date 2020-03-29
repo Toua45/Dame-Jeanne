@@ -2,5 +2,7 @@
       onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
-    <button class="btn btn-dark mt-5">Supprimer</button>
+    <button class="btn btn-dark mt-5"><span uk-icon="trash"></span>
+
+    </button>
 </form>
