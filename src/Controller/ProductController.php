@@ -20,7 +20,10 @@ class ProductController extends AbstractController
     /**
      * @Route("/{page}", name="product_index", methods={"GET"}, requirements={"page" = "\d+"}, defaults={"page" = 1})
      */
-    public function index(ProductRepository $productRepository,  Request $request, int $page, AuthenticationUtils $authenticationUtils)
+    public function index(ProductRepository $productRepository,
+                          Request $request,
+                          int $page,
+                          AuthenticationUtils $authenticationUtils)
     {
 
         $form = $this->get('form.factory')->createNamed('', ProductSearchType::class);

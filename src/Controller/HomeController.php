@@ -27,8 +27,7 @@ class HomeController extends AbstractController
                           Request $request,
                           MailerInterface $mailer,
                           CoordinateRepository $coordinateRepository,
-                          AuthenticationUtils $authenticationUtils
-    )
+                          AuthenticationUtils $authenticationUtils)
     {
 
         $contact = new Contact();
