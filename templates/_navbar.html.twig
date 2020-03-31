@@ -42,9 +42,10 @@
                                     class="nav-effect">Page administration</span></a>
                     {% else %}
 
+{#                        <a href="{{ path('app_login') }}" class="nav-link" data-toggle="modal" data-target="#login_modal"><span class="nav-effect">Connexion</span></a>#}
                         <!-- Bouton page modal -->
                         <button type="button" class="nav-link" data-toggle="modal" data-target="#login_modal"><span
-                                    class="nav-effect">Connexion</span></button>
+                                    class="nav-effect" href="{{ path('app_login') }}">Connexion</span></button>
 
                         <!-- Affichage modal -->
                         <div class="modal fade" id="login_modal" tabindex="-1" role="dialog"
@@ -57,6 +58,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
+
 
                                         <form action="{{ path('app_login') }}" method="post">
                                             {% if error is defined and error %}
@@ -82,6 +84,8 @@
                                                 </button>
                                             </div>
                                         </form>
+
+
 
                                     </div>
                                 </div>
