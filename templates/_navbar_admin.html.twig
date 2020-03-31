@@ -1,28 +1,40 @@
-<button id="button" class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-push"><span>Menu</span></button>
+<button id="button" class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-push">
+    <span>Menu</span></button>
 
 <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
     <div class="uk-offcanvas-bar">
         <ul class="uk-nav uk-nav-default">
             <h4 class="uk-active uk-text-center mb-3">Administration</h4>
+
             <li class="uk-parent">
-                <a href="{{ path('home') }}"><span class="uk-margin-small-right">Retour vers le site</span></a>
-                <a href="{{ path('app_logout') }}"><span class="uk-margin-small-right">Se déconnecter</span></a>
+                    <a href="{{ path('home') }}" class="uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-home" ></i>Retour vers le site</a>
+                    <a href="{{ path('app_logout') }}" class="uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-sign-out-alt" ></i>Se déconnecter</a>
             </li>
 
             <li class="uk-nav-header uk-text-left">Coordonnées Dame Jeanne</li>
-            <li class="uk-nav-divider"></li>
-            <li><a href="{{ path('admin_coordinate_index') }}"><span class="uk-margin-small-right"></span>Coordonnées</a></li>
+            <li class="uk-nav-divider">
+                <a href="{{ path('admin_coordinate_index') }}" class="uk-margin-small-right"><i
+                            class="uk-icon-link uk-margin-small-right fas fa-map-marker-alt"></i>Coordonnées</a>
+            </li>
 
             <li class="uk-nav-header uk-text-left">Articles</li>
-            <li class="uk-nav-divider"></li>
-            <li><a href="{{ path('admin_article_index') }}"><span class="uk-margin-small-right"></span>Articles</a></li>
-            <li><a href="{{ path('admin_category_index') }}"><span class="uk-margin-small-right"></span>Catégorie article</a></li>
+            <li class="uk-nav-divider">
+                <a href="{{ path('admin_article_index') }}" class="uk-margin-small-right"><i
+                        class="uk-icon-link uk-margin-small-right fas fa-newspaper"></i>Articles</a>
+                <a href="{{ path('admin_category_index') }}"class="uk-margin-small-right"><i
+                            class="uk-icon-link uk-margin-small-right fa fa-list-alt"></i>Catégorie article</a>
+            </li>
 
             <li class="uk-nav-header uk-text-left">Produits</li>
-            <li class="uk-nav-divider"></li>
-            <li><a href="{{ path('admin_product_index') }}"><span class="uk-margin-small-right"></span>Produits</a></li>
-            <li><a href="{{ path('section_index') }}"><span class="uk-margin-small-right"></span>Catégorie produit</a></li>
+            <li class="uk-nav-divider">
+            <a href="{{ path('admin_product_index') }}"class="uk-margin-small-right"><i
+                            class="uk-icon-link uk-margin-small-right fas fa-beer"></i>Produits</a>
+            <a href="{{ path('section_index') }}"class="uk-margin-small-right"><i
+                            class="uk-icon-link uk-margin-small-right fas fa-clipboard-list"></i>Catégorie produit</a>
+            </li>
+
         </ul>
     </div>
 </div>
-
