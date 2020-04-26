@@ -7,7 +7,7 @@
         <h1 class="text-center mt-5 mb-5">Menu des produits</h1>
         <div class="admin-section pt-5 pb-5 px-5">
             <a href="{{ path('product_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span>
-
+                Ajouter un produit
             </a>
             <div class="admin-list-product">
                 <table class="table">
@@ -37,13 +37,13 @@
                                      alt="{{ product.name }}" class="product-picture w-100">
                             </td>
                             <td>
-                                <a href="{{ path('product_show', {'id': product.id}) }}"
-                                   class="btn btn-outline-dark m-2"><span uk-icon="forward"></span>
-
+                                <a href="{{ path('admin_product_show', {'id': product.id}) }}"
+                                   class="btn btn-outline-dark m-2"><i class="far fa-eye"></i>
+                                    Voir
                                 </a>
                                 <a href="{{ path('product_edit', {'id': product.id}) }}"
                                    class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span>
-
+                                    Editer
                                 </a>
                             </td>
                         </tr>

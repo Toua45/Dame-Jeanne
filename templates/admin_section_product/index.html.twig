@@ -7,7 +7,7 @@
         <h1 class="text-center mt-5 mb-5">Menu des sections de produits</h1>
         <div class="admin-section pt-5 pb-5 px-5">
             <a href="{{ path('section_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span>
-
+                Ajouter une section de produit
             </a>
 
             <table class="table">
@@ -23,12 +23,12 @@
                         <td>{{ section.name }}</td>
                         <td>
                             <a href="{{ path('section_show', {'id': section.id}) }}"
-                               class="btn btn-outline-dark m-2"><span uk-icon="forward"></span>
-
+                               class="btn btn-outline-dark m-2"><i class="far fa-eye"></i>
+                                Voir
                             </a>
                             <a href="{{ path('section_edit', {'id': section.id}) }}"
                                class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span>
-
+                                Editer
                             </a>
                         </td>
                     </tr>
