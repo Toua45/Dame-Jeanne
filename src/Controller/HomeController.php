@@ -23,13 +23,8 @@ class HomeController extends AbstractController
      * @return Response
      * @throws TransportExceptionInterface
      */
-    public function index(ArticleRepository $articleRepository,
-                          Request $request,
-                          MailerInterface $mailer,
-                          CoordinateRepository $coordinateRepository,
-                          AuthenticationUtils $authenticationUtils)
+    public function index(ArticleRepository $articleRepository, Request $request, MailerInterface $mailer, CoordinateRepository $coordinateRepository)
     {
-
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
@@ -50,17 +45,12 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
-
         $articles = $articleRepository->findBy([], ['date' => 'DESC'], 3);
         $coordinates = $coordinateRepository->findAll();
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
             'form' => $form->createView(),
-            'coordinates' => $coordinates,
-            'last_username' => $lastUsername,
-            'error' => $error
+            'coordinates' => $coordinates
         ]);
     }
 
