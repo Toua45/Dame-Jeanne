@@ -49,28 +49,8 @@
         </div>
     </div>
 
-    <div class="text-center">
-        <p class="m-3">Page : {{ page }}</p>
-    </div>
-    <div class="text-center">
-        {% if page >= 2 %}
-            <a class="btn btn-gold mx-5 mb-5" href="{{ path('blog_index', {'page': page-1})}}">
-                <i class="far fa-arrow-alt-circle-left"></i> Précédent
-            </a>
-        {% else %}
-            <a class="btn btn-inactive mx-5 mb-5">
-                <i class="far fa-arrow-alt-circle-left"></i> Précédent
-            </a>
-        {% endif %}
+    <!-- Pagination -->
+        {% include 'pagination/blog_pagination.html.twig' %}
+    <!-- End pagination -->
 
-        {% if page < nbPages %}
-            <a class="btn btn-gold mx-5 mb-5" href="{{ path('blog_index', {'page': page+1})}}">
-                Suivant <i class="far fa-arrow-alt-circle-right"></i>
-            </a>
-        {% else %}
-            <a class="btn btn-inactive mx-5 mb-5">
-                Suivant <i class="far fa-arrow-alt-circle-right"></i>
-            </a>
-        {% endif %}
-    </div>
 {% endblock %}

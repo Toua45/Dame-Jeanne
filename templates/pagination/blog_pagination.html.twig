@@ -1,0 +1,22 @@
+<div class="text-center">
+    <p class="m-3">Page : {{ page }}</p>
+</div>
+
+<div class="text-center">
+    {% if nbPages > 0 %}
+    <ul class="uk-pagination uk-flex-center">
+        <li {{ thisPage == 1 ? 'class="uk-disabled"' }}>
+            <a href="{{ path('blog_index', {'page': thisPage-1 < 1 ? 1 : thisPage-1}) }}">Précédent</a>
+        </li>
+{#        {% endif %}#}
+        {% for i in 1..nbPages %}
+            <li {{ page == i ? 'class="uk-disabled"' }}>
+                <a href="{{ path('blog_index', {'page': i}) }}">{{ i }}</a>
+            </li>
+        {% endfor %}
+        <li {{ thisPage == nbPages ? 'class="uk-disabled"' }}>
+            <a href="{{ path('blog_index', {'page': thisPage+1 <= nbPages ? thisPage+1 : thisPage}) }}">Suivant</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
