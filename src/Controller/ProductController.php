@@ -20,12 +20,8 @@ class ProductController extends AbstractController
     /**
      * @Route("/{page}", name="product_index", methods={"GET"}, requirements={"page" = "\d+"}, defaults={"page" = 1})
      */
-    public function index(ProductRepository $productRepository,
-                          Request $request,
-                          int $page,
-                          AuthenticationUtils $authenticationUtils)
+    public function index(ProductRepository $productRepository, Request $request, int $page)
     {
-
         $form = $this->get('form.factory')->createNamed('', ProductSearchType::class);
         $form->handleRequest($request);
 
@@ -40,16 +36,11 @@ class ProductController extends AbstractController
 
         $nbProducts = count($productRepository->findAllSortAndPage());
 
-        $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
-
         return $this->render('product/index.html.twig', [
             'products' => $products,
             'page' => $page,
             'nbPages' => ceil($nbProducts/self::NB_MAX_PRODUCTS),
-            'form' => $form->createView(),
-            'last_username' => $lastUsername,
-            'error' => $error
+            'form' => $form->createView()
         ]);
     }
 
