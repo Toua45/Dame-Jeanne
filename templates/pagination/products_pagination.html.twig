@@ -3,18 +3,18 @@
 </div>
 
 <div class="text-center">
-    {% if nbPages > 0 %}
+    {% if maxPages > 0 %}
     <ul class="uk-pagination uk-flex-center">
-        <li {{ thisPage == 1 ? 'class="uk-disabled"' }}>
-            <a href="{{ path('product_index', {'page': thisPage - 1 < 1 ? 1 : thisPage - 1}) }}">< Précédent</a>
+        <li {{ currentPage == 1 ? 'class="uk-disabled"' }}>
+            <a href="{{ path('product_index', {'page': currentPage - 1 < 1 ? 1 : currentPage - 1}|merge(app.request.query.all)) }}">< Précédent</a>
         </li>
-        {% for i in 1..nbPages %}
+        {% for i in 1..maxPages %}
             <li {{ page == i ? 'class="uk-active"' }}>
-                <a href="{{ path('product_index', {'page': i}) }}">{{ i }}</a>
+                <a href="{{ path('product_index', {'page': i}|merge(app.request.query.all)) }}">{{ i }}</a>
             </li>
         {% endfor %}
-        <li {{ thisPage == nbPages ? 'class="uk-disabled"' }}>
-            <a href="{{ path('product_index', {'page': thisPage + 1 <= nbPages ? thisPage + 1 : thisPage}) }}">Suivant ></a>
+        <li {{ currentPage == maxPages ? 'class="uk-disabled"' }}>
+            <a href="{{ path('product_index', {'page': currentPage + 1 <= maxPages ? currentPage + 1 : currentPage}|merge(app.request.query.all)) }}">Suivant ></a>
         </li>
         {% endif %}
     </ul>
