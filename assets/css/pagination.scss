@@ -1,0 +1,11 @@
+.uk-pagination > * > * {
+  color:$secondary-color;
+}
+
+.uk-pagination > .uk-active > * {
+  color:$primary-color;
+}
+
+.uk-pagination > * > :focus, .uk-pagination > * > :hover {
+  color:$primary-color;
+}

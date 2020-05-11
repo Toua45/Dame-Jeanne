@@ -34,11 +34,13 @@ class BlogController extends AbstractController
         }
 
         $nbArticles = count($articleRepository->findAllSortAndPage());
+        $currentPage = $page;
 
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,
             'page' => $page,
-            'nbPages' => ceil($nbArticles/self::NB_MAX_ARTICLES),
+            'currentPage' => $currentPage,
+            'maxPages' => ceil($nbArticles/self::NB_MAX_ARTICLES),
             'form' => $form->createView(),
         ]);
     }

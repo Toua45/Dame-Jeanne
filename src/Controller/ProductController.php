@@ -35,11 +35,13 @@ class ProductController extends AbstractController
         }
 
         $nbProducts = count($productRepository->findAllSortAndPage());
+        $currentPage = $page;
 
         return $this->render('product/index.html.twig', [
             'products' => $products,
             'page' => $page,
-            'nbPages' => ceil($nbProducts/self::NB_MAX_PRODUCTS),
+            'currentPage' => $currentPage,
+            'maxPages' => ceil($nbProducts/self::NB_MAX_PRODUCTS),
             'form' => $form->createView()
         ]);
     }
