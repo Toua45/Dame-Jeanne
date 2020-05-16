@@ -11,9 +11,9 @@ class TeamFixtures extends Fixture
 {
     const TEAMS = [
         'Anne' => [
-            'firstname' => 'Anne',
-            'lastname' => 'd\'HERBIGNY',
-            'email' => 'anne@syn-ops.fr',
+            'firstname' => 'Alexnadre',
+            'lastname' => 'B.',
+            'email' => 'dame.jeanne37@gmail.com',
             'description' => 'Alexandre a une expérience d’une dizaine d’années notamment dans le service,
             l\'arméea financ et le voyae, sur des
             fonctions supports clés.
@@ -26,9 +26,9 @@ class TeamFixtures extends Fixture
             'updated_at' => '',
         ],
         'Quitterie' => [
-            'firstname' => 'Quitterie',
-            'lastname' => 'BAURÈS',
-            'email' => 'quitterie@syn-ops.fr',
+            'firstname' => 'Marie',
+            'lastname' => 'B.',
+            'email' => 'dame.jeanne37@gmail.com',
             'description' => 'Marie a travaillé une dizaine d’années en service en France et l\'international.
             De formation initiale Assistante de Direction, elle a par la suite occupé des fonctions commerciales et
             managériales, en passant par le développement de compétences marketing/communication. 
