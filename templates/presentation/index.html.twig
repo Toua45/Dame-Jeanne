@@ -3,14 +3,20 @@
 {% block title %}L'esprit Dame Jeanne{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container">
         <div class="uk-flex uk-flex-center">
             {% for team in teams %}
                 <div uk-scrollspy="cls:uk-animation-fade">
-                    <div class="uk-child-width-1-2@m uk-grid-match" uk-grid>
+                    <div class="uk-margin-medium-right uk-grid-match" uk-grid>
                         <div>
                             <div class="uk-card uk-card-default uk-card-body"
                                  uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+                                <img src="{% if team.imagename is empty %}
+                                    {{ asset('build/event_1.jpg') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(team, 'imageFile') }}
+                                {% endif %}"
+                                     alt="{{ team.imagename }}" class="product-picture w-100">
                                 <h3 class="uk-card-title">{{ team.firstname }}  {{ team.lastname }}</h3>
                                 <p>{{ team.descprition|raw }}</p>
                                 <p>{{ team.email|raw }}</p>

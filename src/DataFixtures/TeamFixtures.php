@@ -11,7 +11,7 @@ class TeamFixtures extends Fixture
 {
     const TEAMS = [
         'Anne' => [
-            'firstname' => 'Alexnadre',
+            'firstname' => 'Alexandre',
             'lastname' => 'B.',
             'email' => 'dame.jeanne37@gmail.com',
             'description' => 'Alexandre a une expérience d’une dizaine d’années notamment dans le service,
