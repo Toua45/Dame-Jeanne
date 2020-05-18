@@ -9,6 +9,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use DateTime;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TeamRepository")
@@ -45,7 +46,7 @@ class Team
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message = "Ce champ ne doit pas être vide.")
      */
-    private $descprition;
+    private $description;
 
     /**
      * @var File|null
@@ -60,7 +61,7 @@ class Team
      * @Assert\File(
      *     maxSize="500k",
      * )
-     * @Vich\UploadableField(mapping="team_image", fileNameProperty="imagename")
+     * @Vich\UploadableField(mapping="team_image", fileNameProperty="imageName")
      */
     private $imageFile;
 
@@ -69,12 +70,12 @@ class Team
      *
      * @var string|null
      */
-    private $imagename;
+    private $imageName;
 
     /**
      * @ORM\Column(type="datetime")
      *
-     * @var \DateTime
+     * @var \DateTime|null
      */
     private $updatedAt;
 
@@ -83,12 +84,12 @@ class Team
         return $this->id;
     }
 
-    public function getFirstname(): ?string
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
-    public function setFirstname(string $firstName): self
+    public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
 
@@ -119,14 +120,14 @@ class Team
         return $this;
     }
 
-    public function getDescprition(): ?string
+    public function getDescription(): ?string
     {
-        return $this->descprition;
+        return $this->description;
     }
 
-    public function setDescprition(string $descprition): self
+    public function setDescription(string $description): self
     {
-        $this->descprition = $descprition;
+        $this->description = $description;
 
         return $this;
     }
@@ -154,36 +155,34 @@ class Team
     /**
      * @return string|null
      */
-    public function getImagename(): ?string
+    public function getImageName(): ?string
     {
-        return $this->imagename;
+        return $this->imageName;
     }
 
     /**
-     * @param string|null $imagename
+     * @param string|null $imageName
      * @return Team
      */
-    public function setImagename(?string $imagename): Team
+    public function setImageName(?string $imageName): Team
     {
-        $this->imagename = $imagename;
+        $this->imageName = $imageName;
         return $this;
     }
 
     /**
      * @return DateTime
      */
-    public function getUpdatedAt(): DateTime
+    public function getUpdatedAt(): ?DateTime
     {
         return $this->updatedAt;
     }
 
     /**
-     * @param DateTime $updatedAt
-     * @return Team
+     * @param \DateTime $updatedAt
      */
-    public function setUpdatedAt(DateTime $updatedAt): Team
+    public function setUpdatedAt(\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
-        return $this;
     }
 }

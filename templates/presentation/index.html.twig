@@ -3,6 +3,7 @@
 {% block title %}L'esprit Dame Jeanne{% endblock %}
 
 {% block body %}
+    <h1 class="text-center news-title mb-5 pt-5">Faites connaissances avec l'équipe du Dame Jeanne</h1>
     <div class="container">
         <div class="uk-flex uk-flex-center">
             {% for team in teams %}
@@ -11,14 +12,10 @@
                         <div>
                             <div class="uk-card uk-card-default uk-card-body"
                                  uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
-                                <img src="{% if team.imagename is empty %}
-                                    {{ asset('build/event_1.jpg') }}
-                            {% else %}
-                                    {{ vich_uploader_asset(team, 'imageFile') }}
-                                {% endif %}"
-                                     alt="{{ team.imagename }}" class="product-picture w-100">
+                                <img src="{{ vich_uploader_asset(team, 'imageFile') }}" class="team-picture w-100"
+                                     alt="{{ team.imageName }}">
                                 <h3 class="uk-card-title">{{ team.firstname }}  {{ team.lastname }}</h3>
-                                <p>{{ team.descprition|raw }}</p>
+                                <p>{{ team.description|raw }}</p>
                                 <p>{{ team.email|raw }}</p>
                             </div>
                         </div>
