@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PresentationController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="presentation_index")
      * @param TeamRepository $teamRepository
      */
     public function index(TeamRepository $teamRepository)
