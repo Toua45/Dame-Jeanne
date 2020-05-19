@@ -3,8 +3,10 @@
 {% block title %}L'esprit Dame Jeanne{% endblock %}
 
 {% block body %}
-    <h1 class="text-center news-title mb-5 pt-5">Faites connaissances avec l'équipe du Dame Jeanne</h1>
-    <div class="container">
+    <h1 class="text-center news-title mb-5 pt-5">Faites connaissance avec l'équipe du Dame Jeanne</h1>
+
+
+    <div class="container mt-5">
         <div class="uk-flex uk-flex-center">
             {% for team in teams %}
                 <div uk-scrollspy="cls:uk-animation-fade">
@@ -23,5 +25,22 @@
                 </div>
             {% endfor %}
         </div>
+    </div>
+
+    <div class="container-fluid">
+        {% for message in messages %}
+            <div class="uk-flex uk-flex-center">
+                <div class="uk-margin-medium-top uk-grid-match" uk-grid
+                     uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 500; repeat: true">
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <img src="{{ vich_uploader_asset(message, 'imageFile') }}" class="message-picture w-100"
+                                 alt="{{ message.imageName }}">
+                            <p>{{ message.text }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
