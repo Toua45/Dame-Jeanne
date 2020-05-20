@@ -16,6 +16,11 @@
     font-weight: bold;
     text-align: right;
   }
+
+  .team-picture {
+    height: 30rem;
+    object-fit: cover;
+  }
 }
 
 .presentation-message {
@@ -23,5 +28,10 @@
   p {
     font-size: 1.7em;
     font-weight: bolder;
+  }
+
+  .message-picture {
+    height: 14.5rem;
+    object-fit: cover;
   }
 }
