@@ -1,0 +1,55 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Menu des messages{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Menu des messages</h1>
+        <div class="admin-message pt-5 pb-5 px-5">
+            <a href="{{ path('message_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span>
+                Ajouter un message
+            </a>
+            <div class="admin-list-message">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Texte du message</th>
+                        <th>Image</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for message in messages %}
+                        <tr>
+                            <td>{{ message.text|striptags|raw }}</td>
+                            <td>
+                                <img src="{% if message.imageName is empty %}
+                                    {{ asset('build/event_1.jpg') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(message, 'imageFile') }}
+                                {% endif %}"
+                                     alt="{{ message.imageName }}" class="message-picture w-100">
+                            </td>
+                            <td>
+                                <a href="{{ path('admin_message_show', {'id': message.id}) }}"
+                                   class="btn btn-outline-dark m-2"><i class="far fa-eye"></i>
+                                    Voir
+                                </a>
+                                <a href="{{ path('message_edit', {'id': message.id}) }}"
+                                   class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span>
+                                    Editer
+                                </a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">Aucun message</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

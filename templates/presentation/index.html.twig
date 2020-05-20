@@ -3,22 +3,28 @@
 {% block title %}L'esprit Dame Jeanne{% endblock %}
 
 {% block body %}
-    <h1 class="text-center news-title mb-5 pt-5">Faites connaissance avec l'équipe du Dame Jeanne</h1>
+    <h1 class="text-center news-title mt-5 mb-5 pt-5">On se présente et on vous résume nos valeurs...</h1>
 
+    <hr class="uk-divider-icon mt-5">
 
-    <div class="container mt-5">
-        <div class="uk-flex uk-flex-center">
+    <div class="container-fluid mt-5 presentation-article">
+        <div class="row justify-content-around">
             {% for team in teams %}
-                <div uk-scrollspy="cls:uk-animation-fade">
-                    <div class="uk-margin-medium-right uk-grid-match" uk-grid>
-                        <div>
-                            <div class="uk-card uk-card-default uk-card-body"
-                                 uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
-                                <img src="{{ vich_uploader_asset(team, 'imageFile') }}" class="team-picture w-100"
-                                     alt="{{ team.imageName }}">
-                                <h3 class="uk-card-title">{{ team.firstname }}  {{ team.lastname }}</h3>
-                                <p>{{ team.description|raw }}</p>
-                                <p>{{ team.email|raw }}</p>
+                <div class="col-md-6 col-lg-6">
+                    <div class="uk-text-center">
+                        <div uk-scrollspy="cls:uk-animation-fade">
+                            <div class="uk-margin-medium-right uk-grid-match mb-5" uk-grid>
+                                <div>
+                                    <div class="uk-card uk-card-default uk-card-body"
+                                         uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+                                        <img src="{{ vich_uploader_asset(team, 'imageFile') }}"
+                                             class="team-picture w-100"
+                                             alt="{{ team.imageName }}">
+                                        <h2 class="presentation-title uk-card-title text-center mt-5">{{ team.firstname }}  {{ team.lastname }}</h2>
+                                        <p class="presentation-paragraph">{{ team.description|raw }}</p>
+                                        <p class="presentation-email">{{ team.email|raw }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -27,20 +33,32 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        {% for message in messages %}
-            <div class="uk-flex uk-flex-center">
-                <div class="uk-margin-medium-top uk-grid-match" uk-grid
-                     uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 500; repeat: true">
-                    <div>
-                        <div class="uk-card uk-card-default uk-card-body">
-                            <img src="{{ vich_uploader_asset(message, 'imageFile') }}" class="message-picture w-100"
-                                 alt="{{ message.imageName }}">
-                            <p>{{ message.text }}</p>
+    <hr class="uk-divider-icon mt-5">
+
+    <div class="container presentation-message">
+        <div class="row justify-content-around">
+            {% for message in messages %}
+                <div class="col-md-4 col-lg-4">
+                    <div class="uk-text-center">
+                        <div class="uk-card uk-card-hover uk-card-body">
+                            <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                                <img src="{% if message.imageName is empty %}
+                                    {{ asset('build/event_1.jpg') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(message, 'imageFile') }}
+                                {% endif %}"
+                                     alt="{{ message.imageName }}" class="message-picture w-100">
+                                <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+                                    <p
+                                            class="uk-h3 uk-margin-remove">{{ message.text }}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
+
+    <hr class="uk-divider-icon mt-5">
 {% endblock %}

@@ -1,0 +1,27 @@
+.presentation-article {
+
+  .uk-card {
+    line-height: 30px;
+    font-size: 1.3em;
+  }
+
+  .presentation-title {
+    color:$primary-color;
+    font-weight: bold;
+    font-size: 1.7em;
+  }
+
+  .presentation-email {
+    font-style: italic;
+    font-weight: bold;
+    text-align: right;
+  }
+}
+
+.presentation-message {
+
+  p {
+    font-size: 1.7em;
+    font-weight: bolder;
+  }
+}

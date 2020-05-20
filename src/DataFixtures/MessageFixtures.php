@@ -10,19 +10,19 @@ use Doctrine\Common\Persistence\ObjectManager;
 class MessageFixtures extends Fixture
 {
     const MESSAGES = [
-        'Wine' => [
-            'text' => 'Nous ce qu\'on aime c\'est aussi servir du vin',
-            'imageName' => 'wine.webp',
-            'updated_at' => '',
-        ],
         'Food' => [
             'text' => 'Nous ce qu\'on aime faire c\'est trouver et servir des bons produits',
             'imageName' => 'food.webp',
             'updated_at' => '',
         ],
-        'Sound' => [
-            'text' => 'Nous ce qu\'on aime c\'est aussi passer du bon son',
-            'imageName' => 'sound.webp',
+        'People' => [
+            'text' => 'Nous ce qu\'on aime c\'est rencontrer des gens',
+            'imageName' => 'people.webp',
+            'updated_at' => '',
+        ],
+        'Taste' => [
+            'text' => 'Nous ce qu\'on aime c\'est aussi faire des découvertes',
+            'imageName' => 'taste.webp',
             'updated_at' => '',
         ],
     ];
