@@ -3,9 +3,14 @@
 {% block title %}L'esprit Dame Jeanne{% endblock %}
 
 {% block body %}
+
+    {#titre de la page#}
+
     <h1 class="text-center news-title mt-5 mb-5 pt-5">On se présente et on vous résume nos valeurs...</h1>
 
     <hr class="uk-divider-icon mt-5">
+
+    {#section portrait des patrons#}
 
     <div class="container-fluid mt-5 presentation-article">
         <div class="row justify-content-around">
@@ -35,6 +40,8 @@
 
     <hr class="uk-divider-icon mt-5">
 
+    {#section nos valeurs#}
+
     <div class="container presentation-message">
         <div class="row justify-content-around">
             {% for message in messages %}
@@ -62,5 +69,14 @@
 
     <hr class="uk-divider-icon mt-5">
 
+    {#section partenaires#}
+
     <h2 class="text-center news-title mt-5 mb-5 pt-5">On aime travailler avec eux...</h2>
+
+    <section class="partners mb-5">
+        {% include 'presentation/_partner.html.twig' %}
+    </section>
+
+    <hr class="uk-divider-icon mt-5">
+
 {% endblock %}

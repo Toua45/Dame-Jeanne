@@ -1,0 +1,16 @@
+.partners {
+
+  .row {
+    justify-content: center;
+  }
+
+  img {
+    height:6rem;
+    margin:3rem;
+    filter: grayscale(1);
+  }
+
+  img:hover {
+    filter: grayscale(0);
+  }
+}
