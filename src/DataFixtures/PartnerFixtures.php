@@ -19,7 +19,7 @@ class PartnerFixtures extends Fixture
             $partner->setName(ucfirst($faker->word));
             $partner->setLink($faker->url);
             $partner->setUpdatedAt(new DateTime());
-            $partner->setFilenamePartner('');
+            $partner->setFilenamePartner('filenamePartner');
             $manager->persist($partner);
         }
 

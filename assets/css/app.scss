@@ -7,7 +7,9 @@
 @import "map";
 @import 'pagination';
 @import "presentation";
-@import "partners.scss";
+@import "partners";
+@import "admin_partner";
+@import "admin_message";
 
 h1 {
   font-family: $font-title;

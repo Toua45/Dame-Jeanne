@@ -4,24 +4,13 @@
 
 {% block body %}
     <div class="container">
-        <h1 class="text-center m-5">Message</h1>
+        <h1 class="text-center m-5">Message actuel</h1>
         <div class="admin-message pt-5 pb-5 px-5">
             <table class="table">
                 <tbody>
                 <tr>
                     <th>Texte du message</th>
                     <td>{{ message.text }}</td>
-                </tr>
-                <tr>
-                    <th>Image</th>
-                    <td class="test">
-                        <img src="{% if message.imageName is empty %}
-                                    {{ asset('build/event_1.jpg') }}
-                            {% else %}
-                                    {{ vich_uploader_asset(message, 'imageFile') }}
-                                {% endif %}"
-                             alt="{{ message.imageName }}" class="message-picture w-100">
-                    </td>
                 </tr>
                 </tbody>
             </table>
