@@ -1,0 +1,19 @@
+.partners {
+
+  .row {
+    justify-content: center;
+  }
+
+  img {
+    height:6rem;
+    margin:3rem;
+    filter: grayscale(1);
+    transition: transform .2s;
+    object-fit: cover;
+  }
+
+  img:hover {
+    filter: grayscale(0);
+    transform: scale(1.5);
+  }
+}

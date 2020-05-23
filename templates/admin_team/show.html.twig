@@ -1,0 +1,55 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}L'équipe{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center m-5">{{ team.firstName }} {{ team.lastName }}</h1>
+        <div class="admin-section pt-5 pb-5 px-5">
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Prénom</th>
+                    <td>{{ team.firstName }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ team.lastName }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ team.email }}</td>
+                </tr>
+                <tr>
+                    <th>Présentation</th>
+                    <td>{{ team.description }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td class="test">
+                        <img src="{% if team.imageName is empty %}
+                                    {{ asset('build/event_1.jpg') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(team, 'imageFile') }}
+                                {% endif %}"
+                             alt="{{ team.imageName }}" class="team-picture w-100">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+                <a href="{{ path('team_edit', {'id': team.id}) }}"
+                   class="btn btn-outline-danger"><span uk-icon="pencil"></span>
+                    Editer
+                </a>
+            </div>
+        </div>
+        <div class="d-flex justify-content-around">
+            <a href="{{ path('admin_team_index') }}" class="btn btn-dark mt-5"><span uk-icon="home"></span>
+                Retour
+            </a>
+            {{ include('admin_team/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}
