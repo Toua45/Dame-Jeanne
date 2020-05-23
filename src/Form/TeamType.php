@@ -32,7 +32,7 @@ class TeamType extends AbstractType
                 'label' => 'Photo',
                 'required' => false,
                 'delete_label' => 'Supprimer l\'image ?',
-                'download_label' => 'Agrandir l\'image'
+                'download_label' => 'Télécharger l\'image'
             ]);
     }
 

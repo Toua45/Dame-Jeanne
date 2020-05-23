@@ -20,7 +20,7 @@ class PartnerType extends AbstractType
             ->add('partnerFile', VichImageType::class, [
                 'label' => 'Image',
                 'delete_label' => 'Supprimer l\'image ?',
-                'download_label' => 'Agrandir l\'image',
+                'download_label' => 'Télécharger l\'image',
                 'required' => false
             ])
         ;

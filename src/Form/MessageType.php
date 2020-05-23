@@ -22,7 +22,7 @@ class MessageType extends AbstractType
                     'label' => 'Image',
                     'required' => false,
                     'delete_label' => 'Supprimer l\'image ?',
-                    'download_label' => 'Agrandir l\'image',
+                    'download_label' => 'Télécharger l\'image',
                 ])
         ;
     }

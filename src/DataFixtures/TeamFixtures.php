@@ -15,11 +15,10 @@ class TeamFixtures extends Fixture
             'lastname' => 'B.',
             'email' => 'dame.jeanne37@gmail.com',
             'description' => 'Alexandre a une expérience d’une dizaine d’années notamment dans le service,
-            l\'arméea financ et le voyae, sur des
-            fonctions supports clés.
+            l\'armée et le voyage, ainsi que sur des fonctions supports clés.
             Il est titulaire d’une Maîtrise des Sciences Techniques, Comptables & Financières.
-            Expert dans l’appréhension des enjeux globaux des entreprises et l’impact des décisions stratégiques, elle
-            s’attache à placer l’Humain au cœur de toutes actions et privilégie un développement éthique.
+            Expert dans l’appréhension des enjeux globaux des entreprises et l’impact des décisions stratégiques, il
+            s’attache à placer l’humain au cœur de toutes actions et privilégie un développement éthique.
             Dotée d’une solide capacité d’écoute et d’un dynamisme communicatif, elle est mue par l’envie d’accompagner
             les organisations dans le respect de chacun vers des réussites collectives !',
             'imageName' => 'patron.webp',
