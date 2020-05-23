@@ -41,6 +41,10 @@ class AdminMessageController extends AbstractController
             $entityManager->persist($message);
             $entityManager->flush();
 
+            $this->addFlash(
+                'success', 'Votre message a été ajouté'
+            );
+
             return $this->redirectToRoute('admin_message_index');
         }
 
@@ -71,6 +75,10 @@ class AdminMessageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success', 'Votre message a été modifié'
+            );
+
             return $this->redirectToRoute('admin_message_index');
         }
 
@@ -89,6 +97,10 @@ class AdminMessageController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($message);
             $entityManager->flush();
+
+            $this->addFlash(
+                'danger', 'Votre message a été supprimé'
+            );
         }
 
         return $this->redirectToRoute('admin_message_index');

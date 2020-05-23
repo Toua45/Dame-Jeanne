@@ -78,7 +78,7 @@ class Product
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Section", inversedBy="products", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Section", inversedBy="products")
      */
     private $section;
 
