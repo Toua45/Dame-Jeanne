@@ -24,7 +24,7 @@ class Section
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="section")
+     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="section", cascade={"remove"})
      */
     private $products;
 
