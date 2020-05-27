@@ -21,7 +21,7 @@
                 {% for partner in partners %}
                     <tr>
                         <td>{{ partner.name }}</td>
-                        <td>{{ partner.link }}</td>
+                        <td>{{ partner.link|striptags|raw }}</td>
                         <td>
                             <img src="{% if partner.filenamePartner is empty %}
                                     {{ asset('build/event_1.jpg') }}
