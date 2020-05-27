@@ -41,6 +41,10 @@ class AdminTeamController extends AbstractController
             $entityManager->persist($team);
             $entityManager->flush();
 
+            $this->addFlash(
+                'success', 'Le nouveau membre a été ajouté'
+            );
+
             return $this->redirectToRoute('admin_team_index');
         }
 
@@ -71,6 +75,10 @@ class AdminTeamController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success', 'Le membre a été modifié'
+            );
+
             return $this->redirectToRoute('admin_team_index');
         }
 
@@ -89,6 +97,10 @@ class AdminTeamController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($team);
             $entityManager->flush();
+
+            $this->addFlash(
+                'danger', 'Le membre a été supprimé'
+            );
         }
 
         return $this->redirectToRoute('admin_team_index');

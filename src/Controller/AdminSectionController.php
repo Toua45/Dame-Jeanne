@@ -43,7 +43,7 @@ class AdminSectionController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Votre catégorie de produit a été créée avec succès.'
+                'La section de produit a été créée avec succès'
             );
 
             return $this->redirectToRoute('section_index');
@@ -78,7 +78,7 @@ class AdminSectionController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Le nom de votre catégorie a été modifié.'
+                'La section de produit a été modifiée'
             );
 
             return $this->redirectToRoute('section_index');
@@ -102,7 +102,7 @@ class AdminSectionController extends AbstractController
 
             $this->addFlash(
                 'danger',
-                'La catégorie a été supprimée.'
+                'La section de produit a été supprimée'
             );
         }
 

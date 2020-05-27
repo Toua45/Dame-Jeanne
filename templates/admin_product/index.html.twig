@@ -17,6 +17,7 @@
                         <th>Année</th>
                         <th>Description</th>
                         <th>Type</th>
+                        <th>Section</th>
                         <th>Photo</th>
                         <th>Actions</th>
                     </tr>
@@ -28,6 +29,9 @@
                             <td>{{ product.year }}</td>
                             <td>{{ product.description }}</td>
                             <td>{{ product.type }}</td>
+                            <td>
+                                {{ product.section.name }}
+                            </td>
                             <td>
                                 <img src="{% if product.imageName is empty %}
                                     {{ asset('build/event_1.jpg') }}
