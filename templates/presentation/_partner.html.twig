@@ -2,10 +2,12 @@
     <div class="row">
         {% for partner in partners %}
             <a href="{{ partner.link }}" target="_blank">
-                {% if partner.filenamePartner %}
-                    <img src="{{ vich_uploader_asset(partner, 'partnerFile') }}" alt="partner article"
-                         class="img-partner">
-                {% endif %}
+                <img src="{% if partner.filenamePartner is empty %}
+                                    {{ asset('build/event_1.jpg') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(partner, 'partnerFile') }}
+                                {% endif %}"
+                     alt="{{ partner.filenamePartner }}" class="img-partner">
             </a>
         {% endfor %}
     </div>
