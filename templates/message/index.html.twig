@@ -25,7 +25,7 @@
                             <td>{{ message.text|striptags|raw }}</td>
                             <td>
                                 <img src="{% if message.imageName is empty %}
-                                    {{ asset('build/event_1.jpg') }}
+                                    {{ asset('build/people.webp') }}
                             {% else %}
                                     {{ vich_uploader_asset(message, 'imageFile') }}
                                 {% endif %}"

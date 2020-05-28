@@ -48,7 +48,7 @@ class TeamFixtures extends Fixture
             $team->setLastName($data['lastname']);
             $team->setEmail($data['email']);
             $team->setDescription($data['description']);
-            $team->setImageName($data['imageName']);
+            $team->setImageName('');
             $team->setUpdatedAt(new DateTime());
 
             $manager->persist($team);
