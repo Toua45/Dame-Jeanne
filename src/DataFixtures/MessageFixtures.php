@@ -32,7 +32,7 @@ class MessageFixtures extends Fixture
         foreach (self::MESSAGES as $message => $data) {
             $message = new Message();
             $message->setText($data['text']);
-            $message->setImageName($data['imageName']);
+            $message->setImageName('');
             $message->setUpdatedAt(new DateTime());
 
             $manager->persist($message);
