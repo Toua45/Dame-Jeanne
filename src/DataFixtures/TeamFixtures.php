@@ -21,7 +21,6 @@ class TeamFixtures extends Fixture
             s’attache à placer l’humain au cœur de toutes actions et privilégie un développement éthique.
             Dotée d’une solide capacité d’écoute et d’un dynamisme communicatif, elle est mue par l’envie d’accompagner
             les organisations dans le respect de chacun vers des réussites collectives !',
-            'imageName' => 'patron.webp',
             'updated_at' => '',
         ],
         'Quitterie' => [
@@ -35,7 +34,6 @@ class TeamFixtures extends Fixture
             d’action avec une approche transversale.
             De nature impliquée, passionnée par les relations humaines, elle met en œuvre une approche responsable des
             problématiques d’entreprise pour plus de bien-être et de performance !',
-            'imageName' => 'patron-bis.webp',
             'updated_at' => '',
         ],
     ];

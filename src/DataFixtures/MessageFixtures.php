@@ -12,7 +12,7 @@ class MessageFixtures extends Fixture
     const MESSAGES = [
         'Food' => [
             'text' => 'On aime trouver et servir des bons produits',
-            'imageName' => 'food.webp',
+            'imageName' => 'people.webp',
             'updated_at' => '',
         ],
         'People' => [
@@ -22,7 +22,7 @@ class MessageFixtures extends Fixture
         ],
         'Taste' => [
             'text' => 'Nous ce qu\'on aime c\'est aussi faire des découvertes',
-            'imageName' => 'taste.webp',
+            'imageName' => 'people.webp',
             'updated_at' => '',
         ],
     ];
