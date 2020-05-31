@@ -28,10 +28,10 @@
                             <td>{{ team.firstName }}</td>
                             <td>{{ team.lastName }}</td>
                             <td>{{ team.email }}</td>
-                            <td>{{ team.description }}</td>
+                            <td>{{ team.description|striptags|raw }}</td>
                             <td>
                                 <img src="{% if team.imageName is empty %}
-                                    {{ asset('build/event_1.jpg') }}
+                                    {{ asset('build/patron.webp') }}
                             {% else %}
                                     {{ vich_uploader_asset(team, 'imageFile') }}
                                 {% endif %}"

@@ -23,7 +23,7 @@ class PresentationController extends AbstractController
     {
         $teams = $teamRepository->findAll();
         $messages = $messageRepository->findAll();
-        $partners = $partnerRepository->findAll();
+        $partners = $partnerRepository->findBy([], ['updatedAt' => 'DESC'], 10);
 
         return $this->render('presentation/index.html.twig', [
             'teams' => $teams,

@@ -6,72 +6,29 @@
 
     {#titre de la page#}
 
-    <h1 class="text-center news-title mt-5 mb-5 pt-5">On se présente et on vous résume nos valeurs...</h1>
-
-    <hr class="uk-divider-icon mt-5">
+    <h1 class="container text-center news-title mt-5 mb-5 pt-5">On se présente et on vous résume nos valeurs...</h1>
 
     {#section portrait des patrons#}
 
-    <div class="container-fluid mt-5 presentation-article">
-        <div class="row justify-content-around">
-            {% for team in teams %}
-                <div class="col-md-6 col-lg-6">
-                    <div class="uk-text-center">
-                        <div uk-scrollspy="cls:uk-animation-fade">
-                            <div class="uk-margin-medium-right uk-grid-match mb-5" uk-grid>
-                                <div>
-                                    <div class="uk-card uk-card-default uk-card-body"
-                                         uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
-                                        <img src="{{ vich_uploader_asset(team, 'imageFile') }}"
-                                             class="team-picture w-100"
-                                             alt="{{ team.imageName }}">
-                                        <h2 class="presentation-title uk-card-title text-center mt-5">{{ team.firstname }}  {{ team.lastname }}</h2>
-                                        <p class="presentation-paragraph">{{ team.description|raw }}</p>
-                                        <p class="presentation-email">{{ team.email|raw }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+    <section class="container-fluid mt-5 presentation-article">
+        {% include 'presentation/_team.html.twig' %}
+    </section>
+
 
     <hr class="uk-divider-icon mt-5">
 
     {#section nos valeurs#}
 
-    <div class="container presentation-message">
-        <div class="row justify-content-around">
-            {% for message in messages %}
-                <div class="col-md-4 col-lg-4">
-                    <div class="uk-text-center">
-                        <div class="uk-card uk-card-hover uk-card-body">
-                            <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-                                <img src="{% if message.imageName is empty %}
-                                    {{ asset('build/event_1.jpg') }}
-                            {% else %}
-                                    {{ vich_uploader_asset(message, 'imageFile') }}
-                                {% endif %}"
-                                     alt="{{ message.imageName }}" class="message-picture w-100">
-                                <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                                    <p
-                                            class="uk-h3 uk-margin-remove">{{ message.text }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+    <section class="container presentation-message">
+        {% include 'presentation/_message.html.twig' %}
+    </section>
+
 
     <hr class="uk-divider-icon mt-5">
 
     {#section partenaires#}
 
-    <h2 class="text-center news-title mt-5 mb-5 pt-5">On aime travailler avec eux...</h2>
+    <h2 class="text-center news-title mt-5 mb-5 pt-5">...Quelques partenaires avec qui on aime bien travailler...</h2>
 
     <section class="partners mb-5">
         {% include 'presentation/_partner.html.twig' %}
