@@ -1,30 +1,35 @@
-.card-body {
-  border: 1px solid $primary-color;
+.article-show {
+  .card-body {
+    border: 1px solid $primary-color;
+  }
 }
 
-.vich-image .custom-file-input {
-  opacity: 1;
-}
-.custom-file-label {
-  display: none;
-}
-
-.custom-file-input {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: calc(1.5em + 0.75rem + 2px);
-  margin: 0;
-  opacity: 0;
+.section-home-article {
+  .article-picture {
+    object-fit: cover;
+    height: 22rem;
+  }
 }
 
-.custom-file-label:lang(fr)::after {
-  content: 'Parcourir';
-}
-
-.vich-image a img {
-  margin-top: 1rem;
-  height: 50vh;
-  width: 100%;
+.article-picture-index {
   object-fit: cover;
+  height: 22rem;
+}
+
+@media screen and (min-width: 200px) and (max-width: 500px) {
+  .section-home-article {
+    .article-picture {
+      object-fit: contain;
+      height: 10rem;
+      margin-right: 5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 200px) and (max-width: 500px) {
+  .article-picture-index {
+    object-fit: contain;
+    height: 10rem;
+    margin-right: 5rem;
+  }
 }
