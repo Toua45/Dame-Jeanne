@@ -35,3 +35,12 @@
     object-fit: cover;
   }
 }
+
+@media screen and (min-width: 250px) and (max-width: 770px) {
+  .presentation-article {
+    .team-picture {
+      object-fit: contain;
+      height: 15rem;
+    }
+  }
+}
