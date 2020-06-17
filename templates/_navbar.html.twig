@@ -40,10 +40,12 @@
                     {% if app.user %}
                         <a href="{{ path('admin_home') }}" class="nav-link"><span
                                     class="nav-effect">Page administration</span></a>
+                        <a href="{{ path('app_logout') }}" class="nav-link ml-5"><span
+                                    class="nav-effect">Se déconnecter</span></a>
                     {% else %}
-                        <a href="{{ path('app_login') }}" class="nav-link"><span class="nav-effect">Connexion</span></a>
+                        <a href="{{ path('app_login') }}" class="nav-link">
+                            <span class="nav-effect">Connexion</span></a>
                     {% endif %}
-
                 </li>
             </ul>
         </div>
