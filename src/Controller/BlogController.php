@@ -24,11 +24,13 @@ class BlogController extends AbstractController
         $form = $this->get('form.factory')->createNamed('', ArticleSearchType::class);
         $form->handleRequest($request);
 
+
+
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $search = $data['search'];
             $category = $data['category'];
-            $articles = $articleRepository->findLikeName($search, $category);
+            $articles = $articleRepository->findLikeName($search, $category, $page);
         } else {
             $articles = $articleRepository->findAllSortAndPage($page);
         }
@@ -40,8 +42,8 @@ class BlogController extends AbstractController
             'articles' => $articles,
             'page' => $page,
             'currentPage' => $currentPage,
-            'maxPages' => ceil($nbArticles/self::NB_MAX_ARTICLES),
-            'form' => $form->createView(),
+            'maxPages' => (int)ceil($nbArticles/self::NB_MAX_ARTICLES),
+            'form' => $form->createView()
         ]);
     }
 
