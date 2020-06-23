@@ -24,8 +24,6 @@ class BlogController extends AbstractController
         $form = $this->get('form.factory')->createNamed('', ArticleSearchType::class);
         $form->handleRequest($request);
 
-
-
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $search = $data['search'];
@@ -35,7 +33,7 @@ class BlogController extends AbstractController
             $articles = $articleRepository->findAllSortAndPage($page);
         }
 
-        $nbArticles = count($articleRepository->findLikeName());
+        $nbArticles = count($articleRepository->findAllSortAndPage());
         $currentPage = $page;
 
         return $this->render('blog/index.html.twig', [

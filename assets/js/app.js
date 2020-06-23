@@ -30,14 +30,3 @@ console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
-
-var current_page;
-current_page = document.getElementById("search_article").addEventListener('click', Event => {
-    Event.preventDefault();
-    var form = document.querySelector('form');
-    const _url = window.location.origin + '/blog/';
-    form.method = 'GET';
-    form.action = _url;
-    form.submit();
-});
-

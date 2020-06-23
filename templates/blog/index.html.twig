@@ -53,4 +53,18 @@
     {% include 'pagination/blog_pagination.html.twig' %}
     <!-- End pagination -->
 
+    <script type="text/javascript">
+        (function () {
+                var current_page;
+                current_page = document.getElementById("search_article").addEventListener('click', Event => {
+                Event.preventDefault();
+                var form = document.querySelector('form');
+                const _url = window.location.origin + '/blog/';
+                form.method = 'GET';
+                form.action = _url;
+                form.submit();
+            });
+        })();
+    </script>
+
 {% endblock %}
