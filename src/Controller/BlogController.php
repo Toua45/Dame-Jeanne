@@ -35,7 +35,7 @@ class BlogController extends AbstractController
             $articles = $articleRepository->findAllSortAndPage($page);
         }
 
-        $nbArticles = count($articleRepository->findAllSortAndPage());
+        $nbArticles = count($articleRepository->findLikeName());
         $currentPage = $page;
 
         return $this->render('blog/index.html.twig', [

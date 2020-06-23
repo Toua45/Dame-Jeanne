@@ -33,7 +33,7 @@ class ArticleRepository extends ServiceEntityRepository
         $qb->orderBy('a.date', 'DESC')
             ;
 
-        if (is_numeric($page) !== null) {
+        if (is_numeric($page)) {
             $firstResult = ($page - 1) * BlogController::NB_MAX_ARTICLES;
             $qb->setFirstResult($firstResult)->setMaxResults((BlogController::NB_MAX_ARTICLES));
         }
