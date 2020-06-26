@@ -21,7 +21,7 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    public function findLikeName(?string $search = '', ?Category $category = null)
+    public function findLikeName(?string $search = '', ?Category $category = null, int $page = null)
     {
         $qb = $this->createQueryBuilder('a')
             ->andWhere('a.title LIKE :title')
@@ -32,6 +32,11 @@ class ArticleRepository extends ServiceEntityRepository
         }
         $qb->orderBy('a.date', 'DESC')
             ;
+
+        if (is_numeric($page)) {
+            $firstResult = ($page - 1) * BlogController::NB_MAX_ARTICLES;
+            $qb->setFirstResult($firstResult)->setMaxResults((BlogController::NB_MAX_ARTICLES));
+        }
 
         return $qb->getQuery()->getResult();
     }

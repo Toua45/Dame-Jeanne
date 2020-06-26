@@ -12,7 +12,7 @@
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-outline-danger">Rechercher</button>
+                    <button class="btn btn-outline-danger" id="search_article">Rechercher</button>
                 </div>
                 {{ form_end(form) }}
             </div>
@@ -52,5 +52,19 @@
     <!-- Pagination -->
     {% include 'pagination/blog_pagination.html.twig' %}
     <!-- End pagination -->
+
+    <script type="text/javascript">
+        (function () {
+                var current_page;
+                current_page = document.getElementById("search_article").addEventListener('click', Event => {
+                Event.preventDefault();
+                var form = document.querySelector('form');
+                const _url = window.location.origin + '/blog/';
+                form.method = 'GET';
+                form.action = _url;
+                form.submit();
+            });
+        })();
+    </script>
 
 {% endblock %}
