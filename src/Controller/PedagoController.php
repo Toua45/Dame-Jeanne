@@ -9,14 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class PedagoController extends AbstractController
 {
     /**
-     * @Route("/pedago", name="pedago_index")
+     * @Route("/pedagogie", name="pedago_index")
      */
     public function index(PedagoRepository $pedagoRepository)
     {
         $pedagos = $pedagoRepository->findBy([], ['title' => 'DESC'], 3);
 
-        return $this->render('pedago/index.html.twig', [
-            'pedagos' => $pedagos,
-        ]);
+        return $this->render('pedago/index.html.twig', compact('pedagos'));
     }
 }

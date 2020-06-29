@@ -12,7 +12,9 @@ class PedagoFixtures extends Fixture
     Const PEDAGO = [
         'Nature' => [
             'title' => 'Nature',
-            'content' => 'C\'est comme ça que l\'on qualifie le vin que l\'on aime. Mais pourquoi ?',
+            'content' => 'Un vin nature, ou vin naturel, est un vin auquel aucun intrant n\'est ajouté lors de sa vinification (fait parfois exception une faible dose de souffre). 
+            À l\'heure actuelle il n\'existe pas de législation ni de consensus autour de sa définition exacte. Cette dénomination n\'est donc pas certifiée. Il est souvent issu 
+            de raisins cultivés selon des méthodes agroécologiques (viticulture bilogique ou biodynamique)',
             'link' => '',
         ]
     ];
