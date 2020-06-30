@@ -54,17 +54,24 @@
     <!-- End pagination -->
 
     <script type="text/javascript">
-        (function () {
-                var current_page;
-                current_page = document.getElementById("search_article").addEventListener('click', Event => {
+
+            var submitForm = Event => {
                 Event.preventDefault();
                 var form = document.querySelector('form');
                 const _url = window.location.origin + '/blog/';
                 form.method = 'GET';
                 form.action = _url;
                 form.submit();
+            }
+
+            document.getElementById("search_article").addEventListener('click', submitForm);
+
+            document.addEventListener('keypress', function(event) {
+                if (event.keyCode === 13 || event.which === 13) {
+                    submitForm();
+                }
+
             });
-        })();
     </script>
 
 {% endblock %}
