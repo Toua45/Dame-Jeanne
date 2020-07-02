@@ -5,6 +5,13 @@
 @import "style_article";
 @import "navbar_style";
 @import "map";
+@import 'pagination';
+@import "presentation";
+@import "partners";
+@import "admin_partner";
+@import "admin_message";
+@import "style_product";
+@import "style_pedago";
 
 h1 {
   font-family: $font-title;

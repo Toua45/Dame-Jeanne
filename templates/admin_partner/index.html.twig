@@ -1,0 +1,53 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Partenaires{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Menu des partenaires</h1>
+        <div class="admin-partner pt-5 pb-5 px-5">
+            <a href="{{ path('admin_partner_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span>
+                Créer un partenaire</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Lien</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for partner in partners %}
+                    <tr>
+                        <td>{{ partner.name }}</td>
+                        <td>{{ partner.link|striptags|raw }}</td>
+                        <td>
+                            <img src="{% if partner.filenamePartner is empty %}
+                                    {{ asset('build/event_1.jpg') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(partner, 'partnerFile') }}
+                                {% endif %}"
+                                 alt="{{ partner.filenamePartner }}" class="partner-picture w-100">
+                        </td>
+                        <td>
+                            <a href="{{ path('admin_partner_show', {'id': partner.id}) }}"
+                               class="btn btn-outline-dark m-2"><i class="far fa-eye"></i>
+                                Aperçu
+                            </a>
+                            <a href="{{ path('admin_partner_edit', {'id': partner.id}) }}"
+                               class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span>
+                                Editer
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">Aucun partenaire trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

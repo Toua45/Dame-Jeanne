@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Controller\BlogController;
 use App\Entity\Article;
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -20,7 +21,7 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    public function findLikeName(?string $search = '', ?Category $category = null)
+    public function findLikeName(?string $search = '', ?Category $category = null, int $page = null)
     {
         $qb = $this->createQueryBuilder('a')
             ->andWhere('a.title LIKE :title')
@@ -30,8 +31,27 @@ class ArticleRepository extends ServiceEntityRepository
                 ->setParameter('category', $category);
         }
         $qb->orderBy('a.date', 'DESC')
-            ->setMaxResults(5);
+            ;
+
+        if (is_numeric($page)) {
+            $firstResult = ($page - 1) * BlogController::NB_MAX_ARTICLES;
+            $qb->setFirstResult($firstResult)->setMaxResults((BlogController::NB_MAX_ARTICLES));
+        }
 
         return $qb->getQuery()->getResult();
+    }
+
+    public function findAllSortAndPage($page = null): array
+    {
+        $query = $this->createQueryBuilder('a')
+            ->where('CURRENT_DATE() >= a.date')
+            ->orderBy('a.date', 'DESC');
+
+        if ($page !== null) {
+                $firstResult = ($page - 1) * BlogController::NB_MAX_ARTICLES;
+                $query->setFirstResult($firstResult)->setMaxResults((BlogController::NB_MAX_ARTICLES));
+        }
+
+        return $query->getQuery()->getResult();
     }
 }

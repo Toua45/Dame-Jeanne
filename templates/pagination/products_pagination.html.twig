@@ -1,0 +1,49 @@
+<!-- Variable pour limiter l'affichage du nombre de pages disponibles aux alentours -->
+{% set nearByPagesLimit = 4 %}
+
+<div class="text-center">
+    <p class="m-3">Page : {{ page }}</p>
+</div>
+
+<div class="text-center">
+    {% if maxPages > 0 %}
+    <ul class="uk-pagination uk-flex-center">
+        <!-- Condition pour désactiver le bouton "Précédent" si l'utilisateur se situe à la première page -->
+        <li {{ currentPage == 1 ? 'class="uk-disabled"' }}>
+            <a href="{{ path('product_index', {'page': currentPage - 1 < 1 ? 1 : currentPage - 1}|merge(app.request.query.all)) }}">«
+                Précédent</a>
+        </li>
+
+        <!-- Itération sur le nombre de pages disponibles pour afficher toutes les quantités nécessaires à l'aide de calculs -->
+        {% for i in 1..maxPages %}
+
+            <!-- Condition pour afficher les premiers "..." en étant positionné sur l'itération actuelle -->
+            {% if 1 == (currentPage - nearByPagesLimit) - loop.index0 %}
+                <li class="disabled"><p>...</p></li>
+
+                <!-- Condition pour afficher les derniers "..." en étant positionné sur l'itération actuelle -->
+            {% elseif 1 == (currentPage + nearByPagesLimit) - loop.index0 %}
+                <li class="disabled"><p>...</p></li>
+
+                <!-- Condition pour cacher les premières pages selon la variable "nearByPagesLimit" en étant positionné sur l'itération actuelle -->
+            {% elseif 1 < (currentPage - nearByPagesLimit) - loop.index0 %}
+
+                <!-- Condition pour cacher les dernières pages selon la variable "nearByPagesLimit" en étant positionné sur l'itération actuelle -->
+            {% elseif 1 > (currentPage + nearByPagesLimit) - loop.index0 %}
+            {% else %}
+
+                <!-- Condition pour activer les liens de chaque page si l'utilisateur ne se trouve pas en première ou dernière page -->
+                <li {{ currentPage == loop.index ? 'class="uk-active"' }}>
+                    <a href="{{ path('product_index', {'page': loop.index}|merge(app.request.query.all)) }}">{{ loop.index }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        <!-- Condition pour désactiver le bouton "Suivant" si l'utilisateur se situe à la dernière page -->
+        <li {{ currentPage == maxPages ? 'class="uk-disabled"' }}>
+            <a href="{{ path('product_index', {'page': currentPage + 1 <= maxPages ? currentPage + 1 : currentPage}|merge(app.request.query.all)) }}">Suivant
+                »</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>

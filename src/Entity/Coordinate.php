@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CoordinateRepository")
@@ -18,31 +19,45 @@ class Coordinate
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Le nom est obligatoire")
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Le nom est trop long, il ne doit pas dépasser {{ limit }} caractères")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="L'adresse' est obligatoire")
      */
     private $adress;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Le code postale est obligatoire")
      */
     private $zipCode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="La ville est obligatoire")
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @Assert\NotBlank(message="Le téléphone est obligatoire")
+     * @Assert\Length(
+     *      max = 15,
+     *      maxMessage = "Le numéro de téléphone est trop long, il ne doit pas dépasser {{ limit }} caractères")
      */
     private $telephone;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Le mail est obligatoire")
+     * @Assert\Email(message="Format d'adresse mail invalide")
      */
     private $email;
 
@@ -58,11 +73,13 @@ class Coordinate
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $longitude;
 

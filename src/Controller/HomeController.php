@@ -13,6 +13,7 @@ use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class HomeController extends AbstractController
 {
@@ -49,7 +50,8 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
             'form' => $form->createView(),
-            'coordinates' => $coordinates,
+            'coordinates' => $coordinates
         ]);
     }
+
 }

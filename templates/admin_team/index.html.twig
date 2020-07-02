@@ -1,0 +1,61 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}L'équipe{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Voici l'équipe</h1>
+        <div class="admin-section pt-5 pb-5 px-5">
+            <a href="{{ path('team_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span>
+                Ajouter un membre
+            </a>
+            <div class="admin-list-product">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Présentation</th>
+                        <th>Photo</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for team in teams %}
+                        <tr>
+                            <td>{{ team.firstName }}</td>
+                            <td>{{ team.lastName }}</td>
+                            <td>{{ team.email }}</td>
+                            <td>{{ team.description|striptags|raw }}</td>
+                            <td>
+                                <img src="{% if team.imageName is empty %}
+                                    {{ asset('build/patron.webp') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(team, 'imageFile') }}
+                                {% endif %}"
+                                     alt="{{ team.imageName }}" class="team-picture w-100">
+                            </td>
+                            <td>
+                                <a href="{{ path('admin_team_show', {'id': team.id}) }}"
+                                   class="btn btn-outline-dark m-2"><i class="far fa-eye"></i>
+                                    Voir
+                                </a>
+                                <a href="{{ path('team_edit', {'id': team.id}) }}"
+                                   class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span>
+                                    Editer
+                                </a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">Aucun membre</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

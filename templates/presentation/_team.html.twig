@@ -1,0 +1,26 @@
+<div class="row justify-content-around">
+    {% for team in teams %}
+        <div class="col-md-8 col-lg-6">
+            <div class="uk-text-center">
+                <div uk-scrollspy="cls:uk-animation-fade">
+                    <div class="uk-margin-medium-right uk-grid-match mb-5" uk-grid>
+                        <div>
+                            <div class="uk-card uk-card-default uk-card-body"
+                                 uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+                                <img src="{% if team.imageName is empty %}
+                                    {{ asset('build/patron.webp') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(team, 'imageFile') }}
+                                {% endif %}"
+                                     alt="{{ team.imageName }}" class="team-picture w-100">
+                                <h2 class="presentation-title uk-card-title text-center mt-5">{{ team.firstname }}  {{ team.lastname }}</h2>
+                                <p class="presentation-paragraph">{{ team.description|raw }}</p>
+                                <p class="presentation-email">{{ team.email|raw }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

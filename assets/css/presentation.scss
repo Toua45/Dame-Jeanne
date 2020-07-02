@@ -1,0 +1,46 @@
+.presentation-article {
+
+  .uk-card {
+    line-height: 30px;
+    font-size: 1.3em;
+  }
+
+  .presentation-title {
+    color: $primary-color;
+    font-weight: bold;
+    font-size: 1.7em;
+  }
+
+  .presentation-email {
+    font-style: italic;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  .team-picture {
+    height: 30rem;
+    object-fit: cover;
+  }
+}
+
+.presentation-message {
+
+  p {
+    font-size: 1.7em;
+    font-weight: bolder;
+  }
+
+  .message-picture {
+    height: 14.5rem;
+    object-fit: cover;
+  }
+}
+
+@media screen and (min-width: 250px) and (max-width: 770px) {
+  .presentation-article {
+    .team-picture {
+      object-fit: contain;
+      height: 15rem;
+    }
+  }
+}

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Coordinate;
 use App\Form\CoordinateType;
 use App\Repository\CoordinateRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +18,11 @@ class AdminCoordinateController extends AbstractController
 {
     /**
      * @Route("/", name="admin_coordinate_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="Vous devez vous connecter pour accéder à cette page.")
      */
     public function index(CoordinateRepository $coordinateRepository): Response
     {
-        return $this->render('coordinate/index.html.twig', [
+        return $this->render('admin_coordinate/index.html.twig', [
             'coordinates' => $coordinateRepository->findAll(),
         ]);
     }
@@ -39,10 +41,15 @@ class AdminCoordinateController extends AbstractController
             $entityManager->persist($coordinate);
             $entityManager->flush();
 
+            $this->addFlash(
+                'success',
+                'Votre adresse a été créée avec succès.'
+            );
+
             return $this->redirectToRoute('admin_coordinate_index');
         }
 
-        return $this->render('coordinate/new.html.twig', [
+        return $this->render('admin_coordinate/new.html.twig', [
             'coordinate' => $coordinate,
             'form' => $form->createView(),
         ]);
@@ -53,7 +60,7 @@ class AdminCoordinateController extends AbstractController
      */
     public function show(Coordinate $coordinate): Response
     {
-        return $this->render('coordinate/show.html.twig', [
+        return $this->render('admin_coordinate/show.html.twig', [
             'coordinate' => $coordinate,
         ]);
     }
@@ -69,10 +76,15 @@ class AdminCoordinateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'Votre adresse a été modifiée.'
+            );
+
             return $this->redirectToRoute('admin_coordinate_index');
         }
 
-        return $this->render('coordinate/edit.html.twig', [
+        return $this->render('admin_coordinate/edit.html.twig', [
             'coordinate' => $coordinate,
             'form' => $form->createView(),
         ]);
@@ -87,6 +99,11 @@ class AdminCoordinateController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($coordinate);
             $entityManager->flush();
+
+            $this->addFlash(
+                'danger',
+                'Votre adresse a été supprimée.'
+            );
         }
 
         return $this->redirectToRoute('admin_coordinate_index');

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +18,11 @@ class AdminArticleController extends AbstractController
 {
     /**
      * @Route("/", name="admin_article_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="Vous devez vous connecter pour accéder à cette page.")
      */
     public function index(ArticleRepository $articleRepository): Response
     {
-        return $this->render('article/index.html.twig', [
+        return $this->render('admin_article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
         ]);
     }
@@ -39,10 +41,14 @@ class AdminArticleController extends AbstractController
             $entityManager->persist($article);
             $entityManager->flush();
 
+            $this->addFlash(
+                'success', 'Votre article a été ajouté.'
+            );
+
             return $this->redirectToRoute('admin_article_index');
         }
 
-        return $this->render('article/new.html.twig', [
+        return $this->render('admin_article/new.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
         ]);
@@ -53,7 +59,7 @@ class AdminArticleController extends AbstractController
      */
     public function show(Article $article): Response
     {
-        return $this->render('article/show.html.twig', [
+        return $this->render('admin_article/show.html.twig', [
             'article' => $article,
         ]);
     }
@@ -69,10 +75,15 @@ class AdminArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'Votre article a été modifié.'
+            );
+
             return $this->redirectToRoute('admin_article_index');
         }
 
-        return $this->render('article/edit.html.twig', [
+        return $this->render('admin_article/edit.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
         ]);
@@ -87,6 +98,11 @@ class AdminArticleController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);
             $entityManager->flush();
+
+            $this->addFlash(
+                'danger',
+                'Votre article a été supprimé.'
+            );
         }
 
         return $this->redirectToRoute('admin_article_index');

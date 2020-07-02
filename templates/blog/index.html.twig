@@ -12,7 +12,7 @@
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-outline-danger">Rechercher</button>
+                    <button class="btn btn-outline-danger" id="search_article">Rechercher</button>
                 </div>
                 {{ form_end(form) }}
             </div>
@@ -22,7 +22,7 @@
     <div class="container">
         <div class="row justify-content-between">
             {% for article in articles %}
-                <div class="col-md-4 col-lg-5 my-5">
+                <div class="col-md-10 col-lg-5 my-5">
                     <div class="uk-text-center">
                         <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
                             <img src="{% if article.imageName is empty %}
@@ -30,7 +30,7 @@
                             {% else %}
                                     {{ vich_uploader_asset(article, 'imageFile') }}
                                 {% endif %}"
-                                 alt="{{ article.title }}" class="article-picture w-100">
+                                 alt="{{ article.title }}" class="article-picture-index w-100">
                             <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
                                 <p class="card-text"><small
                                             class="text-muted">Date
@@ -48,4 +48,30 @@
             {% endfor %}
         </div>
     </div>
+
+    <!-- Pagination -->
+    {% include 'pagination/blog_pagination.html.twig' %}
+    <!-- End pagination -->
+
+    <script type="text/javascript">
+
+            var submitForm = Event => {
+                Event.preventDefault();
+                var form = document.querySelector('form');
+                const _url = window.location.origin + '/blog/';
+                form.method = 'GET';
+                form.action = _url;
+                form.submit();
+            }
+
+            document.getElementById("search_article").addEventListener('click', submitForm);
+
+            document.addEventListener('keypress', function(event) {
+                if (event.keyCode === 13 || event.which === 13) {
+                    submitForm();
+                }
+
+            });
+    </script>
+
 {% endblock %}

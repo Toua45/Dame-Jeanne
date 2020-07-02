@@ -6,3 +6,32 @@ vich_uploader:
             uri_prefix: /uploads/images_articles
             upload_destination: '%kernel.project_dir%/public/uploads/images_articles'
             namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+        products_pictures:
+            uri_prefix: /uploads/images_products
+            upload_destination: '%kernel.project_dir%/public/uploads/images_products'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+        team_image:
+            uri_prefix: /uploads/images_team
+            upload_destination: '%kernel.project_dir%/public/uploads/images_team'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        message_image:
+            uri_prefix: /uploads/images_message
+            upload_destination: '%kernel.project_dir%/public/uploads/images_message'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        partner_file:
+            uri_prefix: /uploads/images_partner
+            upload_destination: '%kernel.project_dir%/public/uploads/images_partner'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

@@ -5,9 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * @UniqueEntity(fields={"name"}, message="Une catégorie d'article avec le même nom existe déjà")
  */
 class Category
 {
@@ -20,6 +23,10 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le nom de la catégorie d'article est obligatoire")
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Le nom de la catégorie est trop long, il ne doit pas dépasser {{ limit }} caractères")
      */
     private $name;
 

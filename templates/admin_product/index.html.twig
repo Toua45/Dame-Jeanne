@@ -1,0 +1,64 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Menu des produits{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Menu des produits</h1>
+        <div class="admin-section pt-5 pb-5 px-5">
+            <a href="{{ path('product_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span>
+                Ajouter un produit
+            </a>
+            <div class="admin-list-product">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Année</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Section</th>
+                        <th>Photo</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.year }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.type }}</td>
+                            <td>
+                                {{ product.section.name }}
+                            </td>
+                            <td>
+                                <img src="{% if product.imageName is empty %}
+                                    {{ asset('build/event_1.jpg') }}
+                            {% else %}
+                                    {{ vich_uploader_asset(product, 'imageFile') }}
+                                {% endif %}"
+                                     alt="{{ product.name }}" class="product-picture w-100">
+                            </td>
+                            <td>
+                                <a href="{{ path('admin_product_show', {'id': product.id}) }}"
+                                   class="btn btn-outline-dark m-2"><i class="far fa-eye"></i>
+                                    Voir
+                                </a>
+                                <a href="{{ path('product_edit', {'id': product.id}) }}"
+                                   class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span>
+                                    Editer
+                                </a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">Aucun produit</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

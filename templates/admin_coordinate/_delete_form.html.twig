@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('admin_coordinate_delete', {'id': coordinate.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ces coordonnées ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ coordinate.id) }}">
+    <button class="btn btn-dark mt-5">Supprimer</button>
+</form>
