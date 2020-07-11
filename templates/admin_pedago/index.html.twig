@@ -24,12 +24,12 @@
                     {% for pedago in pedagos %}
                         <tr>
                             <td>{{ pedago.title }}</td>
-                            <td>{{ pedago.content }}</td>
+                            <td>{{ pedago.content|striptags|raw }}</td>
                             <td>{{ pedago.link }}</td>
                             <td>
                                 <a href="{{ path('admin_pedago_show', {'id': pedago.id}) }}"
                                    class="btn btn-outline-dark m-2"><i class="far fa-eye"></i>
-                                    Voir
+                                    Aperçu
                                 </a>
                                 <a href="{{ path('admin_pedago_edit', {'id': pedago.id}) }}"
                                    class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span>
@@ -39,7 +39,7 @@
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="8">Aucun mot enregistré</td>
+                            <td colspan="6">Aucun mot enregistré</td>
                         </tr>
                     {% endfor %}
                     </tbody>

@@ -24,6 +24,7 @@ class PedagoType extends AbstractType
             ])
             ->add('link', UrlType::class, [
                 'label' => 'Lien pour aller plus loin',
+                'required' => false,
             ])
         ;
     }

@@ -10,7 +10,7 @@
                 <tbody>
                 <tr>
                     <th>Définition</th>
-                    <td>{{ pedago.content }}</td>
+                    <td>{{ pedago.content|striptags|raw }}</td>
                 </tr>
                 <tr>
                     <th>Lien</th>
