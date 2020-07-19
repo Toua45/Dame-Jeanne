@@ -1,0 +1,50 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Notre page pédago{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Le petit dico du Dame Jeanne</h1>
+        <div class="admin-pedago pt-5 pb-5 px-5">
+            <a href="{{ path('admin_pedago_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span>
+                Ajouter un mot
+            </a>
+
+            <div class="admin-list-pedago">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Mot</th>
+                        <th>Définition</th>
+                        <th>Lien</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for pedago in pedagos %}
+                        <tr>
+                            <td>{{ pedago.title }}</td>
+                            <td>{{ pedago.content|striptags|raw }}</td>
+                            <td>{{ pedago.link }}</td>
+                            <td>
+                                <a href="{{ path('admin_pedago_show', {'id': pedago.id}) }}"
+                                   class="btn btn-outline-dark m-2"><i class="far fa-eye"></i>
+                                    Aperçu
+                                </a>
+                                <a href="{{ path('admin_pedago_edit', {'id': pedago.id}) }}"
+                                   class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span>
+                                    Editer
+                                </a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">Aucun mot enregistré</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
