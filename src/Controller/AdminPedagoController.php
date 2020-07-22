@@ -39,6 +39,10 @@ class AdminPedagoController extends AbstractController
             $entityManager->persist($pedago);
             $entityManager->flush();
 
+            $this->addFlash(
+                'success', 'Le mot a été ajouté'
+            );
+
             return $this->redirectToRoute('admin_pedago_index');
         }
 
@@ -69,6 +73,10 @@ class AdminPedagoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success', 'Le mot a été modifié'
+            );
+
             return $this->redirectToRoute('admin_pedago_index');
         }
 
@@ -87,6 +95,10 @@ class AdminPedagoController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($pedago);
             $entityManager->flush();
+
+            $this->addFlash(
+                'success', 'Le mot a été supprimé'
+            );
         }
 
         return $this->redirectToRoute('admin_pedago_index');
