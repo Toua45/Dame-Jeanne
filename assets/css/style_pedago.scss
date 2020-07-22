@@ -9,6 +9,12 @@
 
 .pedago-article {
 
+  h2:hover {
+    transition: transform .2s;
+    filter: grayscale(0);
+    transform: scale(1.5);
+  }
+
   .uk-accordion-title {
     color: $primary-color;
     font-size: xx-large;
