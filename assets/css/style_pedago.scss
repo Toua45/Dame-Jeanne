@@ -1,8 +1,19 @@
+.logo-pedago {
+  background-image: url('../../assets/images/dame_logo_newsoftgrey.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-origin: content-box;
+}
+
 .pedago-article {
+
   .uk-accordion-title {
     color: $primary-color;
     font-size: xx-large;
     font-weight: bolder;
+    margin-left: 2em;
   }
 
   p {
