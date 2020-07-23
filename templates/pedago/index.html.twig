@@ -3,22 +3,25 @@
 {% block title %}Un peu de pédagogie{% endblock %}
 
 {% block body %}
+    <div class="logo-pedago">
+        <h1 class="container text-center pedago-title mt-5 mb-5 pt-5">Le petit dico du Dame Jeanne...</h1>
 
-    <h1 class="container text-center pedago-title mt-5 mb-5 pt-5">Le petit dico du Dame Jeanne...</h1>
-
-    <div class="container text-center mt-5 pt-3 pedago-article">
-        {% for pedago in pedagos %}
-            <ul uk-accordion="collapsible: true">
-                <li>
-                    <h2 class="uk-accordion-title mt-5">{{ pedago.title }}</h2>
-                    <div class="uk-accordion-content uk-card uk-card-default uk-card-body">
-                        <p>{{ pedago.content|striptags|raw }}</p>
-                        {% if pedago.link is not null %}
-                            <a href="{{ pedago.link }}" target="_blank" class="pedago-link"><span class="pedago-effect">Pour un peu plus de lecture</span></a>
-                        {% endif %}
-                    </div>
-                </li>
-            </ul>
-        {% endfor %}
+        <div class="container text-center mt-5 pt-3 pedago-article">
+            {% for pedago in pedagos %}
+                <ul uk-accordion="collapsible: true">
+                    <li>
+                        <h2 class="uk-accordion-title mt-5">{{ pedago.title }}</h2>
+                        <div class="uk-accordion-content uk-card uk-card-default uk-card-body">
+                            <p>{{ pedago.content|striptags|raw }}</p>
+                            {% if pedago.link is not null %}
+                                <a href="{{ pedago.link }}" target="_blank" class="pedago-link"><span
+                                            class="pedago-effect">Pour un peu plus de lecture</span></a>
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
+
