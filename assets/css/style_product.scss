@@ -11,6 +11,14 @@
   .product-picture-show {
     object-fit: contain;
   }
+
+  .product_modal {
+
+    .modal-dialog {
+      max-width: 40%;
+    }
+
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1500px) {
