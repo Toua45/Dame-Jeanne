@@ -5,6 +5,8 @@
           crossorigin=""/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+    {#lien pour le control du zoom#}
+    <link rel="stylesheet" href="//unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css" type="text/css">
     {#liens pour la map#}
 {% endblock %}
 
@@ -46,6 +48,8 @@
             integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
             crossorigin=""></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    {#lien pour le control du zoom#}
+    <script src="//unpkg.com/leaflet-gesture-handling"></script>
     <script type="text/javascript">
         // On initialise la latitude et la longitude de Tours (centre de la carte)
         var lat = 47.3833;
@@ -58,7 +62,9 @@
         // Fonction d'initialisation de la carte
         function initMap() {
         // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-        macarte = L.map('map').setView([lat, lon], 11);
+        macarte = L.map('map', {
+            gestureHandling: true // pour le control du zoom
+        }).setView([lat, lon], 11);
         markerClusters = L.markerClusterGroup();
         L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
             attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
