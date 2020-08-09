@@ -4,7 +4,7 @@
 {% block title %}Nos produits{% endblock %}
 
 {% block body %}
-    <h1 class="text-center news-title pt-5">Tous les produits du Dame Jeanne</h1>
+    <h1 class="text-center products-title pt-5">Tous les produits du Dame Jeanne</h1>
 
     <div class="container search-section pt-5 pb-5">
         <div class="row">
@@ -20,41 +20,42 @@
     </div>
 
 
-    <div class="container-fluid products">
+    <div class="container products">
 
-        <div class="row justify-content-around">
+        <div class="row justify-content-between">
             {% for product in products %}
-                <div class="col-md-4 col-lg-4">
+                <div class="col-md-10 col-lg-5 my-5">
                     <div class="uk-text-center">
-                        <div class="uk-card uk-card-hover uk-card-body">
-                            <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-                                <img src="{% if product.imageName is empty %}
+                        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                            <img src="{% if product.imageName is empty %}
                                     {{ asset('build/event_1.jpg') }}
                             {% else %}
                                     {{ vich_uploader_asset(product, 'imageFile') }}
                                 {% endif %}"
-                                     alt="{{ product.name }}" class="product-picture w-100">
-                                <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                                    <p class="card-text"><span
-                                                class="badge badge-danger">{{ product.section.name }}</span></p>
-                                    <p
-                                            class="uk-h3 uk-margin-remove">{{ product.name }}</p>
-                                </div>
+                                 alt="{{ product.name }}" class="product-picture w-100">
+                            <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+                                <p class="card-text"><span
+                                            class="badge badge-danger">{{ product.section.name }}</span></p>
+                                <p
+                                        class="uk-h3 uk-margin-remove">{{ product.name }}</p>
                             </div>
-
-                            <button class="btn btn-outline-danger reserve-btn w-15 m-4"
-                               data-toggle="modal" data-target="#productModal_{{ product.id }}">Détail du produit</button>
-
                         </div>
+
+                        <button class="btn btn-outline-danger reserve-btn w-15 m-4"
+                                data-toggle="modal" data-target="#productModal_{{ product.id }}">Détail du produit
+                        </button>
+
                     </div>
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade product_modal" id="productModal_{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+                <div class="modal fade product_modal" id="productModal_{{ product.id }}" tabindex="-1" role="dialog"
+                     aria-labelledby="productModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="productModalLabel">{{ product.name }} - {{ product.year }}</h5>
+                                <h5 class="modal-title" id="productModalLabel">{{ product.name }}
+                                    - {{ product.year }}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -85,7 +86,7 @@
     </div>
 
     <!-- Pagination -->
-        {% include 'pagination/products_pagination.html.twig' %}
+    {% include 'pagination/products_pagination.html.twig' %}
     <!-- End pagination -->
 
 {% endblock %}

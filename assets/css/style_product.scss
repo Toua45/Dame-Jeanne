@@ -21,25 +21,6 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1500px) {
-  .products {
-    .product-picture {
-      object-fit: cover;
-      height: 10rem;
-    }
-  }
-}
-
-@media screen and (min-width: 501px) and (max-width: 767px) {
-  .products {
-    .product-picture {
-      object-fit: contain;
-      height: 22rem;
-      margin-left: 1rem;
-    }
-  }
-}
-
 @media screen and (min-width: 200px) and (max-width: 500px) {
   .products {
     .product-picture {
