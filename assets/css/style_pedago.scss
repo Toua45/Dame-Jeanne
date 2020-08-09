@@ -9,8 +9,18 @@
 
 .pedago-article {
 
+  .content {
+    color: $fourth-color;
+    line-height: 32pt;
+  }
+
+  .uk-card-body {
+    border-radius: 5px;
+    border: 0.1rem solid;
+  }
+
   h2:hover {
-    transition: transform .2s;
+    transition: transform .3s;
     filter: grayscale(0);
     transform: scale(1.5);
   }
@@ -22,24 +32,17 @@
     margin-left: 2em;
   }
 
-  p {
+  h3 {
     font-size: x-large;
     text-align: center;
   }
 
   .pedago-link {
     color: $secondary-color;
-    font-size: 1em;
+    font-size: 1.2em;
     font-family: $font-second-tile;
     text-decoration: none;
     border-style: none;
-  }
-
-  .pedago-link {
-    color: $secondary-color;
-    font-size: 1em;
-    font-family: $font-second-tile;
-    text-decoration: none;
   }
 
   .pedago-link {
