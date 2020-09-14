@@ -1,40 +1,29 @@
-.logo-pedago {
-  background-image: url('../../assets/images/dame_logo_newsoftgrey.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  background-origin: content-box;
-}
-
 .pedago-article {
 
   .content {
     color: $fourth-color;
-    line-height: 32pt;
+    line-height: 30px;
+    font-size: 1.3em;
+    color: $fifth-color
   }
 
   .uk-card-body {
-    border-radius: 5px;
-    border: 0.1rem solid;
-  }
-
-  h2:hover {
-    transition: transform .3s;
-    filter: grayscale(0);
-    transform: scale(1.5);
+    padding: 0;
   }
 
   .uk-accordion-title {
     color: $primary-color;
     font-size: xx-large;
     font-weight: bolder;
-    margin-left: 2em;
+    border-bottom: 3px solid $secondary-color;
   }
 
   h3 {
     font-size: x-large;
-    text-align: center;
+  }
+
+  .uk-accordion-content {
+    margin-top: 0;
   }
 
   .pedago-link {
@@ -42,10 +31,6 @@
     font-size: 1.2em;
     font-family: $font-second-tile;
     text-decoration: none;
-    border-style: none;
-  }
-
-  .pedago-link {
     border-style: none;
   }
 
