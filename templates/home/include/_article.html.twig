@@ -23,7 +23,7 @@
                                 <div class="uk-card-body">
                                     <p class="article-content">{{ article.date|date('d/m/Y') }} - <span
                                                 class="badge badge-danger">{{ article.category.name }}</span></p>
-                                    <h3 class="uk-card-title artilce-title">{{ article.title }}</h3>
+                                    <h3 class="uk-card-title article-title">{{ article.title }}</h3>
                                     <p class="article-content">{{ article.content|striptags|slice(0, 300)|raw }}</p>
                                     <p class="article-content">{{ article.author }}</p>
                                 </div>
@@ -51,7 +51,7 @@
                                                 class="text-muted">Date
                                             : {{ article.date|date('d/m/Y') }}</small> - <span
                                                 class="badge badge-danger">{{ article.category.name }}</span></p>
-                                    <p class="uk-h3 uk-margin-remove">{{ article.title }}</p>
+                                    <h3 class="uk-margin-remove">{{ article.title }}</h3>
                                 </div>
                             </div>
                             <a class="btn btn-outline-danger reserve-btn w-15 m-4"
