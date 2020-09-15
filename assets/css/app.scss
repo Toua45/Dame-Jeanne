@@ -26,13 +26,25 @@ h3 {
 }
 
 p {
+  line-height: 30px;
   font-family: $font-paragraph;
+  font-size: 1.3em;
+  color: $fifth-color
 }
 
 hr {
   margin:auto;
-  border:1px solid black;
   width:60%;
+}
+
+a, button {
+  font-family: $font-paragraph;
+}
+
+label{
+  font-family: $font-paragraph;
+  font-size: 1.3em;
+  color: $fifth-color
 }
 
 input.textarea, .form-control::placeholder {
