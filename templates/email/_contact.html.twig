@@ -8,8 +8,14 @@
         <h2>{{ dataContact.firstname }} {{ dataContact.lastname }} vous a envoyé un nouveau message.</h2>
         <h3>Email : {{ dataContact.email }}</h3>
         <h3>Sujet : {{ dataContact.subject }}</h3>
-        <p>Message : {{ dataContact.message }}</p>
-
+        {% if dataContact.subject == 'information' %}
+            <p>Message : {{ dataContact.message }}</p>
+        {% endif %}
+        {% if dataContact.subject == 'reservation' %}
+            <p>Date : {{ dataContact.date|date('d/m/Y') }}</p>
+            <p>Heure : {{ dataContact.timeTable }}</p>
+            <p>Nombre de personne : {{ dataContact.partySize }}</p>
+        {% endif %}
     </div>
 
 {% endblock %}

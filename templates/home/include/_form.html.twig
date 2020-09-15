@@ -16,10 +16,19 @@
         <div class="row">
             <div class="col">{{ form_row(form.subject) }}</div>
         </div>
-        <div class="row textarea">
+        <p id="reservation_constraint" class="d-none" style="font-size: 1em; color: #C82829">Une réservation ne peut être effectuée que entre 18h et 23h.</p>
+
+        <div id="contact_form_message" class="row textarea d-none">
             <div class="col">{{ form_row(form.message) }}</div>
         </div>
-        <div class="form-group d-flex justify-content-center">
+
+        <div id="contact_form_reservation" class="row d-none">
+            <div class="col-4">{{ form_row(form.date, {'attr':{ 'class': 'datepicker'}}) }}</div>
+            <div class="col-4">{{ form_row(form.timeTable) }}</div>
+            <div class="col-4">{{ form_row(form.partySize, {'attr':{ 'value': '1'}}) }}</div>
+        </div>
+
+        <div id="btn-contact-form" class="form-group d-flex justify-content-center">
             <button type="submit" class="btn btn-outline-danger reserve-btn w-15 m-4">Envoyer</button>
             {{ form_end(form) }}
         </div>
