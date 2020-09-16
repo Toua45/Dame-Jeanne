@@ -10,3 +10,8 @@
     {% include 'home/include/_form.html.twig' %}
     <hr class="uk-divider-icon mt-5">
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('contact') }}
+{% endblock %}
