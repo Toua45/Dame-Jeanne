@@ -4,10 +4,10 @@
 
 {% block body %}
     <div class="container">
-        <h1 class="text-center mt-5 mb-5">Voici l'équipe</h1>
+        <h1 class="text-center mt-5 mb-5">Menu de l'équipe</h1>
         <div class="admin-section pt-5 pb-5 px-5">
             <a href="{{ path('team_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span>
-                Ajouter un membre
+                Ajouter une personne
             </a>
             <div class="admin-list-product">
 
@@ -39,12 +39,11 @@
                             </td>
                             <td>
                                 <a href="{{ path('admin_team_show', {'id': team.id}) }}"
-                                   class="btn btn-outline-dark m-2"><i class="far fa-eye"></i>
-                                    Voir
+                                   class="btn btn-outline-dark col-sm-12 m-2"><i class="far fa-eye"></i>
+                                    Aperçu
                                 </a>
                                 <a href="{{ path('team_edit', {'id': team.id}) }}"
-                                   class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span>
-                                    Editer
+                                   class="btn btn-outline-dark col-sm-12 m-2"><span uk-icon="pencil"></span>Modifier
                                 </a>
                             </td>
                         </tr>

@@ -12,6 +12,7 @@
 @import "admin_message";
 @import "style_product";
 @import "style_pedago";
+@import "admin_intro";
 
 h1 {
   font-family: $font-title;
@@ -41,10 +42,15 @@ a, button {
   font-family: $font-paragraph;
 }
 
-label{
+label {
   font-family: $font-paragraph;
   font-size: 1.3em;
   color: $fifth-color
+}
+
+td, tr {
+  font-family: $font-paragraph;
+  font-size: 1em;
 }
 
 select {

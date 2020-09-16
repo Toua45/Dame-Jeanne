@@ -3,10 +3,10 @@
 {% block title %}Menu des coordonnées{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container">
         <h1 class="text-center mt-5 mb-5">Menu des coordonnées</h1>
-        <div class="admin-section pt-5 pb-5 px-5">
-            <a href="{{ path('admin_coordinate_new') }}" class="btn btn-outline-danger mb-5">Créer une adresse</a>
+        <div class="admin-section py-5">
+            <a href="{{ path('admin_coordinate_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span> Ajouter une adresse</a>
             <table class="table">
                 <thead>
                 <tr>
@@ -18,10 +18,10 @@
                     <th>Longitude</th>
                     <th>Téléphone</th>
                     <th>Email</th>
-                    <th>Heures d'ouverture</th>
-                    <th>Heures de fermeture</th>
-                    <th>Heures d'ouverture week-end</th>
-                    <th>Heures fermeture week-end</th>
+                    <th>Ouverture</th>
+                    <th>Fermeture</th>
+                    <th>Ouverture week-end</th>
+                    <th>Fermeture week-end</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -42,9 +42,9 @@
                         <td>{{ coordinate.timetableCloseWeekend|date('H:i')}}</td>
                         <td>
                             <a href="{{ path('admin_coordinate_show', {'id': coordinate.id}) }}"
-                               class="btn btn-outline-dark m-2">Aperçu</a>
+                               class="btn btn-outline-dark col-sm-12 m-2"><i class="far fa-eye"></i> Aperçu</a>
                             <a href="{{ path('admin_coordinate_edit', {'id': coordinate.id}) }}"
-                               class="btn btn-outline-dark m-2">Modifier</a>
+                               class="btn btn-outline-dark col-sm-12 m-2"><span uk-icon="pencil" style="width: 16px"></span>Modifier</a>
                         </td>
                     </tr>
                 {% else %}

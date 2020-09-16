@@ -6,7 +6,7 @@
     <div class="container">
         <h1 class="text-center mt-5 mb-5">Menu des catégories d'articles</h1>
         <div class="admin-section pt-5 pb-5 px-5">
-            <a href="{{ path('admin_category_new') }}" class="btn btn-outline-danger mb-5">Créer une catégorie
+            <a href="{{ path('admin_category_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span> Ajouter une catégorie
                 d'article</a>
             <table class="table">
                 <thead>
@@ -21,9 +21,9 @@
                         <td>{{ category.name }}</td>
                         <td>
                             <a href="{{ path('admin_category_show', {'id': category.id}) }}"
-                               class="btn btn-outline-dark m-2">Aperçu</a>
+                               class="btn btn-outline-dark m-2"><i class="far fa-eye"></i> Aperçu</a>
                             <a href="{{ path('admin_category_edit', {'id': category.id}) }}"
-                               class="btn btn-outline-dark m-2">Modifier</a>
+                               class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span> Modifier</a>
                         </td>
                     </tr>
                 {% else %}
