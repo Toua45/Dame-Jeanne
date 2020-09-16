@@ -1,0 +1,59 @@
+<h1 class="text-center mb-5">Bienvenue sur votre espace administrateur</h1>
+<div class="d-inline"><h2 class="text-center my-5">Guide d'utilisation</h2></div>
+
+<div class="accordion" id="accordionExample">
+    {#--section introduction--#}
+    <div class="container">
+        <div class="card-header" id="headingOne">
+            <h3 class="admin_home_title btn collapsed w-100 text-left d-flex justify-content-between"
+                    type="button" data-toggle="collapse"
+                    data-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">Introduction
+                <i class="fas fa-caret-down"></i>
+            </h3>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body text-left">
+                <p>Maintenant que vous êtes connecté, nous allons vous décrire les fonctionnalités de l’interface
+                    administrateur les unes après les autres.</p>
+                <p>Sur votre gauche, vous trouverez un menu administrateur qui vous permettra de naviguer sur
+                    différentes sections.</p>
+            </div>
+        </div>
+    </div>
+    {#--section boutons--#}
+    <div class="container">
+        <div class="card-header" id="headingTwo">
+            <h3 class="admin_home_title btn collapsed w-100 text-left d-flex justify-content-between"
+                    type="button" data-toggle="collapse"
+                    data-target="#collapseTwo"
+                    aria-expanded="false" aria-controls="collapseTwo">Fonctions des boutons
+                <i class="fas fa-caret-down"></i>
+            </h3>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body text-left">
+                <p>Voici les principaux boutons figurant sur les différentes pages de l'espace
+                    administrateur et qui vous permettra de gérer le site.</p>
+                <p><span class="btn btn-outline-danger"><span uk-icon="plus"></span> Ajouter</span>
+                    : ouvre une page qui permet de créer un nouvel élément. Un message de <span
+                            class="alert alert-success">confirmation</span>
+                    s'affichera en haut de l'écran.</p>
+                <p><span class="btn btn-outline-dark"><i class="far fa-eye mr-2"></i>Aperçu</span>
+                    : ouvre une page qui permet d'avoir le détail sur l'élément.
+                <p><span class="btn btn-outline-dark"><span uk-icon="pencil"></span> Modifier</span>
+                    : ouvre une page qui permet de modifier le détail d'un élément de la ligne.</p>
+                <p><span class="btn btn-outline-danger"><span uk-icon="check"></span> Valider</span>
+                    : permet de valider vos modifications. Un message de <span
+                            class="alert alert-success">confirmation</span> s'affichera en haut de l'écran.</p>
+                <p><span class="btn btn-dark"><span uk-icon="trash"></span> Supprimer</span> : permet de supprimer
+                    l'élément.
+                    Une fenêtre de confirmation vous sera proposée. Un message de <span
+                            class="alert alert-danger">confirmation</span> s'affichera en haut de l'écran.</p>
+                <p><span class="btn btn-dark"><i class="far fa-arrow-alt-circle-left"></i> Retour à la liste</span> :
+                    permet
+                    de revenir à la liste des éléments.</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,7 +6,7 @@
     <div class="container">
         <h1 class="text-center mt-5 mb-5">Menu des articles</h1>
         <div class="admin-section pt-5 pb-5 px-5">
-            <a href="{{ path('admin_article_new') }}" class="btn btn-outline-danger mb-5">Créer un article</a>
+            <a href="{{ path('admin_article_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span> Ajouter un article</a>
             <table class="table">
                 <thead>
                 <tr>
@@ -27,8 +27,8 @@
                         <td>{{ article.author }}</td>
                         <td>{{ article.date ? article.date|date('d/m/Y H:i:s') : '' }}</td>
                         <td>
-                            <a href="{{ path('admin_article_show', {'id': article.id}) }}" class="btn btn-outline-dark m-2">Aperçu</a>
-                            <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="btn btn-outline-dark m-2">Modifier</a>
+                            <a href="{{ path('admin_article_show', {'id': article.id}) }}" class="btn btn-outline-dark col-sm-12 m-2"><i class="far fa-eye"></i> Aperçu</a>
+                            <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="btn btn-outline-dark col-sm-12 m-2"><span uk-icon="pencil"></span> Modifier</a>
                         </td>
                     </tr>
                 {% else %}
