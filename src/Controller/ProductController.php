@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
  */
 class ProductController extends AbstractController
 {
-    const NB_MAX_PRODUCTS = 9;
+    const NB_MAX_PRODUCTS = 10;
 
     /**
      * @Route("/{page}", name="product_index", methods={"GET"}, requirements={"page" = "\d+"}, defaults={"page" = 1})
@@ -46,13 +46,4 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/show-product/{slug}", name="product_show")
-     */
-    public function show(Product $product)
-    {
-        return $this->render('product/show.html.twig', [
-            'product' => $product
-        ]);
-    }
 }

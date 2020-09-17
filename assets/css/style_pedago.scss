@@ -1,31 +1,36 @@
 .pedago-article {
+
+  .content {
+    color: $fourth-color;
+    line-height: 30px;
+    font-size: 1.3em;
+    color: $fifth-color
+  }
+
+  .uk-card-body {
+    padding: 0;
+  }
+
   .uk-accordion-title {
     color: $primary-color;
     font-size: xx-large;
     font-weight: bolder;
+    border-bottom: 3px solid $secondary-color;
   }
 
-  p {
+  h3 {
     font-size: x-large;
-    text-align: center;
+  }
+
+  .uk-accordion-content {
+    margin-top: 0;
   }
 
   .pedago-link {
     color: $secondary-color;
-    font-size: 1em;
+    font-size: 1.2em;
     font-family: $font-second-tile;
     text-decoration: none;
-    border-style: none;
-  }
-
-  .pedago-link {
-    color: $secondary-color;
-    font-size: 1em;
-    font-family: $font-second-tile;
-    text-decoration: none;
-  }
-
-  .pedago-link {
     border-style: none;
   }
 

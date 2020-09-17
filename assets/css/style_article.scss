@@ -4,6 +4,12 @@
   }
 }
 
+.article-content {
+  line-height: 30px;
+  font-size: 1.3em;
+  color: $fifth-color
+}
+
 .section-home-article {
   .article-picture {
     object-fit: cover;

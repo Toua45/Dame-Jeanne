@@ -10,6 +10,14 @@ use Faker;
 class PedagoFixtures extends Fixture
 {
     Const PEDAGO = [
+        'Bio' => [
+            'title' => 'Bio',
+            'content' => 'Le vin biologique existe officiellement depuis très peu de temps (2012). Avant, il ne prenait en compte que la viticulture et non la vinification. 
+            Cette démarche oblige dorénavant à n’ajouter aucun traitement synthétique et d’insecticide dans les vignes et, depuis peu, propose à réduire (très légèrement) 
+            les intrants lors de la vinification. Par contre, elle autorise l’acidification, la désacidification, le traitement thermique, l’ajout de tanins, 
+            l’ajout de copeaux de bois, de soufre, les levures industriels…',
+            'link' => '',
+        ],
         'Nature' => [
             'title' => 'Nature',
             'content' => 'Un vin nature, ou vin naturel, est un vin auquel aucun intrant n\'est ajouté lors de sa vinification (fait parfois exception une faible dose de souffre). 

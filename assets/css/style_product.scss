@@ -11,24 +11,13 @@
   .product-picture-show {
     object-fit: contain;
   }
-}
 
-@media screen and (min-width: 768px) and (max-width: 1500px) {
-  .products {
-    .product-picture {
-      object-fit: cover;
-      height: 10rem;
-    }
-  }
-}
+  .product_modal {
 
-@media screen and (min-width: 501px) and (max-width: 767px) {
-  .products {
-    .product-picture {
-      object-fit: contain;
-      height: 22rem;
-      margin-left: 1rem;
+    .modal-dialog {
+      max-width: 40%;
     }
+
   }
 }
 

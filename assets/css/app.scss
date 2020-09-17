@@ -12,6 +12,7 @@
 @import "admin_message";
 @import "style_product";
 @import "style_pedago";
+@import "admin_intro";
 
 h1 {
   font-family: $font-title;
@@ -26,13 +27,35 @@ h3 {
 }
 
 p {
+  line-height: 30px;
   font-family: $font-paragraph;
+  font-size: 1.3em;
+  color: $fifth-color
 }
 
 hr {
   margin:auto;
-  border:1px solid black;
   width:60%;
+}
+
+a, button {
+  font-family: $font-paragraph;
+}
+
+label {
+  font-family: $font-paragraph;
+  font-size: 1.3em;
+  color: $fifth-color
+}
+
+td, tr {
+  font-family: $font-paragraph;
+  font-size: 1em;
+}
+
+select {
+  font-family: $font-paragraph;
+  font-size: 1.3em;
 }
 
 input.textarea, .form-control::placeholder {

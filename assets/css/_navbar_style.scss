@@ -6,6 +6,13 @@
   margin-bottom: 2em;
 }
 
+.navbar-link {
+  font-family: $font-title;
+  font-size: 1em;
+  color: $primary-color;
+  text-decoration: none;
+}
+
 .navbar-brand {
   font-size: 2em;
   color: $primary-color;

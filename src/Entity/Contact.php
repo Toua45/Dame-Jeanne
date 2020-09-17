@@ -45,10 +45,61 @@ class Contact
      */
     private $subject;
 
-    /**
-     * @Assert\NotBlank(message="Veuillez remplir ce champ")
-     */
     private $message;
+
+    private $date;
+
+    private $timeTable;
+
+    private $partySize;
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date): void
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTimeTable()
+    {
+        return $this->timeTable;
+    }
+
+    /**
+     * @param mixed $timeTable
+     */
+    public function setTimetable($timeTable): void
+    {
+        $this->timeTable = $timeTable;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPartySize()
+    {
+        return $this->partySize;
+    }
+
+    /**
+     * @param mixed $partySize
+     */
+    public function setPartySize($partySize): void
+    {
+        $this->partySize = $partySize;
+    }
 
     public function getId(): ?int
     {

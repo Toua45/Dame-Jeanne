@@ -1,5 +1,5 @@
 <button id="button" class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-push">
-    <span>Menu</span></button>
+    <h1 class="pt-2" style="font-size: x-large"><i class="fas fa-bars"></i> Menu</h1></button>
 
 <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
     <div class="uk-offcanvas-bar">
@@ -7,8 +7,9 @@
             <h4 class="uk-active uk-text-center mb-3">Administration</h4>
 
             <li class="uk-parent">
-                    <a href="{{ path('home') }}" class="uk-margin-small-right"><i
-                                class="uk-icon-link uk-margin-small-right fas fa-home" ></i>Retour vers le site</a>
+                    <a href="{{ path('admin_home') }}" class="uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-home"></i>Accueil du menu administration</a>
+                <a href="{{ path('home') }}" class="uk-margin-small-right"><i class="far fa-arrow-alt-circle-left mr-2"></i>Retour vers le site</a>
                     <a href="{{ path('app_logout') }}" class="uk-margin-small-right"><i
                                 class="uk-icon-link uk-margin-small-right fas fa-sign-out-alt" ></i>Se déconnecter</a>
             </li>
@@ -43,6 +44,12 @@
                             class="uk-icon-link uk-margin-small-right fas fa-comment"></i>Les messages com'</a>
                 <a href="{{ path('admin_partner_index') }}"class="uk-margin-small-right"><i
                             class="uk-icon-link uk-margin-small-right fas fa-heart"></i>Les partenaires</a>
+            </li>
+
+            <li class="uk-nav-header uk-text-left">Page pédago</li>
+            <li class="uk-nav-divider">
+                <a href="{{ path('admin_pedago_index') }}"class="uk-margin-small-right"><i
+                            class="uk-icon-link uk-margin-small-right fas fa-book-open"></i>Le dico du Dame Jeanne</a>
             </li>
 
         </ul>
