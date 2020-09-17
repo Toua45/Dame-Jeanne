@@ -2,24 +2,18 @@
     color:$secondary-color;
 
   .links{
-    ul {list-style-type: none;}
-    li a{
-      color: $secondary-color;
+    ul, li, a{
+      color: $fifth-color;
       transition: color .2s;
+      text-decoration:none;
+      list-style-type: none;
+      font-size: 1em;
       &:hover{
         text-decoration:none;
-        color:#4180CB;
       }
     }
   }
-  .about-company{
-    h2{font-family: $font-title; color:$primary-color;}
-    i{font-size: 25px;}
-    a{
-      color:$primary-color;
-      transition: color .2s;
-    }
-  }
+
   .location{
     i{font-size: 18px;}
   }
