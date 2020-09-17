@@ -1,38 +1,17 @@
-<h1 class="text-center mb-5">Bienvenue sur votre espace administrateur</h1>
-<div class="d-inline"><h2 class="text-center my-5">Guide d'utilisation</h2></div>
-
-<div class="accordion" id="accordionExample">
-    {#--section introduction--#}
-    <div class="container">
-        <div class="card-header" id="headingOne">
-            <h3 class="admin_home_title btn collapsed w-100 text-left d-flex justify-content-between"
-                    type="button" data-toggle="collapse"
-                    data-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">Introduction
-                <i class="fas fa-caret-down"></i>
-            </h3>
-        </div>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body text-left">
+<div class="container admin_menu">
+    <div uk-accordion>
+        <div class="uk-open">
+            <h3 class="uk-accordion-title">Introduction</h3>
+            <div class="uk-accordion-content">
                 <p>Maintenant que vous êtes connecté, nous allons vous décrire les fonctionnalités de l’interface
                     administrateur les unes après les autres.</p>
                 <p>Sur votre gauche, vous trouverez un menu administrateur qui vous permettra de naviguer sur
                     différentes sections.</p>
             </div>
         </div>
-    </div>
-    {#--section boutons--#}
-    <div class="container">
-        <div class="card-header" id="headingTwo">
-            <h3 class="admin_home_title btn collapsed w-100 text-left d-flex justify-content-between"
-                    type="button" data-toggle="collapse"
-                    data-target="#collapseTwo"
-                    aria-expanded="false" aria-controls="collapseTwo">Fonctions des boutons
-                <i class="fas fa-caret-down"></i>
-            </h3>
-        </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <div class="card-body text-left">
+        <div>
+            <h3 class="uk-accordion-title">Fonctions des boutons</h3>
+            <div class="uk-accordion-content">
                 <p>Voici les principaux boutons figurant sur les différentes pages de l'espace
                     administrateur et qui vous permettra de gérer le site.</p>
                 <p><span class="btn btn-outline-danger"><span uk-icon="plus"></span> Ajouter</span>

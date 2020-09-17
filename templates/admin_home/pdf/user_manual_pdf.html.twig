@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}Guide d'utilisation{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+    {% endblock %}
+
+{% block layout %}
+    <div class="container-fluid">
+        <h1 style="text-align: center">{{ title }}</h1>
+
+        {#---Section intro---#}
+        {% include 'admin_home/includes/_introduction.html.twig' %}
+
+    </div>
+{% endblock %}
