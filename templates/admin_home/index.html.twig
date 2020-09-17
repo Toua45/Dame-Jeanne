@@ -3,5 +3,22 @@
 {% block title %}Menu Administrateur{% endblock %}
 
 {% block body %}
+    <div class="col-lg-12 col-xs-1">
+        <div class="d-flex justify-content-center">
+            <div class="logo">
+
+                    <img src="{{ asset('build/logo.webp') }}" class="logo-responsive d-inline-block align-middle"
+                         alt="logo jeanne">
+
+            </div>
+        </div>
+    </div>
+    <h1 class="text-center mb-5">Bienvenue sur votre espace administrateur</h1>
+    <div class="d-flex justify-content-center"><h2 class="text-center">Guide d'utilisation</h2></div>
+    <div class="d-flex justify-content-center mb-5">
+        <a href="{{ path('pdf_view') }}" class="manualTitle" target="_blank">
+            <span uk-icon="icon: file-pdf; ratio: 1.2"></span>télécharger le guide d'utilisation
+        </a>
+    </div>
     {% include 'admin_home/includes/_introduction.html.twig' %}
 {% endblock %}
