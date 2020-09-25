@@ -1,4 +1,4 @@
-const chatbotHeader = document.querySelector(".chatbot__header");
+let chatbotHeader = document.querySelector(".chatbot__header");
 
 let messages = document.getElementById('chatBot_messages');
 let input = document.getElementById('input');
