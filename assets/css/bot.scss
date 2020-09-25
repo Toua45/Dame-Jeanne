@@ -1,0 +1,192 @@
+$chat-height: 400px;
+$chat-max-width: 420px;
+$chat-distance-to-window: 50px;
+$chat-padding: 20px;
+$header-height: 55px;
+$entry-height: 60px;
+$icon-height: 1.5em;
+
+.chatbot {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  bottom: 50px;
+  width: 100%;
+  box-shadow: 0 3px 16px 0 $fourth-color, 0 3px 1px -2px $fifth-color, 0 1px 5px 0 $seventh-color;
+
+  @media screen and (min-width: 640px) {
+    max-width: $chat-max-width;
+    right: 50px;
+    top: auto;
+  }
+
+  &.chatbot--closed {
+    top: auto;
+    width: 100%;
+  }
+}
+
+.chatbot__header {
+  color: $seventh-color;
+  background-color: $primary-color;
+  height: 60px;
+  padding: 0 $chat-padding;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($primary-color, 20%);
+  }
+
+  p {
+    margin-right: $chat-padding;
+  }
+
+  .svg-inline--fa {
+    color: $sixth-color;
+    height: $icon-height;
+  }
+
+  .svg-inline--fa.fa-w-11 {
+    height: $icon-height;
+    width: $icon-height;
+  }
+
+  .text_header {
+    color: $sixth-color;
+  }
+}
+
+#chatBot_messages {
+  height: calc(100% - (#{$header-height} + #{$entry-height}));
+  padding: $chat-padding $chat-padding $chat-padding;
+  background-color: $sixth-color;
+  overflow-y: auto;
+
+  @media screen and (min-width: 640px) {
+    height: $chat-height;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chatbot--closed & {
+    display: none;
+  }
+
+  p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+  }
+
+  a {
+    color: $secondary-color;
+    font-family: $font-second-tile;
+    text-decoration: none;
+  }
+}
+
+.botMessage {
+  background-color: $seventh-color;
+  border-radius: 50px 50px 50px 0px;
+  padding: 10px 10px;
+  word-break: break-word;
+  margin: 0;
+  overflow: hidden;
+}
+
+.blockBot{
+  background-color: $seventh-color;
+  border-radius: 50px 50px 50px 0px;
+  padding: 10px 10px;
+  word-break: break-word;
+  margin: 0;
+  overflow: hidden;
+}
+
+.blockUser {
+  background-color: $secondary-color;
+  border-radius: 50px 50px 0px 50px;
+  padding: 10px 10px;
+  word-break: break-word;
+  margin: 0;
+  overflow: hidden;
+  line-height: 30px;
+  font-family: $font-paragraph;
+  font-size: 1.3em;
+  color: $fifth-color
+}
+
+.chatbot__entry {
+  height: $entry-height;
+  padding: 0 $chat-padding;
+  border-top: 1px solid $seventh-color;
+  background-color: $sixth-color;
+
+  .chatbot--closed & {
+    display: none;
+  }
+
+  .svg-inline--fa {
+    color: $primary-color;
+  }
+
+  .svg-inline--fa.fa-w-16 {
+    height: $icon-height;
+    width: $icon-height;
+  }
+}
+
+input {
+  font-family: $font-paragraph;
+  font-size: 1.2em;
+  color: $fifth-color
+}
+
+.chatbot__input {
+  height: 100%;
+  width: 80%;
+  border: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+#chatBot_icon {
+  position: fixed;
+  z-index: 1;
+  bottom: 50px;
+  right: 50px;
+  background: $primary-color;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: $sixth-color;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0 3px 16px 0 $fourth-color, 0 3px 1px -2px $fifth-color, 0 1px 5px 0 $seventh-color;
+
+  &:hover {
+    background-color: lighten($primary-color, 20%);
+  }
+
+  .svg-inline--fa {
+    color: $sixth-color;
+    height: 2em;
+  }
+
+  .svg-inline--fa.fa-w-16 {
+    height: 2em;
+    width: 2em;
+  }
+}
+
+@media screen and (min-width: 200px) and (max-width: 640px) {
+  #chatBot_icon {
+    display: none;
+  }
+}
