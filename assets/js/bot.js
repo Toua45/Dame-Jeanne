@@ -24,7 +24,6 @@ document.getElementById("chatBot_icon").addEventListener(
         element[0].style.display = "block";
         input.focus();
         document.getElementById("chatBot_icon").style.display = "none";
-
     }
 );
 
@@ -47,6 +46,10 @@ function processInput(inputVal) {
         messages.innerHTML += botBlock.outerHTML;
         messageNum += 1;
         messages.lastChild.id = messageNum;
+        // on récupère le loader
+        let loader = messages.lastChild.childNodes[2];
+        // on lui ajoute un délai de 2 sec
+        setTimeout(() => { loader.classList.replace('lds-ellipsis','d-none') }, 2000);
         let botAnswer = messages.lastChild.childNodes[1];
         setTimeout(() => {
             botAnswer.innerHTML = reply(inputVal)
