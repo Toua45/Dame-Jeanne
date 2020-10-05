@@ -30,7 +30,6 @@ chatbotIcon.addEventListener("click", () => {
         element[0].style.display = "block";
         input.focus();
         chatbotIcon.style.display = "none";
-
     }
 );
 
@@ -53,6 +52,7 @@ function takeTheInput(event) {
         messages.lastChild.childNodes[1].textContent = input.value;
         processInput(input.value);
         input.value = "";
+        autoScroll(); // Permet de s'aligner au dernier message
     }
 }
 
@@ -62,14 +62,27 @@ function takeTheInput(event) {
 function processInput(inputVal) {
     if (inputVal !== "") {
         botBlock.classList.replace('d-none', 'd-inline-block');
-
         messages.innerHTML += botBlock.outerHTML;
         messageNum += 1;
         messages.lastChild.id = messageNum;
+        // on récupère le loader
+        let loader = messages.lastChild.childNodes[2];
+        // on lui ajoute un délai de 2 sec
+        setTimeout(() => { loader.classList.replace('lds-ellipsis','d-none') }, 2000);
         let botAnswer = messages.lastChild.childNodes[1];
-        botAnswer.innerHTML = reply(inputVal);
+        setTimeout(() => {
+            botAnswer.innerHTML = reply(inputVal)
+        }, 2000);
+        autoScroll(); // Permet de s'aligner au dernier message
     }
 }
+
+const autoScroll = () => {
+    // On récupère le dernier élément
+    const newMessage = messages.lastElementChild;
+    // On récupère le nombre de pixels dont le contenu de l'élément a défilé vers le haut
+    messages.scrollTop = messages.scrollHeight - (newMessage.offsetHeight + 60);
+};
 
 let placeQuestions = ["Ou", "Où", "ou", "où", "situé", "situer"];
 
