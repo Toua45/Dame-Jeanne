@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -87,6 +89,16 @@ class Product
      * @ORM\Column(length=255, unique=true)
      */
     private $slug;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="product")
+     */
+    private $comments;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -218,6 +230,37 @@ class Product
     public function setSection(?Section $section): self
     {
         $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|comments[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComments(comments $comments): self
+    {
+        if (!$this->comments->contains($comments)) {
+            $this->comments[] = $comments;
+            $comments->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComments(comments $comments): self
+    {
+        if ($this->comments->contains($comments)) {
+            $this->comments->removeElement($comments);
+            // set the owning side to null (unless already changed)
+            if ($comments->getProduct() === $this) {
+                $comments->setProduct(null);
+            }
+        }
 
         return $this;
     }
