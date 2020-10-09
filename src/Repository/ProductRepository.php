@@ -21,7 +21,7 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function findLikeName(?string $search = '', ?Section $section = null)
+    public function findLikeName(?string $search = '', ?Section $section = null, int $page = null)
     {
         $qb = $this->createQueryBuilder('p')
             ->andWhere('p.name LIKE :name')
@@ -30,8 +30,12 @@ class ProductRepository extends ServiceEntityRepository
             $qb->andWhere('p.section = :section')
                 ->setParameter('section', $section);
         }
-        $qb->orderBy('p.name', 'ASC')
-        ;
+        $qb->orderBy('p.name', 'ASC');
+
+        if (is_numeric($page)) {
+            $firstResult = ($page - 1) * ProductController::NB_MAX_PRODUCTS;
+            $qb->setFirstResult($firstResult)->setMaxResults((ProductController::NB_MAX_PRODUCTS));
+        }
 
         return $qb->getQuery()->getResult();
     }
@@ -41,7 +45,7 @@ class ProductRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('p')
             ->orderBy('p.name', 'ASC');
 
-        if ($page !== null) {
+        if (is_numeric($page)) {
             $firstResult = ($page - 1) * ProductController::NB_MAX_PRODUCTS;
             $query->setFirstResult($firstResult)->setMaxResults((ProductController::NB_MAX_PRODUCTS));
         }
