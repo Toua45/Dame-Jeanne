@@ -12,7 +12,7 @@
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-outline-danger">Rechercher</button>
+                    <button class="btn btn-outline-danger" id="search_product">Rechercher</button>
                 </div>
                 {{ form_end(form) }}
             </div>
@@ -108,5 +108,26 @@
     <!-- End pagination -->
 
     <hr class="uk-divider-icon mt-5">
+
+        <script type="text/javascript">
+
+            var submitForm = Event => {
+                Event.preventDefault();
+                var form = document.querySelector('form');
+                const _url_product = window.location.origin + '/product/';
+                form.method = 'GET';
+                form.action = _url_product;
+                form.submit();
+            }
+
+            document.getElementById("search_product").addEventListener('click', submitForm);
+
+            document.addEventListener('keypress', function(event) {
+                if (event.keyCode === 13 || event.which === 13) {
+                    submitForm();
+                }
+
+            });
+    </script>
 
 {% endblock %}

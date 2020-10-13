@@ -60,9 +60,9 @@
             var submitForm = Event => {
                 Event.preventDefault();
                 var form = document.querySelector('form');
-                const _url = window.location.origin + '/blog/';
+                const _url_article = window.location.origin + '/blog/';
                 form.method = 'GET';
-                form.action = _url;
+                form.action = _url_article;
                 form.submit();
             }
 
