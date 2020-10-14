@@ -22,7 +22,7 @@ class AdminMessageController extends AbstractController
      */
     public function index(MessageRepository $messageRepository): Response
     {
-        return $this->render('message/index.html.twig', [
+        return $this->render('admin_message/index.html.twig', [
             'messages' => $messageRepository->findAll(),
         ]);
     }
@@ -48,7 +48,7 @@ class AdminMessageController extends AbstractController
             return $this->redirectToRoute('admin_message_index');
         }
 
-        return $this->render('message/new.html.twig', [
+        return $this->render('admin_message/new.html.twig', [
             'message' => $message,
             'form' => $form->createView(),
         ]);
@@ -59,7 +59,7 @@ class AdminMessageController extends AbstractController
      */
     public function show(Message $message): Response
     {
-        return $this->render('message/show.html.twig', [
+        return $this->render('admin_message/show.html.twig', [
             'message' => $message,
         ]);
     }
@@ -82,7 +82,7 @@ class AdminMessageController extends AbstractController
             return $this->redirectToRoute('admin_message_index');
         }
 
-        return $this->render('message/edit.html.twig', [
+        return $this->render('admin_message/edit.html.twig', [
             'message' => $message,
             'form' => $form->createView(),
         ]);
