@@ -1,6 +1,11 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-<div class="flex d-flex justify-content-around">
-    <button class="btn btn-outline-danger mt-5 mb-5">{{ button_label|default('Valider') }}<span uk-icon="check"></span></button>
-</div>
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.description) }}
+        <p id="displayVich"></p>
+    {{ form_row(form.imageFile) }}
+        <div class="flex d-flex justify-content-around">
+            <button class="btn btn-outline-danger mt-5 mb-5"><span uk-icon="check"></span>{{ button_label|default('Valider') }}</button>
+        </div>
 {{ form_end(form) }}
