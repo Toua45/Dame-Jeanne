@@ -43,8 +43,7 @@ class ArticleType extends AbstractType
                 'label' => 'Date',
                 'data' => new DateTime(),
             ])
-            ->add('imageFile', VichImageType::class,
-                [
+            ->add('imageFile', VichImageType::class, [
                     'label' => 'Image',
                     'required' => false,
                     'delete_label' => 'Supprimer l\'image ?',
