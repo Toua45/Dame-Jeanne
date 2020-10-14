@@ -1,7 +1,8 @@
 const filePath = document.getElementById('article_imageFile_file')
 || document.getElementById('product_imageFile_file')
 || document.getElementById('team_imageFile_file')
-|| document.getElementById('message_imageFile_file');
+|| document.getElementById('message_imageFile_file')
+|| document.getElementById('partner_partnerFile_file');
 
 function displayImageName() {
     if (filePath !== '') {
