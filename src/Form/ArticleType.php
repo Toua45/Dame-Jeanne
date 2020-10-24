@@ -42,14 +42,13 @@ class ArticleType extends AbstractType
             ->add('date', DateTimeType::class, [
                 'label' => 'Date',
                 'data' => new DateTime(),
-            ])->add('imageFile', VichImageType::class,
-                [
+            ])
+            ->add('imageFile', VichImageType::class, [
                     'label' => 'Image',
                     'required' => false,
                     'delete_label' => 'Supprimer l\'image ?',
                     'download_label' => 'Agrandir l\'image',
                 ])
-
         ;
     }
 

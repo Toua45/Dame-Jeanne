@@ -34,8 +34,7 @@ class ProductType extends AbstractType
                 'label' => 'Section du produit',
                 'choice_label' => 'name',
             ])
-            ->add('imageFile', VichImageType::class,
-                [
+            ->add('imageFile', VichImageType::class, [
                     'label' => 'Image',
                     'required' => false,
                     'delete_label' => 'Supprimer l\'image ?',

@@ -7,7 +7,7 @@
     <div class="mt-5 container-xl container-lg container-fluid">
         <h1 class="text-center mt-3 mb-4">Créer un message avec son icône</h1>
         <div class="admin-section pt-5 pb-5 px-5 border p-4">
-            {{ include('message/_form.html.twig') }}
+            {{ include('admin_message/_form.html.twig') }}
         </div>
         <div class="flex d-flex justify-content-around">
             <a href="{{ path('admin_message_index') }}" class="btn btn-dark m-5"><i class="far fa-arrow-alt-circle-left"></i>
@@ -15,4 +15,8 @@
             </a>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('vich') }}
 {% endblock %}
