@@ -19,7 +19,7 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
             $comment->setAuthor($faker->firstName);
             $comment->setDate($faker->dateTime);
             $comment->setContent($faker->paragraph);
-            $comment->setProduct($this->getReference('product_' . rand(0, 130)));
+            $comment->setArticle($this->getReference('article_' . rand(0, 130)));
             $manager->persist($comment);
         }
 
@@ -35,7 +35,7 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            ProductFixtures::class,
+            ArticleFixtures::class,
         ];
     }
 }

@@ -32,9 +32,9 @@ class Comment
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Product", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="comments")
      */
-    private $product;
+    private $article;
 
     public function getId(): ?int
     {
@@ -77,14 +77,14 @@ class Comment
         return $this;
     }
 
-    public function getProduct(): ?Product
+    public function getArticle(): ?Article
     {
-        return $this->product;
+        return $this->article;
     }
 
-    public function setProduct(?Product $product): self
+    public function setArticle(?Article $article): self
     {
-        $this->product = $product;
+        $this->article = $article;
 
         return $this;
     }

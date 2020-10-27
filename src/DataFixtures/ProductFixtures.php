@@ -24,7 +24,6 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             $product->setImageName('');
             $product->setUpdatedAt(new \DateTime());
             $product->setSection($this->getReference('section_'. rand(0,3)));
-            $this->addReference('product_' .$i, $product);
             $manager->persist($product);
         }
 
