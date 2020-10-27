@@ -24,6 +24,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
             $article->setImageName('');
             $article->setUpdatedAt(new \DateTime());
             $article->setCategory($this->getReference('category_'. rand(0,4)));
+            $this->addReference('article_' .$i, $article);
             $manager->persist($article);
         }
 

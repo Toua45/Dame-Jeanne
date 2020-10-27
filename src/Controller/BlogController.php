@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Comment;
 use App\Form\ArticleSearchType;
+use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,8 +52,14 @@ class BlogController extends AbstractController
      */
     public function show(Article $article)
     {
+        // On récupère les commentaires de l'article
+        $comments = $this->getDoctrine()->getRepository(Comment::class)->findBy([
+            'article' => $article,
+            ],['date' => 'desc']);
+
         return $this->render('blog/show.html.twig', [
-            'article' => $article
+            'article' => $article,
+            'comments' => $comments,
         ]);
     }
 }
