@@ -1,0 +1,11 @@
+.btn.reserve-btn {
+  text-decoration: none;
+  transition: all 0.2s;
+  border-radius: 10rem;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($fourth-color, 0.2);
+  }
+}
