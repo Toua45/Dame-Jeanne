@@ -11,17 +11,10 @@ $font-title: Anton-Regular;
 $font-paragraph : Neucha-Regular;
 $font-second-tile : Merienda-Regular;
 
-@font-face {
-  font-family: Anton-Regular;
-  src: url("../fonts/Anton-Regular.ttf");
-}
-
-@font-face {
-  font-family: Neucha-Regular;
-  src: url("../fonts/Neucha-Regular.ttf");
-}
-
-@font-face {
-  font-family: Merienda-Regular;
-  src: url("../fonts/Merienda-Regular.ttf");
-}
+$chat-height: 400px;
+$chat-max-width: 420px;
+$chat-distance-to-window: 50px;
+$chat-padding: 20px;
+$header-height: 55px;
+$entry-height: 60px;
+$icon-height: 1.5em;

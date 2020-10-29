@@ -1,81 +1,36 @@
 @import "~bootstrap/scss/bootstrap";
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import 'vars';
-@import "footer";
-@import "style_article";
-@import "navbar_style";
-@import "map";
-@import 'pagination';
-@import "presentation";
-@import "partners";
-@import "admin_partner";
-@import "admin_message";
-@import "style_product";
-@import "style_pedago";
-@import "admin_intro";
-@import "social_logo";
-@import "bot";
 
-@import "components/_buttons.scss";
+/* Abstrast folder */
+@import "abstract/variables";
+@import "abstract/mixins";
+@import "abstract/variables";
 
-h1 {
-  font-family: $font-title;
-}
+/* Base folder */
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
 
-h2 {
-  font-family: $font-second-tile;
-}
+/* Components folder */
+@import "components/bot";
+@import "components/buttons";
+@import "components/display_input_text";
+@import "components/map";
+@import "components/pagination";
+@import "components/social_logo";
 
-h3 {
-  font-family: $font-second-tile;
-}
+/* Layout folder */
+@import "layout/footer";
+@import "layout/navbar";
 
-h4 {
-  font-family: $font-second-tile;
-}
+/* Pages/admin folder */
+@import "pages/admin/admin_intro";
+@import "pages/admin/admin_message";
+@import "pages/admin/admin_partner";
 
-p {
-  line-height: 30px;
-  font-family: $font-paragraph;
-  font-size: 1.3em;
-  color: $fifth-color
-}
-
-hr {
-  margin:auto;
-  width:60%;
-}
-
-a, button {
-  font-family: $font-paragraph;
-}
-
-label {
-  font-family: $font-paragraph;
-  font-size: 1.3em;
-  color: $fifth-color
-}
-
-td, tr {
-  font-family: $font-paragraph;
-  font-size: 1em;
-}
-
-select {
-  font-family: $font-paragraph;
-  font-size: 1.3em;
-}
-
-input.textarea, .form-control::placeholder {
-  opacity: 0.5;
-}
-
-#displayVich {
-    position: absolute;
-    z-index: 2;
-    display: inline-block;
-    padding:46px 0 0 10px;
-    cursor: pointer;
-    font-family: $font-paragraph;
-}
-
+/* Pages/user folder */
+@import "pages/user/partners";
+@import "pages/user/presentation";
+@import "pages/user/style_article";
+@import "pages/user/style_pedago";
+@import "pages/user/style_product";
