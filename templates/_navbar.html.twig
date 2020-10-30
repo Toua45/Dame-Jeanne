@@ -44,8 +44,12 @@
                     {% if app.user %}
                         <a href="{{ path('admin_home') }}" class="nav-link"><span
                                     class="nav-effect">Page administration</span></a>
-                        <a href="{{ path('app_logout') }}" class="nav-link ml-5"><span
+                </li>
+                <li class="nav-item d-flex align-self-center">
+                        <a href="{{ path('app_logout') }}" class="nav-link"><span
                                     class="nav-effect">Se déconnecter</span></a>
+                </li>
+                <li class="nav-item d-flex">
                     {% else %}
                         <a href="{{ path('app_login') }}" class="nav-link">
                             <span class="nav-effect">Connexion</span></a>
