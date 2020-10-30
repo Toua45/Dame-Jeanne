@@ -7,10 +7,16 @@
         {% include '_navbar.html.twig' %}
         {% include '_flash_message.html.twig' %}
         {% include 'social_logo.html.twig' %}
+        {% include 'bot.html.twig' %}
     {% endblock %}
     <main>
         {% block body %}{% endblock %}
     </main>
     {% block footer %}{% include '_footer.html.twig' %}{% endblock %}
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('bot') }}
 {% endblock %}

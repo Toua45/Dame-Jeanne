@@ -14,6 +14,8 @@
 @import "style_pedago";
 @import "admin_intro";
 @import "social_logo";
+@import "bot";
+@import "buttons";
 
 h1 {
   font-family: $font-title;
@@ -24,6 +26,10 @@ h2 {
 }
 
 h3 {
+  font-family: $font-second-tile;
+}
+
+h4 {
   font-family: $font-second-tile;
 }
 
@@ -61,5 +67,14 @@ select {
 
 input.textarea, .form-control::placeholder {
   opacity: 0.5;
+}
+
+#displayVich {
+    position: absolute;
+    z-index: 2;
+    display: inline-block;
+    padding:46px 0 0 10px;
+    cursor: pointer;
+    font-family: $font-paragraph;
 }
 

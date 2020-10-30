@@ -47,7 +47,7 @@ class ArticleRepository extends ServiceEntityRepository
             ->where('CURRENT_DATE() >= a.date')
             ->orderBy('a.date', 'DESC');
 
-        if ($page !== null) {
+        if (is_numeric($page)) {
                 $firstResult = ($page - 1) * BlogController::NB_MAX_ARTICLES;
                 $query->setFirstResult($firstResult)->setMaxResults((BlogController::NB_MAX_ARTICLES));
         }

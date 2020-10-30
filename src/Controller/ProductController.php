@@ -29,7 +29,7 @@ class ProductController extends AbstractController
             $data = $form->getData();
             $search = $data['search'];
             $section = $data['section'];
-            $products = $productRepository->findLikeName($search, $section);
+            $products = $productRepository->findLikeName($search, $section, $page);
         } else {
             $products = $productRepository->findAllSortAndPage($page);
         }
@@ -41,7 +41,7 @@ class ProductController extends AbstractController
             'products' => $products,
             'page' => $page,
             'currentPage' => $currentPage,
-            'maxPages' => ceil($nbProducts/self::NB_MAX_PRODUCTS),
+            'maxPages' => (int)ceil($nbProducts/self::NB_MAX_PRODUCTS),
             'form' => $form->createView()
         ]);
     }
