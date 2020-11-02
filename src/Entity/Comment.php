@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
@@ -18,6 +19,10 @@ class Comment
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Un auteur est obligatoire")
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Le nom de l'auteur est trop long, il ne doit pas dépasser {{ limit }} caractères")
      */
     private $author;
 
@@ -28,11 +33,12 @@ class Comment
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Le commentaire est obligatoire")
      */
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="comments", cascade={"remove"}))
      */
     private $article;
 
