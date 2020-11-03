@@ -105,4 +105,24 @@ class AdminProductController extends AbstractController
 
         return $this->redirectToRoute('admin_product_index');
     }
+
+    /**
+     * @Route("/export/produits", name="admin_product_export", methods={"GET"})
+     * @param ProductRepository $productRepository
+     * @return Response
+     */
+    public function exportMember(ProductRepository $productRepository): Response
+    {
+        $csv = $this->renderView('admin_product/export_product.csv.twig', [
+            'products' => $productRepository->findAll(),
+        ]);
+
+        $response = new Response($csv);
+        $response->setStatusCode(200);
+
+        $response->headers->set('Content-Type', 'application/csv;charset=UTF-8');
+        $response->headers->set('Content-Disposition', 'attachment; filename="export_products.csv"');
+
+        return $response;
+    }
 }

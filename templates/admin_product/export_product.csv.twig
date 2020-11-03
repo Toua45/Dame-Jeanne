@@ -1,0 +1,4 @@
+Identifiant,Nom,Année,Description,Type
+{% for product in products %}
+"{{ product.id }}","{{ product.name }}","{{ product.year }}","{{ product.description }}","{{ product.type }}"
+{% endfor %}
