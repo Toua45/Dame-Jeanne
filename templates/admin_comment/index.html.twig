@@ -1,0 +1,42 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Menu des commentaires{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center mt-5 mb-5">Menu des commentaires</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Auteur</th>
+                <th>Date</th>
+                <th>Commentaires</th>
+                <th>Titre de l'article</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+{#            {{ dump(comment.article) }}#}
+            <tr>
+                <td>{{ comment.author }}</td>
+                <td>{{ comment.date ? comment.date|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ comment.content }}</td>
+                <td>{{ comment.article.title }}</td>
+                <td>
+                    <a href="{{ path('admin_comment_show', {'id': comment.id}) }}" class="btn btn-outline-dark col-sm-12 m-2"><i class="far fa-eye"></i> Aperçu</a>
+                    {{ include('admin_comment/_delete_form.html.twig') }}
+{#                    <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>#}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center pt-5">Pas de commentaires trouvés</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{#    <a href="{{ path('comment_new') }}">Create new</a>#}
+{% endblock %}

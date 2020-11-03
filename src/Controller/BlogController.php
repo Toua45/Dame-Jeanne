@@ -81,7 +81,7 @@ class BlogController extends AbstractController
 
             $doctrine = $this->getDoctrine()->getManager();
 
-            // On hydrate notre instance $comment
+            // On hydrate notre instance $admin_comment
             $doctrine->persist($comment);
 
             // On écrit en base de données

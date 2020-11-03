@@ -18,4 +18,12 @@ class CommentRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Comment::class);
     }
+
+    public function findCommentsByDate(): array
+    {
+        $query = $this->createQueryBuilder('c')
+            ->orderBy('c.date', 'DESC');
+
+        return $query->getQuery()->getResult();
+    }
 }
