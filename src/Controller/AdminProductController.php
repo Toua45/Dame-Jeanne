@@ -111,7 +111,7 @@ class AdminProductController extends AbstractController
      * @param ProductRepository $productRepository
      * @return Response
      */
-    public function exportMember(ProductRepository $productRepository): Response
+    public function exportProduct(ProductRepository $productRepository): Response
     {
         $csv = $this->renderView('admin_product/export_product.csv.twig', [
             'products' => $productRepository->findAll(),
