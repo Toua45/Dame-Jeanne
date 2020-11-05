@@ -21,11 +21,10 @@
             <tr>
                 <td>{{ comment.author }}</td>
                 <td>{{ comment.date ? comment.date|date('d/m/Y H:i:s') : '' }}</td>
-                <td>{{ comment.content }}</td>
+                <td>{{ comment.content|striptags|slice(0, 50)|raw }}</td>
                 <td>{{ comment.article.title }}</td>
                 <td>
                     <a href="{{ path('admin_comment_show', {'id': comment.id}) }}" class="btn btn-outline-dark col-sm-12 m-2"><i class="far fa-eye"></i> Aperçu</a>
-                    {{ include('admin_comment/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
