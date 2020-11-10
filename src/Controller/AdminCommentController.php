@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
+use App\Form\CommentChosenType;
 use App\Repository\CommentRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,16 +17,48 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdminCommentController extends AbstractController
 {
+    public function chooseComment(CommentRepository $commentRepository, Request $request, $formChosenComment, $comment)
+    {
+        $formChosenComment->handleRequest($request);
+        if ($formChosenComment->isSubmitted() && $formChosenComment->isValid()) {
+            if ($comment->getChosenComment() === true) {
+                $this->addFlash(
+                    'success',
+                    'Le commentaire a été mis en avant et sera affiché sur la page de l\'article');
+                $this->getDoctrine()->getManager()->flush();
+            } else {
+                    $this->addFlash('danger', "Le commentaire a été retiré de l'article");
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectToRoute('admin_comment_index');
+            }
+        }
+    }
+
     /**
-     * @Route("/", name="admin_comment_index", methods={"GET"})
+     * @Route("/", name="admin_comment_index", methods={"GET", "POST"})
      * @IsGranted("ROLE_ADMIN", message="Vous devez vous connecter pour accéder à cette page.")
      * @param CommentRepository $commentRepository
      * @return Response
      */
-    public function index(CommentRepository $commentRepository): Response
+    public function index(CommentRepository $commentRepository, Request $request): Response
     {
+        /**
+         * @var FormFactory
+         */
+        $formFactory = $this->get('form.factory');
+        $comments = $commentRepository->findCommentsByDate();
+        $viewsChosenComment = [];
+
+        foreach ($comments as $key => $comment)
+        {
+            $formChosenComment = $formFactory->createNamed('comment_chosen_' . $key, CommentChosenType::class, $comment);
+            $this->chooseComment($commentRepository, $request, $formChosenComment, $comment);
+            $viewsChosenComment[] = $formChosenComment->createView();
+        }
+
         return $this->render('admin_comment/index.html.twig', [
-            'comments' => $commentRepository->findCommentsByDate(),
+            'comments' => $comments,
+            'formChosenComment' => $viewsChosenComment,
         ]);
     }
 
@@ -52,6 +86,11 @@ class AdminCommentController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($comment);
             $entityManager->flush();
+
+            $this->addFlash(
+                'danger',
+                'Le commentaire a été supprimé.'
+            );
         }
 
         return $this->redirectToRoute('admin_comment_index');

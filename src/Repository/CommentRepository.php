@@ -19,6 +19,18 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
+    public function findChosenComment($slug): array
+    {
+        $query = $this->createQueryBuilder('c')
+            ->join('c.article', 'a')
+            ->where("a.slug = :slug")
+            ->andWhere("c.chosenComment = 1")
+            ->orderBy('c.date', 'DESC')
+            ->setParameter('slug', $slug);
+
+        return $query->getQuery()->getResult();
+    }
+
     public function findCommentsByDate(): array
     {
         $query = $this->createQueryBuilder('c')

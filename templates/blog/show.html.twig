@@ -27,7 +27,11 @@
                     <p class="card-text">{{ article.author }}</p>
                     <div class="modal-comment">
                         <div class="comment-title d-flex row justify-content-between px-3">
-                            <h4 class="pl-3 py-3">{{ comments | length }} Commentaires</h4>
+                            {% if (comments | length <= 1) %}
+                                <h4 class="pl-3 py-3">{{ comments | length }} Commentaire</h4>
+                            {% else %}
+                                <h4 class="pl-3 py-3">{{ comments | length }} Commentaires</h4>
+                            {% endif %}
                             <button class="uk-button uk-button-default my-3 mr-3" type="button"
                                     uk-toggle="target: #toggle-usage"><span uk-icon="triangle-down"></span>
                             </button>
@@ -49,7 +53,8 @@
                                 {{ form_row(formComment.author) }}
                                 {{ form_row(formComment.content) }}
                                 <div class="flex d-flex justify-content-around">
-                                    <button class="btn btn-outline-danger my-3"><span uk-icon="check"></span> {{ button_label|default('Valider') }}</button>
+                                    <button class="btn btn-outline-danger my-3"><span
+                                                uk-icon="check"></span> {{ button_label|default('Valider') }}</button>
                                 </div>
                                 {{ form_end(formComment) }}
                             </div>

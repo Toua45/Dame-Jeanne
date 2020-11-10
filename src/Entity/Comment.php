@@ -42,6 +42,12 @@ class Comment
      */
     private $article;
 
+    /**
+     * @ORM\Column(type="boolean")
+     * @Assert\Type(type="boolean")
+     */
+    private $chosenComment = true;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +97,18 @@ class Comment
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function getChosenComment(): ?bool
+    {
+        return $this->chosenComment;
+    }
+
+    public function setChosenComment(bool $chosenComment): self
+    {
+        $this->chosenComment = $chosenComment;
 
         return $this;
     }
