@@ -13,16 +13,27 @@
                 <th>Date</th>
                 <th>Commentaires</th>
                 <th>Titre de l'article</th>
+                <th>Mise en avant</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for comment in comments %}
+        {% for keys, comment in comments %}
             <tr>
                 <td>{{ comment.author }}</td>
                 <td>{{ comment.date ? comment.date|date('d/m/Y H:i:s') : '' }}</td>
                 <td>{{ comment.content|striptags|slice(0, 50)|raw }}</td>
                 <td>{{ comment.article.title }}</td>
+
+                <td>
+                    {{ form_start(formChosenComment[keys], { 'attr' :{'class' : 'form'}}) }}
+                    <div class="onoffswitch">
+                        {{ form_row(formChosenComment[keys].chosenComment, { 'attr' :
+                            {'class' : 'switch',},}) }}
+                    </div>
+                    {{ form_end(formChosenComment[keys]) }}
+                </td>
+
                 <td>
                     <a href="{{ path('admin_comment_show', {'id': comment.id}) }}" class="btn btn-outline-dark col-sm-12 m-2"><i class="far fa-eye"></i> Aperçu</a>
                 </td>
@@ -35,4 +46,9 @@
         </tbody>
     </table>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('comment') }}
 {% endblock %}
