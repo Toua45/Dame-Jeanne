@@ -11,22 +11,22 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/alert")
+ * @Route("/admin/alert")
  */
-class AlertController extends AbstractController
+class AdminAlertController extends AbstractController
 {
     /**
-     * @Route("/", name="alert_index", methods={"GET"})
+     * @Route("/", name="admin_alert_index", methods={"GET"})
      */
     public function index(AlertRepository $alertRepository): Response
     {
-        return $this->render('alert/index.html.twig', [
+        return $this->render('admin_alert/index.html.twig', [
             'alerts' => $alertRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="alert_new", methods={"GET","POST"})
+     * @Route("/new", name="admin_alert_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -42,24 +42,24 @@ class AlertController extends AbstractController
             return $this->redirectToRoute('alert_index');
         }
 
-        return $this->render('alert/new.html.twig', [
+        return $this->render('admin_alert/new.html.twig', [
             'alert' => $alert,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="alert_show", methods={"GET"})
+     * @Route("/{id}", name="admin_alert_show", methods={"GET"})
      */
     public function show(Alert $alert): Response
     {
-        return $this->render('alert/show.html.twig', [
+        return $this->render('admin_alert/show.html.twig', [
             'alert' => $alert,
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="alert_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="admin_alert_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Alert $alert): Response
     {
@@ -72,14 +72,14 @@ class AlertController extends AbstractController
             return $this->redirectToRoute('alert_index');
         }
 
-        return $this->render('alert/edit.html.twig', [
+        return $this->render('admin_alert/edit.html.twig', [
             'alert' => $alert,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="alert_delete", methods={"DELETE"})
+     * @Route("/{id}", name="admin_alert_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Alert $alert): Response
     {
