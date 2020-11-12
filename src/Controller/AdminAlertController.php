@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Alert;
-use App\Form\Alert1Type;
+use App\Form\AlertType;
 use App\Repository\AlertRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class AdminAlertController extends AbstractController
     public function new(Request $request): Response
     {
         $alert = new Alert();
-        $form = $this->createForm(Alert1Type::class, $alert);
+        $form = $this->createForm(AlertType::class, $alert);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class AdminAlertController extends AbstractController
      */
     public function edit(Request $request, Alert $alert): Response
     {
-        $form = $this->createForm(Alert1Type::class, $alert);
+        $form = $this->createForm(AlertType::class, $alert);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
