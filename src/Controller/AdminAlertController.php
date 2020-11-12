@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminAlertController extends AbstractController
 {
     /**
-     * @Route("/", name="alert_index", methods={"GET"})
+     * @Route("/", name="admin_alert_index", methods={"GET"})
      */
     public function index(AlertRepository $alertRepository): Response
     {
