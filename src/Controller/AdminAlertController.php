@@ -39,6 +39,10 @@ class AdminAlertController extends AbstractController
             $entityManager->persist($alert);
             $entityManager->flush();
 
+            $this->addFlash(
+                'success', 'Votre message a bien été ajouté'
+            );
+
             return $this->redirectToRoute('admin_alert_index');
         }
 
@@ -69,6 +73,10 @@ class AdminAlertController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success', 'Votre message a bien été modifié'
+            );
+
             return $this->redirectToRoute('admin_alert_index');
         }
 
@@ -87,6 +95,10 @@ class AdminAlertController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($alert);
             $entityManager->flush();
+
+            $this->addFlash(
+                'danger', 'Votre message a bien été supprimé'
+            );
         }
 
         return $this->redirectToRoute('admin_alert_index');
