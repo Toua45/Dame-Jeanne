@@ -1,13 +1,12 @@
 {% extends 'layout_admin.html.twig' %}
-
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block title %}Éditer l'Alerte{% endblock %}
 
 {% block body %}
-    <h1>Éditer l'Alerte</h1>
+    <div class="mt-5 container-xl container-lg container-fluid">
+    <h1 class="mt-3 mb-4 text-center">Éditer l'Alerte</h1>
 
     {{ include('admin_alert/_form.html.twig', {'button_label': 'Update'}) }}
 
-{#    <a href="{{ path('alert_index') }}">back to list</a>#}
-
-{#    {{ include('admin_alert/_delete_form.html.twig') }}#}
+    </div>
 {% endblock %}
