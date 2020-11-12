@@ -11,15 +11,14 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Message</th>
-                    <th>Affiché</th>
-                    <th>Actions</th>
+                    <th class="col-lg-7">Message</th>
+                    <th>Affichage du message</th>
+                    <th class="col-lg-2">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for alert in alerts %}
                     <tr>
-                        <td>{{ alert.id }}</td>
                         <td>{{ alert.message|striptags|raw }}</td>
                         <td>{{ alert.activated ? 'Oui' : 'Non' }}</td>
                         <td>
