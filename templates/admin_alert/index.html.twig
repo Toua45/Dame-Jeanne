@@ -1,37 +1,41 @@
 {% extends 'layout_admin.html.twig' %}
 
-{% block title %}Alert index{% endblock %}
+{% block title %}Menu des messages personnalisés{% endblock %}
 
 {% block body %}
-    <h1>Alert index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Message</th>
-                <th>Activated</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for alert in alerts %}
-            <tr>
-                <td>{{ alert.id }}</td>
-                <td>{{ alert.message }}</td>
-                <td>{{ alert.activated ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('alert_show', {'id': alert.id}) }}">show</a>
-                    <a href="{{ path('alert_edit', {'id': alert.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('admin_alert_new') }}">Create new</a>
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Menu des messages</h1>
+        <div class="admin-section pt-5 pb-5 px-5">
+            <a href="{{ path('admin_alert_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span>Ajouter
+                un message</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Message</th>
+                    <th>Affiché</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for alert in alerts %}
+                    <tr>
+                        <td>{{ alert.id }}</td>
+                        <td>{{ alert.message|striptags|raw }}</td>
+                        <td>{{ alert.activated ? 'Oui' : 'Non' }}</td>
+                        <td>
+                            <a href="{{ path('admin_alert_show', {'id': alert.id}) }}"
+                               class="btn btn-outline-dark col-sm-12 m-2"><i class="far fa-eye"></i>>Aperçu</a>
+                            <a href="{{ path('admin_alert_edit', {'id': alert.id}) }}"
+                               class="btn btn-outline-dark col-sm-12 m-2"><span uk-icon="pencil"></span>>Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">Aucun message trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

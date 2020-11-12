@@ -39,11 +39,11 @@ class AdminAlertController extends AbstractController
             $entityManager->persist($alert);
             $entityManager->flush();
 
-            return $this->redirectToRoute('alert_index');
+            return $this->redirectToRoute('admin_alert_index');
         }
 
         return $this->render('admin_alert/new.html.twig', [
-            'admin_alert' => $alert,
+            'alert' => $alert,
             'form' => $form->createView(),
         ]);
     }
@@ -54,7 +54,7 @@ class AdminAlertController extends AbstractController
     public function show(Alert $alert): Response
     {
         return $this->render('admin_alert/show.html.twig', [
-            'admin_alert' => $alert,
+            'alert' => $alert,
         ]);
     }
 
@@ -69,11 +69,11 @@ class AdminAlertController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('alert_index');
+            return $this->redirectToRoute('admin_alert_index');
         }
 
         return $this->render('admin_alert/edit.html.twig', [
-            'admin_alert' => $alert,
+            'alert' => $alert,
             'form' => $form->createView(),
         ]);
     }
@@ -89,6 +89,6 @@ class AdminAlertController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('alert_index');
+        return $this->redirectToRoute('admin_alert_index');
     }
 }
