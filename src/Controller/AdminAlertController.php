@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Alert;
-use App\Form\AlertType;
+use App\Form\Alert1Type;
 use App\Repository\AlertRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,36 +11,84 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/alerte")
+ * @Route("/admin_alert")
  */
 class AdminAlertController extends AbstractController
 {
     /**
-     * @Route("/editer", name="admin_alert_edit", methods={"GET","POST"})
+     * @Route("/", name="alert_index", methods={"GET"})
      */
-    public function edit(Request $request): Response
+    public function index(AlertRepository $alertRepository): Response
     {
-        $alert = $this->getDoctrine()
-            ->getRepository(Alert::class)
-            ->findOneBy([]);
-        if (!$alert instanceof Alert) {
-            $alert = new Alert();
-        }
+        return $this->render('admin_alert/index.html.twig', [
+            'alerts' => $alertRepository->findAll(),
+        ]);
+    }
 
-        $form = $this->createForm(AlertType::class, $alert);
+    /**
+     * @Route("/new", name="alert_new", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
+    {
+        $alert = new Alert();
+        $form = $this->createForm(Alert1Type::class, $alert);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'Votre message d\'alerte a bien été modifié');
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($alert);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('admin_home');
+            return $this->redirectToRoute('alert_index');
         }
 
-        return $this->render('admin_alert/edit.html.twig', [
-            'alert' => $alert,
+        return $this->render('admin_alert/new.html.twig', [
+            'admin_alert' => $alert,
             'form' => $form->createView(),
         ]);
     }
 
+    /**
+     * @Route("/{id}", name="alert_show", methods={"GET"})
+     */
+    public function show(Alert $alert): Response
+    {
+        return $this->render('admin_alert/show.html.twig', [
+            'admin_alert' => $alert,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="alert_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Alert $alert): Response
+    {
+        $form = $this->createForm(Alert1Type::class, $alert);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('alert_index');
+        }
+
+        return $this->render('admin_alert/edit.html.twig', [
+            'admin_alert' => $alert,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="alert_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Alert $alert): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$alert->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($alert);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('alert_index');
+    }
 }
