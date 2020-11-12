@@ -34,7 +34,7 @@ class AdminAlertController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Votre message d\'alerte a bien été modifié');
 
-            return $this->redirectToRoute('admin_alert_edit');
+            return $this->redirectToRoute('admin_home');
         }
 
         return $this->render('admin_alert/edit.html.twig', [
