@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AlertRepository")
@@ -18,11 +19,15 @@ class Alert
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(
+     *     message="Veuillez indiquer votre message."
+     * )
      */
     private $message;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default" : false})
+     * @Assert\Type(type="bool")
      */
     private $activated;
 
