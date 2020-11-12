@@ -13,7 +13,7 @@
                 <tr>
                     <th class="col-lg-7">Message</th>
                     <th>Affichage du message</th>
-                    <th class="col-lg-2">Actions</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -23,9 +23,9 @@
                         <td>{{ alert.activated ? 'Oui' : 'Non' }}</td>
                         <td>
                             <a href="{{ path('admin_alert_show', {'id': alert.id}) }}"
-                               class="btn btn-outline-dark col-sm-12 m-2"><i class="far fa-eye"></i>>Aperçu</a>
+                               class="btn btn-outline-dark m-2"><i class="far fa-eye"></i> Aperçu</a>
                             <a href="{{ path('admin_alert_edit', {'id': alert.id}) }}"
-                               class="btn btn-outline-dark col-sm-12 m-2"><span uk-icon="pencil"></span>>Modifier</a>
+                               class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span> Modifier</a>
                         </td>
                     </tr>
                 {% else %}
