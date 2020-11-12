@@ -15,7 +15,8 @@ class AlertType extends AbstractType
     {
         $builder
             ->add('message', TextareaType::class, [
-                'label' => 'Votre message'
+                'label' => 'Votre message',
+                'attr' => ['style' => 'height: 8rem']
             ])
 
             ->add('activated', CheckboxType::class, [

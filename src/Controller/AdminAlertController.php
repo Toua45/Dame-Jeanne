@@ -23,18 +23,22 @@ class AdminAlertController extends AbstractController
         $alert = $this->getDoctrine()
             ->getRepository(Alert::class)
             ->findOneBy([]);
+        if (!$alert instanceof Alert) {
+            $alert = new Alert();
+        }
 
         $form = $this->createForm(AlertType::class, $alert);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Votre message d\'alerte a bien été modifié');
 
             return $this->redirectToRoute('admin_alert_edit');
         }
 
         return $this->render('admin_alert/edit.html.twig', [
-            'admin_alert' => $alert,
+            'alert' => $alert,
             'form' => $form->createView(),
         ]);
     }
