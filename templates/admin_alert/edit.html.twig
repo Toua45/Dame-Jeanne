@@ -1,13 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
-{% block title %}Edit Alert{% endblock %}
+{% block title %}Éditer l'Alerte{% endblock %}
 
 {% block body %}
-    <h1>Edit Alert</h1>
+    <h1>Éditer l'Alerte</h1>
 
     {{ include('admin_alert/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('alert_index') }}">back to list</a>
+{#    <a href="{{ path('alert_index') }}">back to list</a>#}
 
-    {{ include('admin_alert/_delete_form.html.twig') }}
+{#    {{ include('admin_alert/_delete_form.html.twig') }}#}
 {% endblock %}
