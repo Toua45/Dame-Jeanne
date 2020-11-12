@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin_alert")
+ * @Route("/admin/alert")
  */
 class AdminAlertController extends AbstractController
 {
@@ -26,7 +26,7 @@ class AdminAlertController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="alert_new", methods={"GET","POST"})
+     * @Route("/new", name="admin_alert_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +49,7 @@ class AdminAlertController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="alert_show", methods={"GET"})
+     * @Route("/{id}", name="admin_alert_show", methods={"GET"})
      */
     public function show(Alert $alert): Response
     {
@@ -59,7 +59,7 @@ class AdminAlertController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="alert_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="admin_alert_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Alert $alert): Response
     {
@@ -79,7 +79,7 @@ class AdminAlertController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="alert_delete", methods={"DELETE"})
+     * @Route("/{id}", name="admin_alert_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Alert $alert): Response
     {
