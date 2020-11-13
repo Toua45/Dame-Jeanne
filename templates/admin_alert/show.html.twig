@@ -1,30 +1,36 @@
 {% extends 'layout_admin.html.twig' %}
 
-{% block title %}Alert{% endblock %}
+{% block title %}Message {{ alert.message }}{% endblock %}
 
 {% block body %}
-    <h1>Alert</h1>
+    <div class="container">
+        <h1 class="text-center m-5">{{ alert.message }}</h1>
+        <div class="admin-section pt-5 pb-5 px-5">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ alert.id }}</td>
-            </tr>
-            <tr>
-                <th>Message</th>
-                <td>{{ alert.message }}</td>
-            </tr>
-            <tr>
-                <th>Activated</th>
-                <td>{{ alert.activated ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Message</th>
+                    <td>{{ alert.message }}</td>
+                </tr>
+                <tr>
+                    <th>Afficher</th>
+                    <td>{{ alert.activated ? 'Oui' : 'Non' }}</td>
+                </tr>
+                </tbody>
+            </table>
 
-    <a href="{{ path('admin_alert_index') }}">back to list</a>
+            <div class="d-flex justify-content-center">
+                <a href="{{ path('admin_alert_edit', {'id': alert.id}) }}" class="btn btn-outline-danger mt-5"><span
+                            uk-icon="pencil"></span> Modifier</a>
+            </div>
+        </div>
 
-    <a href="{{ path('admin_alert_edit', {'id': alert.id}) }}">edit</a>
+        <div class="d-flex justify-content-around">
+            <a href="{{ path('admin_alert_index') }}" class="btn btn-dark mt-5"><i
+                        class="far fa-arrow-alt-circle-left"></i> Liste des messages</a>
+            {{ include('admin_alert/_delete_form.html.twig') }}
+        </div>
+    </div>
 
-    {{ include('admin_alert/_delete_form.html.twig') }}
 {% endblock %}

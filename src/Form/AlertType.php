@@ -20,7 +20,7 @@ class AlertType extends AbstractType
             ])
 
             ->add('activated', CheckboxType::class, [
-                'label' => 'Activé',
+                'label' => 'Afficher',
                 'required' => false,
             ])
         ;
