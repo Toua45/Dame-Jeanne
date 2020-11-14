@@ -13,11 +13,13 @@
 
   & h5 {
     color: $fourth-color;
-    font-family: $font-paragraph, serif;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-family: 'Lora', Sans-Serif;
+    //font-family: $font-paragraph;
+    font-size: 1rem;
+    font-weight: bolder;
     line-height: 1.5;
-    letter-spacing: 1.3px;
+    letter-spacing: 1.2px;
+    width: 140ch;
   }
 }
 
@@ -29,5 +31,6 @@
 
   .message-alert {
     height: auto;
+    top: 0;
   }
 }

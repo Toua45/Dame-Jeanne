@@ -1,6 +1,7 @@
     <div class="sticky__alert">
+        <!-- Intégration d'un fragment d'un controller dans notre template --->
     {{ render(controller(
-        'App\\Controller\\HeaderMessageController::showAlertMessage'
+        'App\\Controller\\HeaderMessageController::getHeaderMessage'
     )) }}
 </div>
 <nav class="navbar navbar-expand-lg container">

@@ -11,7 +11,7 @@ class HeaderMessageController extends AbstractController
     /**
      * @Route("/header/message", name="header_message")
      */
-    public function showAlertMessage()
+    public function getHeaderMessage()
     {
         $alerts = $this->getDoctrine()
             ->getRepository(Alert::class)
