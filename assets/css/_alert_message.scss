@@ -13,10 +13,9 @@
 
   & h5 {
     color: $fourth-color;
-    font-family: 'Lora', Sans-Serif;
-    //font-family: $font-paragraph;
-    font-size: 1rem;
-    font-weight: bolder;
+    font-family: $font-alert-message, Sans-Serif;
+    font-size: 1.1rem;
+    font-weight: 500;
     line-height: 1.5;
     letter-spacing: 1.2px;
     width: 140ch;
