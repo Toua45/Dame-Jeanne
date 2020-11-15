@@ -1,0 +1,35 @@
+/* message d'alerte activé */
+.sticky__alert {
+  position: sticky !important;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.message-alert {
+  height: 3.75rem;
+  text-align: center;
+  background-color: rgba($color-red-light, 0.8);
+
+  & h5 {
+    color: $fourth-color;
+    font-family: $font-alert-message, Sans-Serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 1.2px;
+    width: 140ch;
+  }
+}
+
+@media (max-width: 640px) {
+  .sticky__alert {
+    overflow: scroll;
+    height: 7rem;
+  }
+
+  .message-alert {
+    height: auto;
+    top: 0;
+  }
+}
