@@ -1,5 +1,7 @@
 <div class="container admin_menu">
     <div uk-accordion>
+
+        <!-- Introduction --->
         <div class="uk-open">
             <h3 class="uk-accordion-title">Introduction</h3>
             <div class="uk-accordion-content">
@@ -9,11 +11,17 @@
                     différentes sections.</p>
             </div>
         </div>
+
+        <!-- Présentation du fonctionnement des boutons --->
         <div>
             <h3 class="uk-accordion-title">Fonctions des boutons</h3>
             <div class="uk-accordion-content mb-5">
                 <p>Voici les principaux boutons figurant sur les différentes pages de l'espace
                     administrateur et qui vous permettra de gérer le site.</p>
+                <p><span class="menu__admin-logo uk-button uk-button-default pt-2" style="font-size: x-large"><i
+                                class="fas fa-bars"></i> Menu</span> :
+                    ouvre le menu de navigation pour l'interface administrative.
+                </p>
                 <p><span class="btn btn-outline-danger"><span uk-icon="plus"></span> Ajouter</span>
                     : ouvre une page qui permet de créer un nouvel élément. Un message de <span
                             class="alert alert-success">confirmation</span>
@@ -34,5 +42,109 @@
                     de revenir à la liste des éléments.</p>
             </div>
         </div>
+
+        <!-- Onglet "Administration" --->
+        <div>
+            <h3 class="uk-accordion-title">Onglet "Administration"</h3>
+            <div class="uk-accordion-content mb-5">
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-home"></i>Accueil du menu administration :</span>permet
+                    d'être redirigé vers la page d'accueil administratif.</p>
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="far fa-arrow-alt-circle-left mr-2"></i>Retour vers le site :</span>permet
+                    à l'administrateur d'être redirigé vers la page d'accueil du site.</p>
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class=" uk-icon-link uk-margin-small-right fas fa-sign-out-alt"></i>Se déconnecter :</span>permet
+                    à l'administrateur d'être déconnecté de l'interface administratif et d'être redirigé vers la page
+                    d'accueil du site.
+                </p>
+            </div>
+        </div>
+
+        <!-- Onglet "Message Personnel" --->
+        <div>
+            <h3 class="uk-accordion-title">Onglet "Message Personnel"</h3>
+            <div class="uk-accordion-content mb-5">
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-comments"></i>Message d'alerte :</span>permet
+                    de gérer les messages d'informations que l'administrateur souhaite afficher sur tous les interfaces
+                    du site de Dame Jeanne.
+                </p>
+            </div>
+        </div>
+
+        <!-- Onglet "Coordonnées Dame Jeanne" --->
+        <div>
+            <h3 class="uk-accordion-title">Onglet "Coordonnées Dame Jeanne"</h3>
+            <div class="uk-accordion-content mb-5">
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-map-marker-alt"></i>Coordonnées :</span>permet
+                    de gérer la carte d'emplacement située à la page d'accueil du site internet.
+                </p>
+                <p><span class="accordion__subtitle">Fonctionnement :</span> le système d'emplacement fonctionne par un système de recherche latitude/longitude,
+                    vous devez obligatoirement fournir ces coordonnées afin d'indiquer l'emplacement de votre
+                    établissement sur le site de Dame Jeanne. Vous trouverez ci-dessous un lien vous permettant
+                    d'obtenir ces coordonnées en
+                    fournissant votre adresse.</p>
+                <p><a href="https://www.coordonnees-gps.fr/" target="_blank">Lien pour obtenir les coordonnées
+                        géographiques</a></p>
+            </div>
+        </div>
+
+        <!-- Onglet "Articles" --->
+        <div>
+            <h3 class="uk-accordion-title">Onglet "Articles"</h3>
+            <div class="uk-accordion-content mb-5">
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-newspaper"></i>Articles :</span>
+                </p>
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fa fa-list-alt"></i>Catégorie article :</span>
+                </p>
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fa fa-comment-dots"></i>Commentaires :</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Onglet "Produits" --->
+        <div>
+            <h3 class="uk-accordion-title">Onglet "Produits"</h3>
+            <div class="uk-accordion-content mb-5">
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-beer"></i>Produits :</span>
+                </p>
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-clipboard-list"></i>Catégorie produit :</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Onglet "L'équipe" --->
+        <div>
+            <h3 class="uk-accordion-title">Onglet "L'équipe"</h3>
+            <div class="uk-accordion-content mb-5">
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-user"></i>Les tauliers :</span>
+                </p>
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-comment"></i>Les messages com' :</span>
+                </p>
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-heart"></i>Les partenaires :</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Onglet "Page Pédago" --->
+        <div>
+            <h3 class="uk-accordion-title">Onglet "Page Pédago"</h3>
+            <div class="uk-accordion-content mb-5">
+                <p><span class="accordion__subtitle uk-margin-small-right"><i
+                                class="uk-icon-link uk-margin-small-right fas fa-book-open"></i>Le dico du Dame Jeanne :</span>
+                </p>
+            </div>
+        </div>
+
     </div>
 </div>
