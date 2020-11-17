@@ -30,7 +30,7 @@ Encore
     .addEntry('contact', './assets/js/contact.js')
     .addEntry('bot', './assets/js/bot.js')
     .addEntry('vich', './assets/js/vich.js')
-    .addEntry('comment', './assets/js/adminCommentForm.js')
+    .addEntry('displayElement', './assets/js/adminDisplayElementForm.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

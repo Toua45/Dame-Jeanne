@@ -25,10 +25,10 @@ class AdminAlertController extends AbstractController
             if ($alert->getActivated() === true) {
                 $this->addFlash(
                     'success',
-                    'Le message d\'alerte est bien affiché.');
+                    'Votre message est affiché.');
                 $this->getDoctrine()->getManager()->flush();
             } else {
-                $this->addFlash('danger', 'Le message d\'alerte a bien été désactivé.');
+                $this->addFlash('danger', 'Votre message a été désactivé.');
                 $this->getDoctrine()->getManager()->flush();
                 return $this->redirectToRoute('admin_alert_index');
             }
