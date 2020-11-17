@@ -17,3 +17,13 @@ a.manualTitle {
   color: $primary-color;
   text-decoration:none;
 }
+
+.menu__admin-logo {
+  color: $fourth-color;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+
+.accordion__subtitle {
+  text-decoration: underline;
+}
