@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Alert;
 use App\Form\AlertType;
 use App\Repository\AlertRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,11 +17,36 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdminAlertController extends AbstractController
 {
+    public function chooseAlert(AlertRepository $alertRepository, Request $request, $formChosenAlert, $alert)
+    {
+        $formChosenAlert->handleRequest($request);
+        if ($formChosenAlert->isSubmitted() && $formChosenAlert->isValid()) {
+            if($alert->getActivated() === true) {
+                $this->addFlash(
+                    'success',
+                    'Votre message a bien été activé.');
+                $this->getDoctrine()->getManager()->flush();
+            } else {
+                $this->addFlash(
+                    'danger',
+                    'Votre message a bien été désactivé.');
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectToRoute('admin_alert_index');
+            }
+        }
+    }
+
     /**
      * @Route("/", name="admin_alert_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="Vous devez vous connecter pour accéder à cette page.")
      */
-    public function index(AlertRepository $alertRepository): Response
+    public function index(AlertRepository $alertRepository, Request $request): Response
     {
+        /**
+         * @var FormFactory
+         */
+        $formFactory = $this->get('form.factory');
+
         return $this->render('admin_alert/index.html.twig', [
             'alerts' => $alertRepository->findAll(),
         ]);
