@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Alert;
 use App\Form\AlertType;
+use App\Form\AlertChosenType;
 use App\Repository\AlertRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,7 +52,7 @@ class AdminAlertController extends AbstractController
 
         foreach ($alerts as $key => $alert)
         {
-            $formChosenAlert = $form->createNamed('alert_activation_' . $key, AlertType::class, $alert);
+            $formChosenAlert = $form->createNamed('alert_activation_' . $key, AlertChosenType::class, $alert);
             $this->chooseAlert($alertRepository, $request, $formChosenAlert, $alert);
             $viewsChosenAlert[] = $formChosenAlert->createView();
         }

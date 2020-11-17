@@ -21,7 +21,6 @@
                 {% for keys, alert in alerts %}
                     <tr>
                         <td>{{ alert.message|striptags|raw }}</td>
-{#                        <td>{{ alert.activated ? 'Oui' : 'Non' }}</td>#}
                         <td>
                             {{ form_start(formChosenAlert[keys], { 'attr' :{'class' : 'form'}}) }}
                             <div class="onoffswitch">
