@@ -21,15 +21,13 @@ class AdminAlertController extends AbstractController
     {
         $formChosenAlert->handleRequest($request);
         if ($formChosenAlert->isSubmitted() && $formChosenAlert->isValid()) {
-            if($alert->getActivated() === true) {
+            if ($alert->getActivated() === true) {
                 $this->addFlash(
                     'success',
-                    'Votre message a bien été activé.');
+                    'Le message d\'alerte est bien affiché.');
                 $this->getDoctrine()->getManager()->flush();
             } else {
-                $this->addFlash(
-                    'danger',
-                    'Votre message a bien été désactivé.');
+                $this->addFlash('danger', 'Le message d\'alerte a bien été désactivé.');
                 $this->getDoctrine()->getManager()->flush();
                 return $this->redirectToRoute('admin_alert_index');
             }
@@ -37,18 +35,30 @@ class AdminAlertController extends AbstractController
     }
 
     /**
-     * @Route("/", name="admin_alert_index", methods={"GET"})
+     * @Route("/", name="admin_alert_index", methods={"GET", "POST"})
      * @IsGranted("ROLE_ADMIN", message="Vous devez vous connecter pour accéder à cette page.")
+     * @param AlertRepository $alertRepository
+     * @return Response
      */
     public function index(AlertRepository $alertRepository, Request $request): Response
     {
         /**
          * @var FormFactory
          */
-        $formFactory = $this->get('form.factory');
+        $form = $this->get('form.factory');
+        $alerts = $alertRepository->findAll();
+        $viewsChosenAlert = [];
+
+        foreach ($alerts as $key => $alert)
+        {
+            $formChosenAlert = $form->createNamed('alert_activation_' . $key, AlertType::class, $alert);
+            $this->chooseAlert($alertRepository, $request, $formChosenAlert, $alert);
+            $viewsChosenAlert[] = $formChosenAlert->createView();
+        }
 
         return $this->render('admin_alert/index.html.twig', [
-            'alerts' => $alertRepository->findAll(),
+            'alerts' => $alerts,
+            'formChosenAlert' => $viewsChosenAlert
         ]);
     }
 
