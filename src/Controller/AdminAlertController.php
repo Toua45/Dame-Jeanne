@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Alert;
 use App\Form\AlertType;
+use App\Form\AlertChosenType;
 use App\Repository\AlertRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,13 +18,48 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdminAlertController extends AbstractController
 {
-    /**
-     * @Route("/", name="admin_alert_index", methods={"GET"})
-     */
-    public function index(AlertRepository $alertRepository): Response
+    public function chooseAlert(AlertRepository $alertRepository, Request $request, $formChosenAlert, $alert)
     {
+        $formChosenAlert->handleRequest($request);
+        if ($formChosenAlert->isSubmitted() && $formChosenAlert->isValid()) {
+            if ($alert->getActivated() === true) {
+                $this->addFlash(
+                    'success',
+                    'Votre message est affiché.');
+                $this->getDoctrine()->getManager()->flush();
+            } else {
+                $this->addFlash('danger', 'Votre message a été désactivé.');
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectToRoute('admin_alert_index');
+            }
+        }
+    }
+
+    /**
+     * @Route("/", name="admin_alert_index", methods={"GET", "POST"})
+     * @IsGranted("ROLE_ADMIN", message="Vous devez vous connecter pour accéder à cette page.")
+     * @param AlertRepository $alertRepository
+     * @return Response
+     */
+    public function index(AlertRepository $alertRepository, Request $request): Response
+    {
+        /**
+         * @var FormFactory
+         */
+        $form = $this->get('form.factory');
+        $alerts = $alertRepository->findAll();
+        $viewsChosenAlert = [];
+
+        foreach ($alerts as $key => $alert)
+        {
+            $formChosenAlert = $form->createNamed('alert_activation_' . $key, AlertChosenType::class, $alert);
+            $this->chooseAlert($alertRepository, $request, $formChosenAlert, $alert);
+            $viewsChosenAlert[] = $formChosenAlert->createView();
+        }
+
         return $this->render('admin_alert/index.html.twig', [
-            'alerts' => $alertRepository->findAll(),
+            'alerts' => $alerts,
+            'formChosenAlert' => $viewsChosenAlert
         ]);
     }
 

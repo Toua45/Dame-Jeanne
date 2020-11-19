@@ -18,10 +18,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for alert in alerts %}
+                {% for keys, alert in alerts %}
                     <tr>
                         <td>{{ alert.message|striptags|raw }}</td>
-                        <td>{{ alert.activated ? 'Oui' : 'Non' }}</td>
+                        <td>
+                            {{ form_start(formChosenAlert[keys], { 'attr' :{'class' : 'form'}}) }}
+                            <div class="onoffswitch">
+                                {{ form_row(formChosenAlert[keys].activated, { 'attr' :
+                                    {'class' : 'switch'}}) }}
+                            </div>
+                            {{ form_end(formChosenAlert[keys]) }}
+                        </td>
                         <td>
                             <a href="{{ path('admin_alert_show', {'id': alert.id}) }}"
                                class="btn btn-outline-dark m-2"><i class="far fa-eye"></i> Aperçu</a>
@@ -38,4 +45,9 @@
             </table>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('displayElement') }}
 {% endblock %}
