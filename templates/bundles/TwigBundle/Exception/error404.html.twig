@@ -4,10 +4,13 @@
 
     <div class="error__background">
         <div class="flex-column">
+
             <h1>Dame Jeanne</h1>
+            <p>Oops, Page non trouvée : {{ status_code }}</p>
+            <p>Votre recherche a échoué</p>
+            <a href="{{ path('home') }}">Retour sur le site</a>
+
         </div>
     </div>
-
-
 
 {% endblock %}
