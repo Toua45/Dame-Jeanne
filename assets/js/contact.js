@@ -4,6 +4,8 @@ let contactMessage = document.getElementById('contact_form_message');
 let contactReservation = document.getElementById('contact_form_reservation');
 let reservationConstraint = document.getElementById('reservation_constraint');
 
+contactFormSubject.value = 'choose_options';
+
 if (contactFormSubject.value === 'choose_options') {
     btnContactForm.classList.replace('d-flex', 'd-none');
     reservationConstraint.classList.replace('d-flex', 'd-none');
@@ -31,6 +33,3 @@ function changeOption(event) {
 }
 
 contactFormSubject.addEventListener('change', changeOption);
-
-
-
