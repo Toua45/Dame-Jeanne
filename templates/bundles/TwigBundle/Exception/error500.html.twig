@@ -1,0 +1,18 @@
+{% extends 'layout_error.html.twig' %}
+
+{% block body %}
+
+    <div class="error__background">
+        <div class="flex-column">
+            <div class="error__box text-center">
+
+                <h1 class="error__text">Dame Jeanne</h1>
+                <p class="error__text">Problème interne du serveur : {{ status_code }}</p>
+                <p class="error__text">Votre recherche a échoué</p>
+                <a href="{{ path('home') }}" class="error__link">Retour sur le site</a>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
