@@ -30,18 +30,19 @@ class ProductController extends AbstractController
             $search = $data['search'];
             $section = $data['section'];
             $products = $productRepository->findLikeName($search, $section, $page);
+            $nbProducts = count($productRepository->findLikeName($search, $section)); // Comptage du nombre de produits après une recherche
         } else {
             $products = $productRepository->findAllSortAndPage($page);
+            $nbProducts = count($productRepository->findAllSortAndPage());
         }
 
-        $nbProducts = count($productRepository->findAllSortAndPage());
         $currentPage = $page;
 
         return $this->render('product/index.html.twig', [
             'products' => $products,
             'page' => $page,
             'currentPage' => $currentPage,
-            'maxPages' => (int)ceil($nbProducts/self::NB_MAX_PRODUCTS),
+            'nbProductPages' => (int)ceil($nbProducts/self::NB_MAX_PRODUCTS),
             'form' => $form->createView()
         ]);
     }

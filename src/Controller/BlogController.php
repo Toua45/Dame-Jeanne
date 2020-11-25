@@ -32,7 +32,7 @@ class BlogController extends AbstractController
             $search = $data['search'];
             $category = $data['category'];
             $articles = $articleRepository->findLikeName($search, $category, $page);
-            $nbArticles = count($articleRepository->findLikeName($search, $category));
+            $nbArticles = count($articleRepository->findLikeName($search, $category)); // Comptage du nombre d'articles après une recherche
         } else {
             $articles = $articleRepository->findAllSortAndPage($page);
             $nbArticles = count($articleRepository->findAllSortAndPage());
