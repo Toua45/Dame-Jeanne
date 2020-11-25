@@ -32,18 +32,19 @@ class BlogController extends AbstractController
             $search = $data['search'];
             $category = $data['category'];
             $articles = $articleRepository->findLikeName($search, $category, $page);
+            $nbArticles = count($articleRepository->findLikeName($search, $category));
         } else {
             $articles = $articleRepository->findAllSortAndPage($page);
+            $nbArticles = count($articleRepository->findAllSortAndPage());
         }
 
-        $nbArticles = count($articleRepository->findAllSortAndPage());
         $currentPage = $page;
 
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,
             'page' => $page,
             'currentPage' => $currentPage,
-            'maxPages' => (int)ceil($nbArticles/self::NB_MAX_ARTICLES),
+            'nbArticlePages' => (int)ceil($nbArticles/self::NB_MAX_ARTICLES),
             'form' => $form->createView()
         ]);
     }
