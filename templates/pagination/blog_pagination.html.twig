@@ -6,7 +6,7 @@
 </div>
 
 <div class="text-center">
-    {% if maxPages > 0 %}
+    {% if nbArticlePages > 0 %}
     <ul class="uk-pagination uk-flex-center">
         <!-- Condition pour désactiver le bouton "Précédent" si l'utilisateur se situe à la première page -->
         <li {{ currentPage == 1 ? 'class="uk-disabled"' }}>
@@ -15,7 +15,7 @@
         </li>
 
         <!-- Itération sur le nombre de pages disponibles pour afficher toutes les quantités nécessaires à l'aide de calculs -->
-        {% for i in 1..maxPages %}
+        {% for i in 1..nbArticlePages %}
 
             <!-- Condition pour afficher les premiers "..." en étant positionné sur l'itération actuelle -->
             {% if 1 == (currentPage - nearByPagesLimit) - loop.index0 %}
@@ -40,8 +40,8 @@
         {% endfor %}
 
         <!-- Condition pour désactiver le bouton "Suivant" si l'utilisateur se situe à la dernière page -->
-        <li {{ currentPage == maxPages ? 'class="uk-disabled"' }}>
-            <a href="{{ path('blog_index', {'page': currentPage + 1 <= maxPages ? currentPage + 1 : currentPage}|merge(app.request.query.all)) }}">Suivant
+        <li {{ currentPage == nbArticlePages ? 'class="uk-disabled"' }}>
+            <a href="{{ path('blog_index', {'page': currentPage + 1 <= nbArticlePages ? currentPage + 1 : currentPage}|merge(app.request.query.all)) }}">Suivant
                 »</a>
         </li>
         {% endif %}
