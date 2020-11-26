@@ -1,0 +1,54 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Menu des commentaires{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center mt-5 mb-5">Menu des commentaires</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Auteur</th>
+                <th>Date</th>
+                <th>Commentaires</th>
+                <th>Titre de l'article</th>
+                <th>Mise en avant</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for keys, comment in comments %}
+            <tr>
+                <td>{{ comment.author }}</td>
+                <td>{{ comment.date ? comment.date|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ comment.content|striptags|slice(0, 50)|raw }}</td>
+                <td>{{ comment.article.title }}</td>
+
+                <td>
+                    {{ form_start(formChosenComment[keys], { 'attr' :{'class' : 'form'}}) }}
+                    <div class="onoffswitch">
+                        {{ form_row(formChosenComment[keys].chosenComment, { 'attr' :
+                            {'class' : 'switch'}}) }}
+                    </div>
+                    {{ form_end(formChosenComment[keys]) }}
+                </td>
+
+                <td>
+                    <a href="{{ path('admin_comment_show', {'id': comment.id}) }}" class="btn btn-outline-dark col-sm-12 m-2"><i class="far fa-eye"></i> Aperçu</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center pt-5">Pas de commentaires trouvés</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('displayElement') }}
+{% endblock %}

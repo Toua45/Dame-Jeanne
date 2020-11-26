@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
@@ -18,6 +19,10 @@ class Comment
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Un auteur est obligatoire")
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Le nom de l'auteur est trop long, il ne doit pas dépasser {{ limit }} caractères")
      */
     private $author;
 
@@ -28,6 +33,7 @@ class Comment
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Le commentaire est obligatoire")
      */
     private $content;
 
@@ -35,6 +41,12 @@ class Comment
      * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="comments")
      */
     private $article;
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @Assert\Type(type="boolean")
+     */
+    private $chosenComment = true;
 
     public function getId(): ?int
     {
@@ -85,6 +97,18 @@ class Comment
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function getChosenComment(): ?bool
+    {
+        return $this->chosenComment;
+    }
+
+    public function setChosenComment(bool $chosenComment): self
+    {
+        $this->chosenComment = $chosenComment;
 
         return $this;
     }

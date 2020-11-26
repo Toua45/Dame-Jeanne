@@ -2,6 +2,14 @@
   color:$secondary-color;
 }
 
+.uk-pagination > .disabled > * {
+  color: $seventh-color;
+
+  &:hover {
+    color: $seventh-color;
+  }
+}
+
 .uk-pagination > .uk-active > * {
   color:$primary-color;
 }

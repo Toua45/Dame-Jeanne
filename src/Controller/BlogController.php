@@ -7,6 +7,7 @@ use App\Entity\Comment;
 use App\Form\ArticleSearchType;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
+use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,18 +32,19 @@ class BlogController extends AbstractController
             $search = $data['search'];
             $category = $data['category'];
             $articles = $articleRepository->findLikeName($search, $category, $page);
+            $nbArticles = count($articleRepository->findLikeName($search, $category)); // Comptage du nombre d'articles après une recherche
         } else {
             $articles = $articleRepository->findAllSortAndPage($page);
+            $nbArticles = count($articleRepository->findAllSortAndPage());
         }
 
-        $nbArticles = count($articleRepository->findAllSortAndPage());
         $currentPage = $page;
 
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,
             'page' => $page,
             'currentPage' => $currentPage,
-            'maxPages' => (int)ceil($nbArticles/self::NB_MAX_ARTICLES),
+            'nbArticlePages' => (int)ceil($nbArticles/self::NB_MAX_ARTICLES),
             'form' => $form->createView()
         ]);
     }
@@ -51,16 +53,15 @@ class BlogController extends AbstractController
      * @Route("/show-article/{slug}", name="blog_show")
      * @param Article $article
      * @param $slug
+     * @param CommentRepository $commentRepository
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function show(Article $article, $slug, Request $request)
+    public function show(Article $article, $slug, CommentRepository $commentRepository, Request $request)
     {
         // On récupère les commentaires de l'article
-        $comments = $this->getDoctrine()->getRepository(Comment::class)->findBy([
-            'article' => $article,
-        ],['date' => 'desc']);
+        $comments = $commentRepository->findChosenComment($slug);
 
         // On crée l'instance de "Comment"
         $comment = new Comment();
@@ -81,7 +82,7 @@ class BlogController extends AbstractController
 
             $doctrine = $this->getDoctrine()->getManager();
 
-            // On hydrate notre instance $comment
+            // On hydrate notre instance comment
             $doctrine->persist($comment);
 
             // On écrit en base de données

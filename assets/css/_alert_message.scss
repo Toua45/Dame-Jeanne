@@ -1,0 +1,49 @@
+.sticky__alert {
+  position: sticky !important;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.message-alert {
+  height: 3.75rem;
+  text-align: center;
+  background-color: rgba($color-red-light, 0.8);
+
+  & h5 {
+    color: $fourth-color;
+    font-family: $font-alert-message, Sans-Serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 1.2px;
+    width: 140ch;
+  }
+}
+
+@media screen and (min-width: 200px) and (max-width: 400px) {
+  .sticky__alert {
+    position: static !important;
+    overflow-y: scroll;
+    height: auto;
+    max-height: 7rem;
+    top: -7rem;
+  }
+
+  .message-alert {
+    height: auto;
+    top: 0;
+  }
+}
+
+@media screen and (min-width: 740px) and (max-width: 820px) {
+  .sticky__alert {
+    position: static !important;
+    height: auto;
+  }
+
+  .message-alert {
+    height: auto;
+    top: 0;
+  }
+}

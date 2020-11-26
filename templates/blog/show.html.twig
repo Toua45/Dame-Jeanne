@@ -27,13 +27,17 @@
                     <p class="card-text">{{ article.author }}</p>
                     <div class="modal-comment">
                         <div class="comment-title d-flex row justify-content-between px-3">
-                            <h4 class="pl-3 py-3">{{ comments | length }} Commentaires</h4>
+                            {% if (comments | length <= 1) %}
+                                <h4 class="pl-3 py-3">{{ comments | length }} Commentaire</h4>
+                            {% else %}
+                                <h4 class="pl-3 py-3">{{ comments | length }} Commentaires</h4>
+                            {% endif %}
                             <button class="uk-button uk-button-default my-3 mr-3" type="button"
                                     uk-toggle="target: #toggle-usage"><span uk-icon="triangle-down"></span>
                             </button>
                         </div>
                         {% for comment in comments %}
-                            <div id="toggle-usage" class="comment-content pl-3">
+                            <div id="toggle-usage" class="comment-content pl-3" aria-hidden="true" hidden="">
                                 <p class="comment-author">{{ comment.author }}</p>
                                 <p class="comment-date">{{ comment.date|date('d/m/Y') }}</p>
                                 <p class="comment-text text-justify pr-3">{{ comment.content }}</p>
@@ -42,14 +46,15 @@
                         {% else %}
                             <p>Il n'y a pas encore de commentaire, soyez le premier à publier !</p>
                         {% endfor %}
-                        <h4 class="text-center my-3">Ajouter un commentaire</h4>
+                        <h4 class="text-center my-5">Ajouter un commentaire</h4>
                         <div class="form_comment d-flex justify-content-center w-100">
                             <div class="col-lg-8">
                                 {{ form_start(formComment) }}
                                 {{ form_row(formComment.author) }}
                                 {{ form_row(formComment.content) }}
                                 <div class="flex d-flex justify-content-around">
-                                    <button class="btn btn-outline-danger my-3"><span uk-icon="check"></span> {{ button_label|default('Valider') }}</button>
+                                    <button class="btn btn-outline-danger my-3"><span
+                                                uk-icon="check"></span> {{ button_label|default('Valider') }}</button>
                                 </div>
                                 {{ form_end(formComment) }}
                             </div>

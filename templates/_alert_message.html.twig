@@ -1,0 +1,12 @@
+<div class="sticky__alert container-fluid p-0">
+    <div class="box__alert-message col-lg-12 m-0 p-0">
+        {% for alert in alerts %}
+            {% if alert.activated == true %}
+                <div class="message-alert alert d-flex align-items-center justify-content-center alert_message"
+                     role="alert">
+                    <h5 class="message-alert-font m-0"> {{ alert.message }} </h5>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

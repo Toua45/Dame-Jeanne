@@ -1,0 +1,53 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Menu des messages{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Menu des messages</h1>
+        <div class="admin-section pt-5 pb-5 px-5">
+            <a href="{{ path('admin_alert_new') }}" class="btn btn-outline-danger mb-5"><span uk-icon="plus"></span>
+                Ajouter
+                un message</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-lg-7">Message</th>
+                    <th>Affichage du message</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for keys, alert in alerts %}
+                    <tr>
+                        <td>{{ alert.message|striptags|raw }}</td>
+                        <td>
+                            {{ form_start(formChosenAlert[keys], { 'attr' :{'class' : 'form'}}) }}
+                            <div class="onoffswitch">
+                                {{ form_row(formChosenAlert[keys].activated, { 'attr' :
+                                    {'class' : 'switch'}}) }}
+                            </div>
+                            {{ form_end(formChosenAlert[keys]) }}
+                        </td>
+                        <td>
+                            <a href="{{ path('admin_alert_show', {'id': alert.id}) }}"
+                               class="btn btn-outline-dark m-2"><i class="far fa-eye"></i> Aperçu</a>
+                            <a href="{{ path('admin_alert_edit', {'id': alert.id}) }}"
+                               class="btn btn-outline-dark m-2"><span uk-icon="pencil"></span> Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">Aucun message trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('displayElement') }}
+{% endblock %}
