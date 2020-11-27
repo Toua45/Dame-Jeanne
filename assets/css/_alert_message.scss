@@ -21,13 +21,16 @@
   }
 }
 
-@media screen and (min-width: 200px) and (max-width: 400px) {
+@media (min-width: 1000px) and (max-width: 1200px) {
+  .message-alert {
+    height: 5rem;
+  }
+}
+
+@media screen and (min-width: 740px) and (max-width: 820px) {
   .sticky__alert {
     position: static !important;
-    overflow-y: scroll;
     height: auto;
-    max-height: 7rem;
-    top: -7rem;
   }
 
   .message-alert {
@@ -36,10 +39,13 @@
   }
 }
 
-@media screen and (min-width: 740px) and (max-width: 820px) {
+@media screen and (min-width: 200px) and (max-width: 400px) {
   .sticky__alert {
     position: static !important;
+    overflow-y: scroll;
     height: auto;
+    max-height: 7rem;
+    top: -7rem;
   }
 
   .message-alert {
