@@ -18,10 +18,11 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom du produit'
+                'label' => 'Nom du produit',
             ])
             ->add('year', TextType::class, [
-                'label' => 'Date'
+                'label' => 'Date (année)',
+                'invalid_message' => 'Veuillez indiquer une année.'
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description du produit'
