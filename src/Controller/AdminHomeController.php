@@ -46,7 +46,7 @@ class AdminHomeController extends AbstractController
         $dompdf->render();
 
         // Output the generated PDF to Browser (inline view)
-        $dompdf->stream("mypdf.pdf", [
+        $dompdf->stream("Dame Jeanne - guide d'utilisation.pdf", [
             "Attachment" => false
         ]);
     }
