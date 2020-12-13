@@ -1,91 +1,63 @@
-.footer_form{
-    color:$secondary-color;
+.footer_form {
+  .logo_footer {
+    width: 12rem;
+    height: 12rem;
+  }
 
-  .links{
-    ul, li, a{
-      color: $fifth-color;
-      transition: color .2s;
-      text-decoration:none;
-      list-style-type: none;
-      font-size: 1em;
-      &:hover{
-        text-decoration:none;
+  .footer_address {
+    p {
+      font-family: $font-paragraph;
+      font-size: large;
+      margin-top: 4.8em;
+      color: $fourth-color;
+    }
+  }
+
+  .footer_links {
+    font-family: $font-paragraph;
+    font-size: large;
+    margin-top: 5em;
+
+    a {
+      color: $fourth-color;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.footer_team {
+  a {
+    color: $fourth-color;
+    font-size: 1.2em;
+  }
+}
+
+.network {
+  img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  p {
+    font-family: $font-title;
+    color: $primary-color;
+  }
+}
+
+@media screen and (min-width: 200px) and (max-width: 768px) {
+  .footer_form {
+    .footer_address {
+      p {
+        margin-top: 1em;
       }
     }
-  }
 
-  .location{
-    i{font-size: 18px;}
-  }
-  .copyright p{border-top:1px solid rgba(255,255,255,.1);}
-}
-
-.logo_footer {
-    border-radius: 50%;
-}
-
-.text_footer {
-    font-size:18px;
-}
-
-.footer_form .links li a:hover {
-    color:$primary-color;
-}
-
-.links {
-    h4 {
-        font-family: $font-title ;
-        color:$primary-color;
+    .footer_links {
+      margin-top: 1em;
     }
+  }
 }
-
-.location {
-    h4 {
-        font-family: $font-title;
-        color:$primary-color;
-    }
-}
-
-.social-icons {
-    padding-left:15px;
-    margin-top: -15px;
-    margin-bottom:0;
-    list-style:none;
-}
-
-.social-icons li {
-    display:inline-block;
-    margin-bottom:4px;
-}
-
-.social-icons a {
-    color:#818a91;
-    font-size:25px;
-    display:inline-block;
-    line-height:44px;
-    width:44px;
-    height:44px;
-    text-align:center;
-    margin-right:8px;
-    border-radius:100%;
-    -webkit-transition:all .2s linear;
-    -o-transition:all .2s linear;
-    transition:all .2s linear;
-}
-
-.social-icons a:active,.social-icons a:focus,.social-icons a:hover {
-    color:$third-color;
-    background-color:$primary-color;
-}
-
-.social-icons.size-sm a {
-    line-height:34px;
-    height:34px;
-    width:34px;
-    font-size:14px;
-}
-
-.social-icons a.facebook:hover {
-    background-color:$primary-color;
-}
-
