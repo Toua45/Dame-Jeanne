@@ -9,6 +9,7 @@
       font-family: $font-paragraph;
       font-size: large;
       margin-top: 4.8em;
+      color: $fourth-color;
     }
   }
 
@@ -18,7 +19,7 @@
     margin-top: 5em;
 
     a {
-      color: $fifth-color;
+      color: $fourth-color;
       text-decoration: none;
     }
 
@@ -30,7 +31,7 @@
 
 .footer_team {
   a {
-    color: $fifth-color;
+    color: $fourth-color;
     font-size: 1.2em;
   }
 }
