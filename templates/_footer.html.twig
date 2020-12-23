@@ -1,43 +1,47 @@
-{% for footer in footers %}
-    <div class="footer_form">
-        <div class="container d-flex justify-content-around flex-wrap">
+<div class="footer_form">
+    <div class="container d-flex justify-content-around flex-wrap">
 
-            <div class="col-md-4 text-center footer_address">
-                <p>{{ footer.address }} | {{ footer.phone }}</p>
-            </div>
-            <div class="col-m-4 ml-1 logo_footer">
-                <a href="{{ path('home') }}">
-                    <img src="{{ asset('build/logo_footer.jpg') }}" alt="Logo Dame Jeanne" class="logo_footer"/>
-                </a>
-            </div>
-            <div class="col-md-4 text-center footer_links">
-                <a href="#" class="mr-2">Mentions légales</a>
-                <a href="{{ path('home') }}#map_section">Plan</a>
-            </div>
-
+        <div class="col-md-4 text-center footer_address">
+            {{ render(controller(
+                'App\\Controller\\HomeController::footer'
+            )) }}
         </div>
-    </div>
 
-    <div class="mt-3 text-center">
-        <div class="footer_team">
-            <a href="{{ path('presentation_index') }}#section_team">À propos de nous</a>
+        <div class="col-m-4 ml-1 logo_footer">
+            <a href="{{ path('home') }}">
+                <img src="{{ asset('build/logo_footer.jpg') }}" alt="Logo Dame Jeanne" class="logo_footer"/>
+            </a>
         </div>
-    </div>
-
-    <div class="mt-5 mb-5 network">
-        <div class="container d-flex justify-content-center">
-
-            <div>
-                <p class="mr-3">Suivez-nous</p>
-            </div>
-            <div>
-                <a href="{{ footer.instagram }}" target="_blank"><img class="mr-2" src="{{ asset('build/insta.webp') }}"
-                                 alt="Logo Instagram Dame Jeanne"/></a>
-            </div>
-            <div>
-                <a href="#"><img src="{{ asset('build/raisin-logo-2.webp') }}" alt="Logo Raisin Dame Jeanne"/></a>
-            </div>
-
+        <div class="col-md-4 text-center footer_links">
+            <a href="#" class="mr-2">Mentions légales</a>
+            <a href="{{ path('home') }}#map_section">Plan</a>
         </div>
+
     </div>
-{% endfor %}
+</div>
+
+<div class="mt-3 text-center">
+    <div class="footer_team">
+        <a href="{{ path('presentation_index') }}#section_team">À propos de nous</a>
+    </div>
+</div>
+
+<div class="mt-5 mb-5 network">
+    <div class="container d-flex justify-content-center">
+
+        <div>
+            <p class="mr-3">Suivez-nous</p>
+        </div>
+        <div>
+            <a href="https://www.instagram.com/damejeannetours/" target="_blank">
+                <img class="mr-2" src="{{ asset('build/insta.webp') }}" alt="Logo Instagram Dame Jeanne"/>
+            </a>
+        </div>
+        <div>
+            <a href="https://www.raisin.digital/fr/" target="_blank">
+                <img src="{{ asset('build/raisin-logo-2.webp') }}" alt="Logo Raisin Dame Jeanne"/>
+            </a>
+        </div>
+
+    </div>
+</div>

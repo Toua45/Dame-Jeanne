@@ -24,7 +24,7 @@ class HomeController extends AbstractController
      * @return Response
      * @throws TransportExceptionInterface
      */
-    public function index(ArticleRepository $articleRepository, Request $request, MailerInterface $mailer, CoordinateRepository $coordinateRepository, FooterRepository $footerRepository)
+    public function index(ArticleRepository $articleRepository, Request $request, MailerInterface $mailer, CoordinateRepository $coordinateRepository)
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -48,14 +48,18 @@ class HomeController extends AbstractController
 
         $articles = $articleRepository->findBy([], ['date' => 'DESC'], 3);
         $coordinates = $coordinateRepository->findAll();
-        $footers = $footerRepository->findAll();
 
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
             'form' => $form->createView(),
             'coordinates' => $coordinates,
-            'footers' => $footers,
         ]);
     }
 
+    public function footer(FooterRepository $footerRepository)
+    {
+        $footers = $footerRepository->findAll();
+
+        return $this->render('_infos_in_footer.html.twig', ['footers' => $footers]);
+    }
 }
