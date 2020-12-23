@@ -26,11 +26,6 @@ class Footer
      */
     private $phone;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $instagram;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -56,18 +51,6 @@ class Footer
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
-
-        return $this;
-    }
-
-    public function getInstagram(): ?string
-    {
-        return $this->instagram;
-    }
-
-    public function setInstagram(string $instagram): self
-    {
-        $this->instagram = $instagram;
 
         return $this;
     }

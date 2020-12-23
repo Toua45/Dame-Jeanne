@@ -12,7 +12,6 @@ class FooterFixtures extends Fixture
         'Infos' => [
             'address' => '111, rue Colbert 37000 Tours',
             'phone' => '00.00.00.00.00',
-            'instagram' => 'https://www.instagram.com/damejeannetours/',
         ]
     ];
 
@@ -22,7 +21,6 @@ class FooterFixtures extends Fixture
             $footer = new Footer();
             $footer->setAddress($data['address']);
             $footer->setPhone($data['phone']);
-            $footer->setInstagram($data['instagram']);
 
             $manager->persist($footer);
         }
