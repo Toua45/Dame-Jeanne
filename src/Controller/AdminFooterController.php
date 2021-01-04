@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminFooterController extends AbstractController
 {
     /**
-     * @Route("/", name="footer_index", methods={"GET"})
+     * @Route("/", name="admin_footer_index", methods={"GET"})
      */
     public function index(FooterRepository $footerRepository): Response
     {
@@ -49,7 +49,7 @@ class AdminFooterController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="footer_show", methods={"GET"})
+     * @Route("/{id}", name="admin_footer_show", methods={"GET"})
      */
     public function show(Footer $footer): Response
     {
@@ -59,7 +59,7 @@ class AdminFooterController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="footer_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="admin_footer_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Footer $footer): Response
     {
