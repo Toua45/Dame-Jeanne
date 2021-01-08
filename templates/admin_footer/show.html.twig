@@ -1,34 +1,36 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
 {% block title %}Footer{% endblock %}
 
 {% block body %}
-    <h1>Footer</h1>
+    <div class="container">
+        <h1 class="text-center m-5">Les coordonnées que l'on peut modifier</h1>
+        <div class="admin-footer-show pt-5 pb-5 px-5">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Adresse</th>
+                    <td>{{ footer.address }}</td>
+                </tr>
+                <tr>
+                    <th>Téléphone</th>
+                    <td>{{ footer.phone }}</td>
+                </tr>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ footer.id }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ footer.address }}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ footer.phone }}</td>
-            </tr>
-            <tr>
-                <th>Instagram</th>
-                <td>{{ footer.instagram }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('footer_index') }}">back to list</a>
-
-    <a href="{{ path('footer_edit', {'id': footer.id}) }}">edit</a>
-
-    {{ include('admin_footer/_delete_form.html.twig') }}
+                </tbody>
+            </table>
+            <div class="mt-5 d-flex justify-content-center">
+                <a href="{{ path('admin_footer_edit', {'id': footer.id}) }}"
+                   class="btn btn-outline-danger"><span uk-icon="pencil"></span>
+                    Modifier
+                </a>
+            </div>
+        </div>
+        <div class="d-flex justify-content-around">
+            <a href="{{ path('admin_footer_index') }}" class="btn btn-dark mt-5"><i
+                        class="far fa-arrow-alt-circle-left"></i>
+                Retour
+            </a>
+        </div>
+    </div>
 {% endblock %}
