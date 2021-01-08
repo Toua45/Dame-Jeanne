@@ -54,7 +54,7 @@ class AdminFooterController extends AbstractController
     public function show(Footer $footer): Response
     {
         return $this->render('admin_footer/show.html.twig', [
-            'admin_footer' => $footer,
+            'footer' => $footer,
         ]);
     }
 
