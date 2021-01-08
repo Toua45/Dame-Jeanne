@@ -13,9 +13,7 @@ class FooterType extends AbstractType
     {
         $builder
             ->add('address')
-            ->add('phone')
-            ->add('instagram')
-        ;
+            ->add('phone');
     }
 
     public function configureOptions(OptionsResolver $resolver)
