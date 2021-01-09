@@ -69,6 +69,11 @@ class AdminFooterController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'Vos coordonnées ont bien été modifiées.'
+            );
+
             return $this->redirectToRoute('admin_footer_index');
         }
 
