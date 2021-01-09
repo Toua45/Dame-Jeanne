@@ -69,11 +69,11 @@ class AdminFooterController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('footer_index');
+            return $this->redirectToRoute('admin_footer_index');
         }
 
         return $this->render('admin_footer/edit.html.twig', [
-            'admin_footer' => $footer,
+            'footer' => $footer,
             'form' => $form->createView(),
         ]);
     }

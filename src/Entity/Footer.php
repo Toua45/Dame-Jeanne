@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FooterRepository")
@@ -18,11 +19,19 @@ class Footer
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="L'adresse est obligatoire")
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "L'adresse est trop longue, elle ne doit pas dépasser {{ limit }} caractères")
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(message="Le numéro de téléphone est obligatoire")
+     * @Assert\Length(
+     *      max = 20,
+     *      maxMessage = "Le numéro de téléphone est trop long, il ne doit pas dépasser {{ limit }} caractères")
      */
     private $phone;
 
