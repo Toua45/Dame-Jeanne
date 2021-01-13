@@ -29,10 +29,10 @@
                         <p class="card-text d-flex justify-content-center">{{ coordinate.email }}</p>
                         <p class="card-text d-flex justify-content-center">Horaires</p>
                         <p class="card-text d-flex justify-content-center">Lundi : fermé</p>
-                        <p class="card-text d-flex justify-content-center">Mardi au Vendredi
+                        <p class="card-text d-flex justify-content-center">Mardi au vendredi
                             : {{ coordinate.timetableOpen|date('H:i') }}
                             - {{ coordinate.timetableClose|date('H:i') }}</p>
-                        <p class="card-text d-flex justify-content-center">Samedi et Dimanche
+                        <p class="card-text d-flex justify-content-center">Samedi et dimanche
                             : {{ coordinate.timetableOpenWeekend|date('H:i') }}
                             - {{ coordinate.timetableCloseWeekend|date('H:i') }}</p>
                     </div>
