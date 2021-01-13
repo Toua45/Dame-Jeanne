@@ -6,7 +6,6 @@ use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\ArticleRepository;
 use App\Repository\CoordinateRepository;
-use App\Repository\FooterRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
