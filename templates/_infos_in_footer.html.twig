@@ -1,3 +1,3 @@
-{% for footer in footers %}
-    <p>{{ footer.address }} | {{ footer.phone }}</p>
+{% for coordinate in coordinates %}
+    <p>{{ coordinate.adress }} {{ coordinate.zipCode }} {{ coordinate.city }} | {{ coordinate.telephone }}</p>
 {% endfor %}

@@ -56,10 +56,10 @@ class HomeController extends AbstractController
         ]);
     }
 
-    public function footer(FooterRepository $footerRepository)
+    public function getCoordinates(CoordinateRepository $coordinateRepository)
     {
-        $footers = $footerRepository->findAll();
+        $coordinates = $coordinateRepository->findAll();
 
-        return $this->render('_infos_in_footer.html.twig', ['footers' => $footers]);
+        return $this->render('_infos_in_footer.html.twig', ['coordinates' => $coordinates]);
     }
 }
