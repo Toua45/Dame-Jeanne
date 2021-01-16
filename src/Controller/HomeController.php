@@ -6,7 +6,6 @@ use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\ArticleRepository;
 use App\Repository\CoordinateRepository;
-use App\Repository\FooterRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -56,10 +55,10 @@ class HomeController extends AbstractController
         ]);
     }
 
-    public function footer(FooterRepository $footerRepository)
+    public function getCoordinates(CoordinateRepository $coordinateRepository)
     {
-        $footers = $footerRepository->findAll();
+        $coordinates = $coordinateRepository->findAll();
 
-        return $this->render('_infos_in_footer.html.twig', ['footers' => $footers]);
+        return $this->render('_infos_in_footer.html.twig', ['coordinates' => $coordinates]);
     }
 }
